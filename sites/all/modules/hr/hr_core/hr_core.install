@@ -268,3 +268,18 @@ function hr_core_update_7015() {
     _hr_core_display_cache_content_defaults('none', $margin = 5, $type);
   }
 }
+
+/**
+ * Disable redis modules, add solr overrides.
+ *
+ * Redis is not used on this stack, and solr config can live in settings.php.
+ */
+function hr_core_update_7016() {
+  $disable = array('redis_info', 'redis');
+  $enable  = array('search_api_solr_overrides');
+
+  module_disable($disable);
+  drupal_uninstall_modules($disable);
+
+  module_enable($enable);
+}
