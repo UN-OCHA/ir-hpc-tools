@@ -38,19 +38,6 @@ function hid_auth_menu() {
 }
 
 /**
- * Implements hook_user_logout().
- *
- * When a user logs out, redirect them to the logout page on the authentication
- * server to ensure that session is destroyed.
- *
- * The only method to alter the redirect to the front page is to set a global
- * variable that can be checked in hook_drupal_goto_alter().
- */
-function hid_auth_user_logout($account) {
-  $GLOBALS['hid_auth_user_logout'] = 1;
-}
-
-/**
  * Implements hook_drupal_goto_alter().
  *
  * When the hid_auth_user_logout global variable is set, redirect users
