@@ -43,6 +43,11 @@
           <?php print render($page['branding']); ?>
         </div>
         <div class="cd-hri-dropdown">
+          <button type="button" id="cd-hri-nav-toggle" class="cd-hri-site-header__nav-toggle" data-toggle="dropdown">
+            <span class="cd-hri-site-header__nav-toggle-inner" aria-hidden="true">
+            </span>
+            <span class="sr-only"><?php print t('Main menu') ?></span>
+          </button>
           <nav role="navigation" class="cd-hri-site-header__nav dropdown-menu" aria-labelledby="cd-hri-nav-toggle">
             <ul class="cd-hri-nav cd-hri-nav--primary">
               <?php print render($main_menu_dropdown); ?>
