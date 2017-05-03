@@ -28,7 +28,6 @@
         </div>
         <div class="cd-hri-global-header__nav">
           <div class="cd-hri-nav cd-hri-nav--secondary">
-            <?php print $hr_favorite_spaces; ?>
             <?php print render($page['top']); ?>
           </div>
 
