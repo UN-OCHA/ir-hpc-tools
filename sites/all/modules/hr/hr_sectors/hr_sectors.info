@@ -15,7 +15,6 @@ dependencies[] = image
 dependencies[] = link
 dependencies[] = link_icons
 dependencies[] = list
-dependencies[] = media
 dependencies[] = og
 dependencies[] = og_access
 dependencies[] = og_features
