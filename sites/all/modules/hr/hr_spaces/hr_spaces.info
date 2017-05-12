@@ -8,7 +8,6 @@ dependencies[] = hr_core
 dependencies[] = hr_notifications
 dependencies[] = hr_users
 dependencies[] = link_icons
-dependencies[] = media
 dependencies[] = og_access
 dependencies[] = og_features
 dependencies[] = og_role_delegate
