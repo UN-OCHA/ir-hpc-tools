@@ -84,10 +84,30 @@
           h2 {
             font-size: 18px;
             font-weight: bold;
-            @include node-sprite(generic);
             color: $p-comp;
-            padding: 20px 20px 20px 79px;
-            max-height: 55px;
+            padding: 10px;
+
+            position: relative;
+
+            &:before {
+              @include node-sprite(generic); // added before used as can't use extend in media query
+            }
+
+            @media screen and (min-width : $screen-sm) {
+              padding: 10px 20px 10px 79px;
+              min-height: 55px;
+
+              &:before {
+                content: '';
+                width: 68px;
+                height: 55px;
+                position: absolute;
+                left: 0;
+                top: 0;
+
+              }
+
+            }
           }
         }
 
