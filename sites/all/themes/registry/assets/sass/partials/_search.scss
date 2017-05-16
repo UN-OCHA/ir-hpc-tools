@@ -59,6 +59,7 @@
           display: block;
           line-height: 1;
           position: relative;
+          text-decoration: none;
 
           &:after {
             content: "";
@@ -140,7 +141,7 @@
       position: relative;
       padding-left: 15px;
       color: $p-dark-text;
-
+      text-decoration: none;
       @extend .icon-cancel;
 
       &:before {
@@ -193,6 +194,7 @@
       a {
         font-size: 0;
         @extend .icon-cancel;
+        text-decoration: none;
 
         &:hover, &:focus {
           text-decoration: none;

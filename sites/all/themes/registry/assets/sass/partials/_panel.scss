@@ -503,7 +503,7 @@
   p {
     margin: 0;
   }
-  
+
   a {
     line-height: 1.2;
     display: block;
@@ -513,6 +513,7 @@
     padding: 15px 15px 15px 60px;
     position: relative;
     border-bottom: 1px solid lighten($border-grey,10%);
+    text-decoration: none;
 
     [class^="icon-"], [class*=" icon-"] {
       font-size: 40px;

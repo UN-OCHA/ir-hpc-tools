@@ -8,7 +8,7 @@
 
 .table-responsive {
 	border: none!important;
-	
+
 	tr {
 		border: none;
 		border-bottom: 1px solid $border-grey !important;
@@ -39,6 +39,7 @@ table {
 		color: $p-main!important;
 		font-style: italic;
 		border-bottom: 1px solid $p-comp;
+		text-decoration: none;
 
 		&:hover, &:focus {
 			color: $p-comp!important;

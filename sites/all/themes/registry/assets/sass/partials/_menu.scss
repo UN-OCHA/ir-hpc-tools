@@ -43,7 +43,7 @@
 
   }
 
-  // highlight first item in secondary nav  
+  // highlight first item in secondary nav
   .menu li {
     float: none;
 
@@ -80,6 +80,10 @@
 .nav-tabs {
   border-bottom: 1px solid $p-main;
 
+  a {
+    text-decoration: none;
+  }
+
   > li > a {
     padding: 4px 15px;
     text-transform: uppercase;
@@ -102,7 +106,7 @@
       background-color: $p-main;
     }
 
-    &:hover {
+    &:hover, &:focus {
       background: $p-comp;
     }
   }

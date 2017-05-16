@@ -50,9 +50,10 @@ body {
 a {
   color: $p-main;
   word-wrap: break-word;
+  text-decoration: underline;
 
-  &:hover {
-    color: darken($p-main, 10%);
+  &:hover, &:focus {
+    color: $p-comp;
   }
 
   .region-content & {
@@ -62,18 +63,22 @@ a {
 
   &.btn {
     color: white;
+    text-decoration: none;
     &.btn-default {
       color: #333;
     }
   }
-  
+
   #footer-third & {
     color: $p-comp-variant;
     border-bottom: 1px solid $p-comp;
-  }
-  #footer-third &:hover, #footer-third &:active {
-    color: $p-comp;
-    border-bottom: none;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      color: $p-comp;
+      border-bottom: none;
+      text-decoration: none
+    }
   }
 }
 
@@ -236,13 +241,13 @@ body div.messages {
   }
 }
 
-.footer-logos-hdx { 
+.footer-logos-hdx {
   background-image: url('../images/footer-logos/hdx.png');
   background-repeat: no-repeat;
   background-position: 0 0;
 }
 
-.footer-logos-hid { 
+.footer-logos-hid {
   background-image: url('../images/footer-logos/hid.png');
   background-repeat: no-repeat;
   background-position: 0 0;
@@ -661,5 +666,7 @@ body .region-branding {
   }
 }
 
-
+.dropdown-menu a {
+  text-decoration: none;
+}
 
