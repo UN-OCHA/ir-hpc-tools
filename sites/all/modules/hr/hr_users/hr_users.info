@@ -15,7 +15,6 @@ dependencies[] = honeypot
 dependencies[] = hr_core
 dependencies[] = hr_job_titles
 dependencies[] = hr_layout
-dependencies[] = hr_locations
 dependencies[] = hr_organizations
 dependencies[] = hr_sectors
 dependencies[] = hr_themes
