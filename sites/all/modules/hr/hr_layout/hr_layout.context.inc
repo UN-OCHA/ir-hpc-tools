@@ -75,12 +75,6 @@ function hr_layout_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'hr_layout-hr_layout_create_links' => array(
-          'module' => 'hr_layout',
-          'delta' => 'hr_layout_create_links',
-          'region' => 'top',
-          'weight' => '0',
-        ),
         'hr_layout-hr_layout_horz_menu' => array(
           'module' => 'hr_layout',
           'delta' => 'hr_layout_horz_menu',
