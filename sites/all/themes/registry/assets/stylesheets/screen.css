@@ -3273,7 +3273,7 @@ div.region-top div.block { display: inline-block; }
 @media (min-width: 480px) { #secondary-navigation .menu li { float: left; }
   #secondary-navigation a { margin-bottom: 0; } }
 
-.block-menu h2, .block-menu-block h2, .block-og-menu h2, .block-locale h2 { display: none; }
+.block-menu h4, .block-menu-block h4, .block-og-menu h4, .block-locale h4 { display: none; }
 
 .navbar { min-height: 0; }
 
