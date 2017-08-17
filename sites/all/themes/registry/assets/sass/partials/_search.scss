@@ -7,7 +7,7 @@
     border-bottom: 1px solid $border-grey;
     margin: 0 15px;
 
-    h2 {
+    h4 {
       color: black;
       cursor: pointer;
       position: relative;
@@ -37,7 +37,7 @@
       }
     }
 
-    .content {
+    .block__content {
       padding: 0 10px 5px 10px;
       display: none;
     }
@@ -218,7 +218,7 @@
     background: $p-comp;
     color: $p-dark-text;
 
-    .content {
+    .block__content {
       padding: 15px 10px;
       font-size: 12px;
 
@@ -229,9 +229,9 @@
   }
 }
 
-#block-current-search-hr-current-search {
+#sidebar-first .block-current-search {
 
-  h2 {
+  h4 {
     display: none;
   }
 
