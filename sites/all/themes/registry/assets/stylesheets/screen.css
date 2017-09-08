@@ -3595,7 +3595,7 @@ body div.messages.error { background: #3d5d77; }
 
 #footer { margin: 20px 0 0; background-color: #3d5d77; color: white; }
 #footer .block-menu li { display: inline-block; }
-#footer .block-menu li a { color: white; }
+#footer .block-menu li a { color: white; text-decoration: none; }
 #footer .block-menu li a:hover { text-decoration: underline; background-color: transparent; }
 @media screen and (max-width: 992px) { #footer { height: auto; } }
 #footer .container { padding-bottom: 20px; padding-top: 1em; }
