@@ -3106,7 +3106,7 @@ form .description { margin: 2px 0; color: #555555; }
 
 .media-widget > a { margin: 0 10px 0 0; display: inline-block; }
 
-html.js input.form-autocomplete { background: url('../images/throbber.gif?1491813802') no-repeat right 8px #fff !important; }
+html.js input.form-autocomplete { background: url('../images/throbber.gif?1494940877') no-repeat right 8px #fff !important; }
 html.js input.throbbing { background-position: right -122px !important; }
 html.js fieldset.collapsed { height: auto; border-left-width: 1px; border-right-width: 1px; }
 
@@ -3594,6 +3594,9 @@ body div.messages.error { background: #3d5d77; }
 @media screen and (max-width: 1200px) { .thumbnail .caption { font-size: 10px; } }
 
 #footer { margin: 20px 0 0; background-color: #3d5d77; color: white; }
+#footer .block-menu li { display: inline-block; }
+#footer .block-menu li a { color: white; }
+#footer .block-menu li a:hover { text-decoration: underline; background-color: transparent; }
 @media screen and (max-width: 992px) { #footer { height: auto; } }
 #footer .container { padding-bottom: 20px; padding-top: 1em; }
 #footer .container #footer-second img { margin: 10px; max-width: 100%; max-height: 45px; }
@@ -3821,7 +3824,7 @@ body .region-branding input.form-text:focus { border-color: #3d5d77; }
 #sidebar-first .block-facetapi { padding: 0; background: white; border-bottom: 1px solid #d8d8d8; margin: 0 15px; }
 #sidebar-first .block-facetapi h4 { color: black; cursor: pointer; position: relative; margin: 0; padding: 15px 28px 15px 10px; color: #3d5d77; font-size: 14px; line-height: 1.3; }
 #sidebar-first .block-facetapi h4:before { font-family: 'unocha-icons' !important; line-height: 1; position: absolute; right: 10px; font-weight: bold; margin-top: 2px; }
-#sidebar-first .block-facetapi h4:hover, #sidebar-first .block-facetapi h2:focus { background-color: #dfedf1; }
+#sidebar-first .block-facetapi h4:hover, #sidebar-first .block-facetapi h4:focus { background-color: #dfedf1; }
 #sidebar-first .block-facetapi h4.opened { background-color: #dfedf1; }
 #sidebar-first .block-facetapi .block__content { padding: 0 10px 5px 10px; display: none; }
 #sidebar-first .block-facetapi ul { list-style: none; margin: 0; padding: 0; font-size: 13px; }
