@@ -16,19 +16,30 @@
  */
 function wysiwyg_filter_get_advanced_rules() {
   global $base_url, $base_path;
+  // CSS identifiers: https://www.w3.org/TR/CSS2/syndata.html#value-def-identifier
+  //  In CSS, identifiers (including element names, classes, and IDs in
+  //  selectors) can contain only the characters [a-zA-Z0-9] and ISO 10646
+  //  characters U+00A0 and higher, plus the hyphen (-) and the underscore (_);
+  //  they cannot start with a digit, two hyphens, or a hyphen followed by a
+  //  digit. Identifiers can also contain escaped characters and any ISO 10646
+  //  character as a numeric code (see next item). For instance, the identifier
+  //  "B&W?" may be written as "B\&W\?" or "B\26 W\3F".
+  // We voluntarily do not add non-ascii characters to the rule, neither do
+  // we implement the exceptions "two hyphens, or a hyphen followed by a
+  // digit".
   return array(
     'valid_classes' => array(
       'title' => t('Rules for Class Names'),
-      'description' => t('Enter a comma separated list of rules for <em>Class Names</em>. Whitespaces and line-breaks are ignored. <em>Class Names</em> should start with an upper or lower case letter &quot;a to z&quot; and can be followed by one or more upper or lower case letters &quot;a to z&quot;, digits &quot;0 to 9&quot;, hyphens &quot;-&quot; and/or underscores &quot;_&quot;. The asterisk character &quot;*&quot; can be used in rules to represent any number of characters from the second position of the rule. Example: &quot;userclass*, my-font-*&quot; are valid rules for <em>Class Names</em>, whereas &quot;*class&quot; is invalid.'),
-      'validate_regexp' => '`^[a-zA-Z][-_a-zA-Z0-9?*]*$`',
+      'description' => t('Enter a comma separated list of rules for <em>Class Names</em>. Whitespaces and line-breaks are ignored. <em>Class Names</em> should start with an upper or lower case letter &quot;a to z&quot;, hyphens &quot;-&quot; and/or underscores &quot;_&quot;, and can be followed by one or more upper or lower case letters &quot;a to z&quot;, digits &quot;0 to 9&quot;, hyphens &quot;-&quot; and/or underscores &quot;_&quot;. The asterisk character &quot;*&quot; can be used in rules to represent any number of characters from the second position of the rule. Example: &quot;userclass*, my-font-*&quot; are valid rules for <em>Class Names</em>, whereas &quot;*class&quot; is invalid.'),
+      'validate_regexp' => '`^[-_a-zA-Z][-_a-zA-Z0-9?*]*$`',
       'asterisk_expansion' => '[-_a-zA-Z0-9]*',
       'required_by' => 'class',
       'required_by_message' => t('The <strong>class</strong> attribute is used in your <em>HTML elements and attributes</em> rules. You should specify the <em>Rules for Class Names</em> field in the &quot;Advanced rules&quot; section below. Leaving it unspecified will result in all class attributes filtered out.'),
     ),
     'valid_ids' => array(
       'title' => t('Rules for Element IDs'),
-      'description' => t('Enter a comma separated list of rules for <em>Element IDs</em>. Whitespaces and line-breaks are ignored. <em>Element IDs</em> should start with an upper or lower case letter &quot;a to z&quot; and can be followed by one or more upper or lower case letters &quot;a to z&quot;, digits &quot;0 to 9&quot;, hyphens &quot;-&quot; and/or underscores &quot;_&quot;. The asterisk character &quot;*&quot; can be used in rules to represent any number of characters from the second position of the rule. Example: &quot;foo*&quot; is a valid rule for <em>Element IDs</em>, whereas &quot;*bar&quot; is invalid.'),
-      'validate_regexp' => '`^[a-zA-Z][-_a-zA-Z0-9?*]*$`',
+      'description' => t('Enter a comma separated list of rules for <em>Element IDs</em>. Whitespaces and line-breaks are ignored. <em>Element IDs</em> should start with an upper or lower case letter &quot;a to z&quot;, hyphens &quot;-&quot; and/or underscores &quot;_&quot;, and can be followed by one or more upper or lower case letters &quot;a to z&quot;, digits &quot;0 to 9&quot;, hyphens &quot;-&quot; and/or underscores &quot;_&quot;. The asterisk character &quot;*&quot; can be used in rules to represent any number of characters from the second position of the rule. Example: &quot;foo*&quot; is a valid rule for <em>Element IDs</em>, whereas &quot;*bar&quot; is invalid.'),
+      'validate_regexp' => '`^[-_a-zA-Z][-_a-zA-Z0-9?*]*$`',
       'asterisk_expansion' => '[-_a-zA-Z0-9]*',
       'required_by' => 'id',
       'required_by_message' => t('The <strong>id</strong> attribute is used in your <em>HTML elements and attributes</em> rules. You should specify the <em>Rules for Element IDs</em> field in the &quot;Advanced rules&quot; section below. Leaving it unspecified will result in all id attributes filtered out.'),

@@ -9,9 +9,9 @@ files[] = wysiwyg_filter.install
 files[] = wysiwyg_filter.module
 files[] = wysiwyg_filter.pages.inc
 
-; Information added by Drupal.org packaging script on 2017-10-04
-version = "7.x-1.6-rc5"
+; Information added by Drupal.org packaging script on 2017-10-06
+version = "7.x-1.6-rc6"
 core = "7.x"
 project = "wysiwyg_filter"
-datestamp = "1507161249"
+datestamp = "1507333446"
 
