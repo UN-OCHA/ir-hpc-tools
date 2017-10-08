@@ -463,7 +463,7 @@ function _wysiwyg_filter_xss_attributes($attr, $element = '') {
         // Element ID is valid, check_plain result.
         $attrinfo['value'] = check_plain($attrinfo['value']);
       }
-      elseif ($attrname == 'media') {
+      elseif (in_array($attrname, array('title', 'alt', 'media'))) {
         $attrinfo['value'] = check_plain($attrinfo['value']);
       }
       else {
@@ -486,7 +486,7 @@ function _wysiwyg_filter_xss_attributes($attr, $element = '') {
               break;
             }
           }
-          $link_is_relative = empty(parse_url($attrinfo['value'], PHP_URL_HOST));
+          $link_is_relative = !parse_url($attrinfo['value'], PHP_URL_HOST);
           if (($nofollow_policy == 'blacklist' && $domain_found) || (($nofollow_policy == 'whitelist' || $nofollow_policy == 'whitelist_current') && !$domain_found && !$link_is_relative)) {
             $add_nofollow = TRUE;
           }
