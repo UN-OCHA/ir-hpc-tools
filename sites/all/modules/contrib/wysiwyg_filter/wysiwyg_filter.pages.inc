@@ -117,6 +117,11 @@ function _wysiwyg_filter_xss_split($m, $store = FALSE) {
   $attrlist = &$matches[3];
   $comment = &$matches[4];
 
+  // Convert synonyms to the element they get converted to.
+  if (!empty($filter_options['valid_elements'][$elem]) && is_string($filter_options['valid_elements'][$elem])) {
+    $elem = $filter_options['valid_elements'][$elem];
+  }
+
   if (!empty($comment)) {
     // Allow or disallow HTML comments.
     return (!empty($filter_options['allow_comments']) ? $comment : '');
@@ -290,7 +295,8 @@ function _wysiwyg_filter_xss_attributes($attr, $element = '') {
   }
 
   // The attribute list ends with a valueless attribute like "selected".
-  if ($mode == 1 && !$skip) {
+  // is_array() ensures this isn't run for synonyms.
+  if ($mode == 1 && !$skip && is_array($attrarr[$attrname])) {
     $attrarr[$attrname] = array();
   }
 
@@ -463,7 +469,7 @@ function _wysiwyg_filter_xss_attributes($attr, $element = '') {
         // Element ID is valid, check_plain result.
         $attrinfo['value'] = check_plain($attrinfo['value']);
       }
-      elseif (in_array($attrname, array('title', 'alt', 'media'))) {
+      elseif ($attrname == 'media') {
         $attrinfo['value'] = check_plain($attrinfo['value']);
       }
       else {

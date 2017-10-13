@@ -212,9 +212,9 @@ function wysiwyg_filter_parse_valid_elements($valid_elements) {
         }
       }
 
-      // Obtain list of element names/synonyms (separated by /).
-      // Consider synonyms as different elements with same exact attributes.
-      foreach ($elements as $element) {
+      // Get the element name.
+      // If it has synonyms (separated by /), these are handled below.
+      $element = array_shift($elements);
         if ($element == '@') {
           // These attributes should be enabled for all elements.
           foreach ($attributes as $attribute => $attribute_options) {
@@ -251,6 +251,10 @@ function wysiwyg_filter_parse_valid_elements($valid_elements) {
             }
           }
         }
+      // For each synonym, instead of an attribute list, provide the name of the
+      // element it is converted to.
+      foreach ($elements as $synonym) {
+        $parsed_elements[$synonym] = $element;
       }
     }
   }
