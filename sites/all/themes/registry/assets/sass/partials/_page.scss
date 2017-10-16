@@ -193,6 +193,24 @@ body div.messages {
   background-color: $p-main;
   color: white;
 
+  .block-menu li {
+    display: inline-block;
+  }
+
+  .block-menu li a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .block-menu li.first {
+    margin-left: -15px;
+  }
+
+  .block-menu li a:hover {
+    text-decoration: underline;
+    background-color: transparent;
+  }
+
   @media screen and (max-width: $screen-md) {
     height: auto;
   }
