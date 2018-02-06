@@ -1,0 +1,14 @@
+# Ignore configuration files that may contain sensitive information.
+html/sites/*/settings*.php
+
+# Ignore paths that contain user-generated content.
+html/sites/default
+
+# Ignore sass temp files.
+.sass-cache/
+.sass-cache/**
+
+# Ignore the vendor dir.
+/vendor
+
+**/.DS_Store
