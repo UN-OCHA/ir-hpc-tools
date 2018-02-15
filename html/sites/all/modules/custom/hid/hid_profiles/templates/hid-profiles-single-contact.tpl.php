@@ -1,6 +1,8 @@
 <?php
+
   /**
-   * @file: template for displaying contact information from HID.
+   * @file
+   * Template for displaying contact information from HID.
    */
 ?>
 

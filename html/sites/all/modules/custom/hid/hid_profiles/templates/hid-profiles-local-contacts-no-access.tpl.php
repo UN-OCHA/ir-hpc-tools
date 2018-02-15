@@ -1,5 +1,9 @@
 <?php
-  // @TODO: Make the stuff translatable.
+
+/**
+ * @file
+ * Make the stuff translatable.
+ */
 ?>
 <div class="contacts-list-no-access-wrapper">
   <div class="contacts-list-no-access">

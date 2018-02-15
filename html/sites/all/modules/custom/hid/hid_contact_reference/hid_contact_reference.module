@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contact reference field module file.
@@ -27,7 +28,7 @@ function hid_contact_reference_field_validate($entity_type, $entity, $field, $in
   // Check if the contact exists in HID.
   foreach ($items as $delta => $item) {
     if (is_array($item) && !empty($item['cid'])) {
-      if (!$contact = hid_profiles_get_contact_by_id($item['cid'])) {
+      if (!hid_profiles_get_contact_by_id($item['cid'])) {
         $errors[$field['field_name']][$langcode][$delta][] = array(
           'error' => 'invalid_contact_id',
           'message' => t(
@@ -143,7 +144,12 @@ function hid_contact_reference_field_formatter_view($entity_type, $entity, $fiel
             '#theme' => 'hid_profiles_single_contact',
             '#contact' => $contact,
             '#cache' => array(
-              'keys' => array('hid_contact', $entity_type, $wrapper->getIdentifier(), $item['cid']),
+              'keys' => array(
+                'hid_contact',
+                $entity_type,
+                $wrapper->getIdentifier(),
+                $item['cid'],
+              ),
               'bin' => 'cache',
               'expire' => time() + 3600,
               'granularity' => DRUPAL_CACHE_PER_PAGE,
