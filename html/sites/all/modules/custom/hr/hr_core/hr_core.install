@@ -16,7 +16,6 @@ function hr_core_update_7001() {
   $result = $query->execute();
   $base_fields = $result->fetchAllKeyed();
 
-
   $query = db_select('multisite_redirect')
     ->fields('multisite_redirect', array('source_site', 'source_path', 'redirect'))
     ->condition('source_path', '<front>', '<>')
@@ -37,7 +36,7 @@ function hr_core_update_7001() {
       $source = $source = $source_site . '/' . urldecode($redirect->source_path);
     }
 
-    $destination =  _hr_core_install_remove_language_url($languages, urldecode($redirect->redirect));
+    $destination = _hr_core_install_remove_language_url($languages, urldecode($redirect->redirect));
     if ($dest_path = drupal_lookup_path('source', $destination)) {
       $destination = $dest_path;
     }
@@ -63,7 +62,7 @@ function hr_core_update_7001() {
   }
   redirect_page_cache_clear();
 
-  if( module_exists('multisite_redirect')) {
+  if (module_exists('multisite_redirect')) {
     variable_del('multisite_redirect_primary_site');
     variable_del('multisite_redirect_exclusions');
     module_disable(array('multisite_redirect'));
@@ -276,7 +275,7 @@ function hr_core_update_7015() {
  */
 function hr_core_update_7016() {
   $disable = array('redis_info', 'redis');
-  $enable  = array('search_api_solr_overrides');
+  $enable = array('search_api_solr_overrides');
 
   module_disable($disable);
   drupal_uninstall_modules($disable);

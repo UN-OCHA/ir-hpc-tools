@@ -1,11 +1,13 @@
 <?php
 
-
 /**
  * @file
  * OG HR Bundles selection handler.
  */
 
+/**
+ *
+ */
 class OgHRBundlesSelectionHandler extends OgSelectionHandler {
 
   /**
@@ -51,8 +53,7 @@ class OgHRBundlesSelectionHandler extends OgSelectionHandler {
     $field = $entity->{OG_AUDIENCE_FIELD};
     $gid = $field[LANGUAGE_NONE][0]['target_id'];
     $group = entity_load_single('node', $gid);
-    return entity_label($target_type, $entity).' ('.entity_label('node', $group).')';
+    return entity_label($target_type, $entity) . ' (' . entity_label('node', $group) . ')';
   }
-
 
 }

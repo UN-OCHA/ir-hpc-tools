@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Statistics feature.
@@ -17,7 +18,7 @@ function hr_stats_permission() {
     ),
     'administer piwik reports' => array(
       'title' => t('Administer Piwik reports'),
-      'description' => t('Perfom basic configuration tasks for Piwik reports')
+      'description' => t('Perfom basic configuration tasks for Piwik reports'),
     ),
   );
 }
@@ -151,9 +152,8 @@ function hr_stats_og_permission() {
   return $items;
 }
 
-
 /**
- *  Implements hook_theme()
+ * Implements hook_theme()
  */
 function hr_stats_theme() {
   return array(
@@ -168,7 +168,7 @@ function hr_stats_theme() {
 }
 
 /**
- *  Return the form that handles hr_stats configuration page
+ * Return the form that handles hr_stats configuration page.
  */
 function hr_stats_admin_settings_form($form_state) {
   drupal_set_title(t('Piwik Reports'));
@@ -202,6 +202,9 @@ function hr_stats_admin_settings_form($form_state) {
   return system_settings_form($form);
 }
 
+/**
+ *
+ */
 function hr_stats_get_raw_piwik_segments($token_auth = '', $site_id = '') {
   if (!isset($token_auth)) {
     $token_auth = variable_get('hr_stats_piwik_token_auth', '');
@@ -210,8 +213,8 @@ function hr_stats_get_raw_piwik_segments($token_auth = '', $site_id = '') {
     $site_id = variable_get('piwik_site_id', '');
   }
 
-  if($token_auth == '' || $site_id == ''){
-    drupal_set_message(t('Piwik configuration for the site Id or Authentication Token has not been set properly, please consult your site admin.'), 'warning', false);
+  if ($token_auth == '' || $site_id == '') {
+    drupal_set_message(t('Piwik configuration for the site Id or Authentication Token has not been set properly, please consult your site admin.'), 'warning', FALSE);
     return;
   }
   else {
@@ -244,6 +247,9 @@ function hr_stats_get_piwik_segments() {
   }
 }
 
+/**
+ *
+ */
 function hr_stats_get_url() {
   $url = variable_get('piwik_url_https', '');
   if ($url == '') {
@@ -252,9 +258,12 @@ function hr_stats_get_url() {
   return $url;
 }
 
+/**
+ *
+ */
 function hr_stats_get_piwik_stat($token_auth, $site_id, $method, $period, $date, $segment = '', $additional = '') {
-  if($token_auth == '' || $site_id == ''){
-    drupal_set_message(t('Piwik configuration for the site Id or Authentication Token has not been set properly, please consult your site admin.'), 'warning', false);
+  if ($token_auth == '' || $site_id == '') {
+    drupal_set_message(t('Piwik configuration for the site Id or Authentication Token has not been set properly, please consult your site admin.'), 'warning', FALSE);
     return;
   }
   else {
@@ -277,8 +286,11 @@ function hr_stats_get_piwik_stat($token_auth, $site_id, $method, $period, $date,
   }
 }
 
+/**
+ *
+ */
 function hr_stats_get_spaces($type, $page = 1) {
-  $url = 'https://www.humanitarianresponse.info/api/v1.0/' . $type . '?page=' .$page;
+  $url = 'https://www.humanitarianresponse.info/api/v1.0/' . $type . '?page=' . $page;
   $operations = array();
   $data = drupal_http_request($url);
   if (!isset($data->error)) {
@@ -295,6 +307,9 @@ function hr_stats_get_spaces($type, $page = 1) {
   return $operations;
 }
 
+/**
+ *
+ */
 function _hr_stats_get_file_url($files_array) {
   $urls = array();
   foreach ($files_array as $files_row) {
@@ -321,6 +336,9 @@ function _hr_stats_get_file_url($files_array) {
   return $urls;
 }
 
+/**
+ *
+ */
 function hr_stats_get_urls($space_type, $space, $type, $page = 1) {
   $url = 'https://www.humanitarianresponse.info/api/v1.0/' . $type . '?filter[' . $space_type . ']=' . $space;
   if ($type != 'assessments') {
@@ -345,7 +363,9 @@ function hr_stats_get_urls($space_type, $space, $type, $page = 1) {
   }
 }
 
-
+/**
+ *
+ */
 function hr_stats_get_full_stats($period, $date) {
   $token_auth = variable_get('hr_stats_piwik_token_auth', '');
   $site_id = variable_get('piwik_site_id', '');
@@ -353,16 +373,16 @@ function hr_stats_get_full_stats($period, $date) {
   $operations = hr_stats_get_spaces('operations');
   $spaces = hr_stats_get_spaces('spaces');
   $op_ids = array();
-  // Associate each segment with its operation
+  // Associate each segment with its operation.
   foreach ($segments as &$segmentref) {
     $defs = explode(';', $segmentref['definition']);
     $op_url = str_replace('pageUrl=@', '', $defs[0]);
     $op_url = urldecode($op_url);
     $op_url = str_replace('humanitarianresponse.info', '', $op_url);
     $op_url = 'www.humanitarianresponse.info/en/' . $op_url;
-     // Find the operation by its URL
+    // Find the operation by its URL.
     foreach ($operations as $operation) {
-      if (preg_replace('#^https?://#', '', rtrim($operation['url'],'/')) == $op_url) {
+      if (preg_replace('#^https?://#', '', rtrim($operation['url'], '/')) == $op_url) {
         $segmentref['space'] = $operation;
         $segmentref['space_type'] = 'operation';
         $op_ids[] = $operation['id'];
@@ -370,7 +390,7 @@ function hr_stats_get_full_stats($period, $date) {
     }
     // Find the space by URL.
     foreach ($spaces as $space) {
-      if (preg_replace('#^https?://#', '', rtrim($space['url'],'/')) == $op_url) {
+      if (preg_replace('#^https?://#', '', rtrim($space['url'], '/')) == $op_url) {
         $segmentref['space'] = $space;
         $segmentref['space_type'] = 'space';
       }
@@ -385,7 +405,7 @@ function hr_stats_get_full_stats($period, $date) {
     'Number of dataset downloads',
     'Number of documents downloads',
     'Number of infographics downloads',
-    'Number of assessments downloads'
+    'Number of assessments downloads',
   );
 
   $hr_downloads = _hr_stats_get_hr_downloads($token_auth, $site_id, $period, $date);
@@ -439,7 +459,7 @@ function hr_stats_get_full_stats($period, $date) {
       $nb_dl_datasets = 0;
       $nb_dl_assessments = 0;
       foreach ($hr_downloads['subtable'] as $hr_download) {
-        $full_url = 'www.humanitarianresponse.info'. $hr_download['label'];
+        $full_url = 'www.humanitarianresponse.info' . $hr_download['label'];
         if (!empty($download_urls) && _hr_stats_helper_in_urls($full_url, $download_urls)) {
           $nb_dl += $hr_download['nb_visits'];
           if (!empty($infographics) && _hr_stats_helper_in_urls($full_url, $infographics)) {
@@ -484,7 +504,7 @@ function hr_stats_get_full_stats($period, $date) {
  */
 function _hr_stats_helper_in_urls($url, array $url_collection) {
   foreach ($url_collection as $member) {
-    if (preg_replace('#^https?://#', '', rtrim($member,'/')) == $url) {
+    if (preg_replace('#^https?://#', '', rtrim($member, '/')) == $url) {
       return TRUE;
     }
   }
@@ -530,11 +550,11 @@ function hr_stats_token_info() {
 }
 
 /**
-* Implements hook_tokens().
-*/
+ * Implements hook_tokens().
+ */
 function hr_stats_tokens($type, $tokens, array $data = array(), array $options = array()) {
- $replacements = array();
- if ($type == 'node' && !empty($data['node'])) {
+  $replacements = array();
+  if ($type == 'node' && !empty($data['node'])) {
     $node = $data['node'];
     $wrapper = entity_metadata_wrapper('node', $node);
     foreach ($tokens as $name => $original) {
@@ -552,6 +572,7 @@ function hr_stats_tokens($type, $tokens, array $data = array(), array $options =
             $replacements[$original] = $node->nid;
           }
           break;
+
         case 'bundles':
           $replacements[$original] = '';
           if (isset($wrapper->field_bundles)) {

@@ -5,6 +5,9 @@
  * Contains \RestfulEntityNodeIndicators.
  */
 
+/**
+ *
+ */
 class RestfulEntityNodeIndicators extends \RestfulEntityBaseNode {
 
   /**

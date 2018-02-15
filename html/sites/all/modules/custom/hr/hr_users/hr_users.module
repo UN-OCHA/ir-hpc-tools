@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Users feature.
@@ -31,18 +32,17 @@ function hr_users_field_formatter_view($entity_type, $entity, $field, $instance,
       // keyed by delta. The field.tpl.php template specifies the markup
       // wrapping each value.
       foreach ($items as $delta => $item) {
-        $status = file_get_contents('http://mystatus.skype.com/'.$item['safe_value'].'.num');
+        $status = file_get_contents('http://mystatus.skype.com/' . $item['safe_value'] . '.num');
         $class = '';
         if ($status == 2) {
           $class = 'skype-online';
         }
-        $element[$delta] = array('#markup' => '<a href="skype:'.$item['safe_value'].'?call"><i class="fa fa-skype fa-2x '.$class.'"></i></a>');
+        $element[$delta] = array('#markup' => '<a href="skype:' . $item['safe_value'] . '?call"><i class="fa fa-skype fa-2x ' . $class . '"></i></a>');
       }
       break;
   }
   return $element;
 }
-
 
 /**
  * Implements hook_og_features_registry()
@@ -128,7 +128,7 @@ function hr_users_check_profile($redirect = NULL) {
     $profile_path = 'user/' . $user->uid . '/edit/main';
     $allowed_paths = array(
       $profile_path,
-      'user/logout'
+      'user/logout',
     );
     if ($redirect && !in_array($_GET['q'], $allowed_paths)) {
       drupal_set_message('Please complete your profile before using other site features.');
@@ -143,7 +143,7 @@ function hr_users_check_profile($redirect = NULL) {
 /**
  * Implements hook_menu_alter().
  *
- * Place masquerade switch back link in user menu
+ * Place masquerade switch back link in user menu.
  */
 function hr_users_menu_alter(&$items) {
   if (isset($items['masquerade/unswitch'])) {

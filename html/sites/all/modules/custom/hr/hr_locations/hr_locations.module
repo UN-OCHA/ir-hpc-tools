@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Locations feature.
@@ -13,15 +14,15 @@ include_once 'hr_locations.features.inc';
  */
 function hr_locations_taxonomy_term_presave($term) {
   if (empty($term->field_loc_admin_level[LANGUAGE_NONE])) {
-    // Get term parents
+    // Get term parents.
     $parents = taxonomy_get_parents_all($term->tid);
-    $term->field_loc_admin_level[LANGUAGE_NONE] = array(array('value' => count($parents)-1));
+    $term->field_loc_admin_level[LANGUAGE_NONE] = array(array('value' => count($parents) - 1));
   }
 }
 
 /**
  * Implements hook_query_TAG_alter()
- * Allows filter by parent in the API
+ * Allows filter by parent in the API.
  */
 function hr_locations_query_hr_locations_filter_parent_alter($query) {
   $conditions = &$query->conditions();
@@ -35,12 +36,15 @@ function hr_locations_query_hr_locations_filter_parent_alter($query) {
 
 /**
  * Implements hook_shs_json_callbacks_alter()
- * Allows filter by parent in the API
+ * Allows filter by parent in the API.
  */
 function hr_locations_shs_json_callbacks_alter(&$callbacks) {
   $callbacks['shs_json_term_get_children']['callback'] = 'hr_locations_shs_json_term_get_children';
 }
 
+/**
+ *
+ */
 function hr_locations_shs_json_term_get_children($vid, $parent = array(), $settings = array(), $field = NULL) {
   $cache_key = "hr_location_cache:" . $vid . '_' . md5(serialize($parent));
   $cache = cache_get($cache_key);
@@ -68,13 +72,16 @@ function hr_locations_shs_json_term_get_children($vid, $parent = array(), $setti
         );
       }
     }
-    cache_set($cache_key, $result, 'cache', REQUEST_TIME + 2*60*60);
+    cache_set($cache_key, $result, 'cache', REQUEST_TIME + 2 * 60 * 60);
     return $result;
   }
 
   return $cache->data;
 }
 
+/**
+ *
+ */
 function _hr_locations_taxonomy_get_all_children($scope) {
   $tids = array();
   foreach ($scope as $terms) {

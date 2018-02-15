@@ -5,8 +5,10 @@
  * Contains \RestfulEntityNodeEvents.
  */
 
+/**
+ *
+ */
 class RestfulEntityNodeEvents extends \RestfulEntityBaseNode {
-
 
   /**
    * Overrides \RestfulEntityBase::publicFieldsInfo().
@@ -139,6 +141,9 @@ class RestfulEntityNodeEvents extends \RestfulEntityBaseNode {
     return $public_fields;
   }
 
+  /**
+   *
+   */
   protected function getEntity($wrapper) {
     $single = FALSE;
     foreach ($wrapper as $id => &$item) {
@@ -151,19 +156,22 @@ class RestfulEntityNodeEvents extends \RestfulEntityBaseNode {
         }
       }
       else {
-        $array_item = (array)$item;
+        $array_item = (array) $item;
         $properties = array_keys($array_item);
         foreach ($properties as $property) {
           if (!in_array($property, array('id', 'label', 'self'))) {
             unset($array_item[$property]);
           }
         }
-        $item = (object)$array_item;
+        $item = (object) $array_item;
       }
     }
     return $wrapper;
   }
 
+  /**
+   *
+   */
   protected function getDisasters($values) {
     $return = array();
     if (!empty($values)) {
@@ -172,7 +180,7 @@ class RestfulEntityNodeEvents extends \RestfulEntityBaseNode {
         $tmp->glide = $value->field_glide_number[LANGUAGE_NONE][0]['value'];
         $tmp->label = $value->title;
         if (!empty($value->field_reliefweb_id)) {
-          $tmp->self = 'http://api.reliefweb.int/v1/disasters/'.$value->field_reliefweb_id[LANGUAGE_NONE][0]['value'];
+          $tmp->self = 'http://api.reliefweb.int/v1/disasters/' . $value->field_reliefweb_id[LANGUAGE_NONE][0]['value'];
         }
         $return[] = $tmp;
       }
@@ -180,10 +188,16 @@ class RestfulEntityNodeEvents extends \RestfulEntityBaseNode {
     return $return;
   }
 
+  /**
+   *
+   */
   protected function getBodyRaw($value) {
     return strip_tags($value);
   }
 
+  /**
+   *
+   */
   protected function formatDate($values) {
     foreach ($values as &$value) {
       if (isset($value['date_type'])) {
@@ -193,6 +207,9 @@ class RestfulEntityNodeEvents extends \RestfulEntityBaseNode {
     return $values;
   }
 
+  /**
+   *
+   */
   protected function formatAddress($value) {
     unset($value['organisation_name']);
     unset($value['name_line']);

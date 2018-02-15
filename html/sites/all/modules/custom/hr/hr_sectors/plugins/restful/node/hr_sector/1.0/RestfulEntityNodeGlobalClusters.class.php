@@ -5,6 +5,9 @@
  * Contains \RestfulEntityNodeGlobalClusters.
  */
 
+/**
+ *
+ */
 class RestfulEntityNodeGlobalClusters extends \RestfulEntityBaseNode {
 
   /**

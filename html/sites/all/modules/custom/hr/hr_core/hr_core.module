@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Core feature.
@@ -37,7 +38,7 @@ function hr_core_entity_info_alter(&$entity_info) {
 /**
  * Implements hook_form_alter().
  *
- * Hides fields if they are empty
+ * Hides fields if they are empty.
  */
 function hr_core_form_alter(&$form, &$form_state, $form_id) {
   foreach ($form as $id => &$item) {
@@ -52,6 +53,7 @@ function hr_core_form_alter(&$form, &$form_state, $form_id) {
             }
           }
           break;
+
         case 'select':
           if (empty($item['#options'])) {
             $item['#type'] = 'hidden';
@@ -83,7 +85,7 @@ function hr_core_path_insert($path) {
     }
     else {
       $path['language'] = LANGUAGE_NONE;
-      // Resave path
+      // Resave path.
       path_save($path);
     }
   }
@@ -92,7 +94,7 @@ function hr_core_path_insert($path) {
 /**
  * Implements hook_entity_presave()
  *
- * Makes sure pathauto is not used when no path is set
+ * Makes sure pathauto is not used when no path is set.
  */
 function hr_core_entity_presave($node, $type) {
   if (!isset($node->path['pathauto'])) {
@@ -139,7 +141,7 @@ function hr_core_entity_view($entity, $type, $view_mode, $langcode) {
   if ($type == 'node' && isset($entity->type)) {
     $extra_fields = field_info_extra_fields($type, $entity->type, 'display');
     $field_name = 'hr_core_files_download_button';
-    if(!empty($extra_fields[$field_name]['display'][$view_mode]['visible'])) {
+    if (!empty($extra_fields[$field_name]['display'][$view_mode]['visible'])) {
       $entity->content[$field_name] = array(
         '#type' => 'item',
         '#title' => '',
@@ -188,7 +190,7 @@ function _hr_core_files_download_button($entity, $type) {
     $file_url = file_create_url($file['uri']);
 
     $output .= '<li>' . l($file_title . ' ' . $file_language, $file_url, array(
-      'attributes' => array('target'=>'_blank')
+      'attributes' => array('target' => '_blank'),
     )) . '</li>';
   }
 
@@ -202,7 +204,7 @@ function _hr_core_files_download_button($entity, $type) {
 /**
  * Implements hook_node_view().
  *
- * Adds share button
+ * Adds share button.
  */
 function hr_core_node_view($node, $view_mode, $langcode) {
   $url = url('node/' . $node->nid, array('absolute' => TRUE));
@@ -218,10 +220,10 @@ function hr_core_node_view($node, $view_mode, $langcode) {
             'a2a_dd',
             'btn',
             'btn-secondary',
-            'btn-sm'
-          )
+            'btn-sm',
+          ),
         ),
-        'html' => TRUE
+        'html' => TRUE,
       )
     ),
     '#suffix' => '<script type="text/javascript">a2a_config.linkname = "' . $node->title . '";a2a_config.linkurl = "' . $url . '";a2a.init("page");</script>',
@@ -239,10 +241,10 @@ function hr_core_node_view($node, $view_mode, $langcode) {
           'class' => array(
             'btn',
             'btn-secondary',
-            'btn-sm'
-          )
+            'btn-sm',
+          ),
         ),
-        'html' => TRUE
+        'html' => TRUE,
       )
     ),
   );
@@ -263,6 +265,9 @@ function hr_core_og_context_negotiation_info() {
   return $providers;
 }
 
+/**
+ *
+ */
 function hr_core_og_context_handler($node = NULL) {
   $context = NULL;
   if ($node == NULL) {
@@ -309,6 +314,9 @@ function hr_core_tokens($type, $tokens, array $data = array(), array $options = 
   return $replacements;
 }
 
+/**
+ *
+ */
 function _hr_core_draft_button($label) {
   return array(
     '#type' => 'submit',
@@ -362,7 +370,7 @@ function hr_core_form_node_form_alter(&$form, &$form_state) {
 
     if (empty($groups)) {
       $group = og_context();
-      if (!empty($group) ) {
+      if (!empty($group)) {
         $groups = array($group['gid']);
       }
     }
@@ -421,7 +429,7 @@ function hr_core_form_node_form_alter(&$form, &$form_state) {
       $form['actions']['submit']['#value'] = t('Publish');
       $form['actions']['draft'] = _hr_core_draft_button('Save As Draft');
     }
-    else if (!isset($node->nid)) {
+    elseif (!isset($node->nid)) {
       $form['actions']['submit']['#value'] = t('Save As Draft');
     }
   }
@@ -430,7 +438,7 @@ function hr_core_form_node_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Handles save draft form validation
+ * Handles save draft form validation.
  */
 function hr_core_save_draft_validate($form, &$form_state) {
   // Set the node to be published or unpublished depending on which button was
@@ -504,7 +512,6 @@ function hr_core_publishcontent_publish_access($node, $account) {
 
 /**
  * Implements hook_publishcontent_unpublish_access().
- *
  */
 function hr_core_publishcontent_unpublish_access($node, $account) {
   if (!isset($node->nid) && isset($node->{HR_CORE_OG_AUDIENCE_FIELD})) {
@@ -560,7 +567,7 @@ function hr_core_publishcontent_unpublish_access($node, $account) {
 }
 
 /**
- * Returns true if a menu item for a given path exists, false otherwise
+ * Returns true if a menu item for a given path exists, false otherwise.
  */
 function hr_core_menu_link_exists($path, $menu_name) {
   $links = db_select('menu_links', 'ml')
@@ -577,7 +584,7 @@ function hr_core_menu_link_exists($path, $menu_name) {
 /**
  * Implements hook_addressfield_default_values_alter()
  * Sets default country to the country of the space
- * See https://atrium.humanitarianresponse.info/humanitarian_response/node/4329
+ * See https://atrium.humanitarianresponse.info/humanitarian_response/node/4329.
  */
 function hr_core_addressfield_default_values_alter(&$default_values, $context) {
   if (empty($default_values['country'])) {
@@ -587,7 +594,7 @@ function hr_core_addressfield_default_values_alter(&$default_values, $context) {
 
 /**
  * Implements hook_languagefield_options_alter()
- * Added Dari as a language. See https://atrium.humanitarianresponse.info/humanitarian_response/node/4367
+ * Added Dari as a language. See https://atrium.humanitarianresponse.info/humanitarian_response/node/4367.
  */
 function hr_core_languagefield_options_alter(&$languages, $subsets, $langcode) {
   if (!isset($languages['prs'])) {
@@ -603,7 +610,7 @@ function hr_core_languagefield_options_alter(&$languages, $subsets, $langcode) {
 
 /**
  * Implements hook_panels_new_pane_alter($pane)
- * Set default panel style to hr_highlighted
+ * Set default panel style to hr_highlighted.
  */
 function hr_core_panels_new_pane_alter(&$pane) {
   $pane->style['style'] = 'hr_highlighted';
@@ -611,7 +618,7 @@ function hr_core_panels_new_pane_alter(&$pane) {
 
 /**
  * Redirect user to operation page after deletion of content
- * See http://atrium.humanitarianresponse.info/humanitarian_response/node/3992
+ * See http://atrium.humanitarianresponse.info/humanitarian_response/node/3992.
  */
 function hr_core_node_delete($node) {
   if (isset($node->{OG_AUDIENCE_FIELD})) {
@@ -708,7 +715,6 @@ function hr_core_file_feeds_set_target(FeedsSource $source, $entity, $target, ar
 
   $destination = file_field_widget_uri($info, $instance_info, $data);
 
-
   // Populate entity.
   $field = isset($entity->$field_name) ? $entity->$field_name : array(LANGUAGE_NONE => array());
   $delta = 0;
@@ -720,7 +726,6 @@ function hr_core_file_feeds_set_target(FeedsSource $source, $entity, $target, ar
     if (!isset($field[LANGUAGE_NONE][$delta])) {
       $field[LANGUAGE_NONE][$delta] = array();
     }
-
 
     if ($v) {
       try {
@@ -739,7 +744,6 @@ function hr_core_file_feeds_set_target(FeedsSource $source, $entity, $target, ar
 
   $entity->$field_name = $field;
 }
-
 
 /**
  * Implements hook_module_implements_alter().

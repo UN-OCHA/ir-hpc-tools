@@ -5,6 +5,9 @@
  * Contains \RestfulEntityTaxonomyTermIndicatorDomains.
  */
 
+/**
+ *
+ */
 class RestfulEntityTaxonomyTermIndicatorDomains extends \RestfulEntityBaseTaxonomyTerm {
 
 }

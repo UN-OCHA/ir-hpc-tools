@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Contacts feature.
@@ -42,12 +43,16 @@ function hr_contacts_theme() {
   );
 }
 
+/**
+ *
+ */
 function _hr_contacts_copy_field(&$node_form, $profile, $field_name, $type) {
   if (isset($profile->{$field_name}[LANGUAGE_NONE])) {
     switch ($type) {
       case 'textfield':
         $node_form[$field_name][LANGUAGE_NONE][0]['value']['#default_value'] = $profile->{$field_name}[LANGUAGE_NONE][0]['value'];
         break;
+
       case 'entityreference':
         $values = array();
         foreach ($profile->{$field_name}[LANGUAGE_NONE] as $val) {
@@ -55,6 +60,7 @@ function _hr_contacts_copy_field(&$node_form, $profile, $field_name, $type) {
         }
         $node_form[$field_name][LANGUAGE_NONE]['#default_value'] = $values;
         break;
+
       case 'phone':
         foreach ($profile->{$field_name}[LANGUAGE_NONE] as $i => $val) {
           if ($i > 0) {
@@ -63,6 +69,7 @@ function _hr_contacts_copy_field(&$node_form, $profile, $field_name, $type) {
           $node_form[$field_name][LANGUAGE_NONE][$i]['#default_value'] = $val;
         }
         break;
+
       case 'email':
         foreach ($profile->{$field_name}[LANGUAGE_NONE] as $i => $val) {
           if ($i > 0) {
@@ -71,6 +78,7 @@ function _hr_contacts_copy_field(&$node_form, $profile, $field_name, $type) {
           $node_form[$field_name][LANGUAGE_NONE][$i]['email']['#default_value'] = $val['email'];
         }
         break;
+
       case 'link':
         foreach ($profile->{$field_name}[LANGUAGE_NONE] as $i => $val) {
           if ($i > 0) {
@@ -109,16 +117,16 @@ function hr_contacts_form_og_ui_confirm_subscribe_alter(&$form, &$form_state) {
       _hr_contacts_copy_field($node_form, $profile, $field_name, $type);
     }
 
-    // Fill in and hide field_first_name
+    // Fill in and hide field_first_name.
     $node_form['field_first_name'][LANGUAGE_NONE][0]['value']['#type'] = 'hidden';
 
-    // Fill in and hide field_last_name
+    // Fill in and hide field_last_name.
     $node_form['field_last_name'][LANGUAGE_NONE][0]['value']['#type'] = 'hidden';
 
-    // Fill in main email
+    // Fill in main email.
     $node_form['field_email'][LANGUAGE_NONE][0]['email']['#default_value'] = $user->mail;
 
-    // Hide og_group_ref
+    // Hide og_group_ref.
     $node_form['og_group_ref'][LANGUAGE_NONE][0]['default']['#type'] = 'hidden';
 
   }
@@ -177,7 +185,7 @@ function hr_contacts_og_features_registry() {
  */
 function hr_contacts_entity_info_alter(&$entity_info) {
 
-  // Quick links
+  // Quick links.
   $entity_info['fieldable_panels_pane']['bundles']['hr_contacts'] = array(
     'label' => t('Contacts'),
     'pane category' => t('Contacts'),
@@ -194,7 +202,7 @@ function hr_contacts_entity_info_alter(&$entity_info) {
 /**
  * Implements hook_search_api_views_query_alter()
  *
- * Makes the contacts view available for disasters
+ * Makes the contacts view available for disasters.
  */
 function hr_contacts_search_api_views_query_alter(&$view, &$query) {
   if ($view->name == 'hr_contacts') {
@@ -220,12 +228,12 @@ function hr_contacts_search_api_views_query_alter(&$view, &$query) {
 /**
  * Implements hook_views_pre_render()
  * Adds PDF button to export events as PDF
- * See http://atrium.humanitarianresponse.info/humanitarian_response/node/4466
+ * See http://atrium.humanitarianresponse.info/humanitarian_response/node/4466.
  */
 function hr_contacts_views_pre_render(&$view) {
   if ($view->name == 'hr_contacts') {
     if ($view->current_display == 'master' || $view->current_display == 'table' || $view->current_display == 'list') {
-      $view->feed_icon .= '<li>'.l('PDF', str_replace('/contacts', '/contacts/pdf', current_path()), array('attributes' => array('target' => 'about:blank'))).'</li>';
+      $view->feed_icon .= '<li>' . l('PDF', str_replace('/contacts', '/contacts/pdf', current_path()), array('attributes' => array('target' => 'about:blank'))) . '</li>';
     }
   }
 }
@@ -270,7 +278,7 @@ function hr_contacts_pdf_output($node) {
     'params' => array(
       'print-media-type' => 'true',
       'footer-left' => t('Page [page] of [topage]'),
-      'footer-right' => t('Powered by HUMANITARIAN RESPONSE. Date of creation: [date]')."\nhttp://www.humanitarianresponse.info",
+      'footer-right' => t('Powered by HUMANITARIAN RESPONSE. Date of creation: [date]') . "\nhttp://www.humanitarianresponse.info",
       'footer-font-name' => 'Exo 2',
       'footer-font-size' => '8',
       'footer-spacing' => '2',
@@ -283,7 +291,7 @@ function hr_contacts_pdf_output($node) {
     'method' => 'POST',
   );
   drupal_add_http_header('Content-Type', 'application/pdf; charset=utf-8');
-  drupal_add_http_header('Content-Disposition', 'attachment;filename="'. $label .'.pdf"');
+  drupal_add_http_header('Content-Disposition', 'attachment;filename="' . $label . '.pdf"');
   $output = chr_curl_http_request($url, $req_params);
   echo $output->data;
   exit;

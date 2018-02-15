@@ -1,4 +1,8 @@
-(function($) {
+/**
+ * @file
+ */
+
+(function ($) {
 Drupal.behaviors.hrJobs = {
   attach: function (context, settings) {
 
@@ -13,22 +17,22 @@ Drupal.behaviors.hrJobs = {
 
     model: Job,
     params: {},
-    url: function() {
+    url: function () {
       var url = 'http://api.reliefweb.int/v1/jobs?offset=' + this.skip + '&limit=' + this.limit + '&query[fields][]=country&fields[include][]=url&query[value]=' + settings.hr_jobs.operation;
       var index = window.location.hash.indexOf('=');
-      if(index != -1) {
+      if (index != -1) {
         var params = window.location.hash.substr(index + 1);
         url += '&filter[field]=title&filter[value]=' + params;
       }
       return url;
     },
 
-    parse: function(response) {
+    parse: function (response) {
       this.count = response.count;
       this.totalCount = response.totalCount;
 
       var models = response.data ? response.data : {};
-      return _.map(models, function(model){
+      return _.map(models, function (model) {
         var fields = model.fields,
         title = fields.title,
         url = fields.url;
@@ -47,16 +51,16 @@ Drupal.behaviors.hrJobs = {
 
     router: null,
 
-    clear: function() {
+    clear: function () {
       this.$el.empty();
     },
 
-    loading: function() {
+    loading: function () {
       this.hide();
       $('#loading').show();
     },
 
-    finishedLoading: function() {
+    finishedLoading: function () {
       $('#loading').hide();
       this.show();
     },
@@ -68,12 +72,12 @@ Drupal.behaviors.hrJobs = {
       numItems: 20,
       currentPage: 1,
 
-      initialize: function() {
+      initialize: function () {
           this.JobsList = new JobsList;
           this.JobsList.limit = this.numItems;
       },
 
-      loadResults: function() {
+      loadResults: function () {
         var that = this;
         this.JobsList.fetch({
           success: function (fields) {
@@ -89,7 +93,7 @@ Drupal.behaviors.hrJobs = {
         'keyup #organizations.form-control': 'searchByTitle',
       },
 
-      page: function(page) {
+      page: function (page) {
         this.loading();
         this.currentPage = page;
         this.clear();
@@ -97,32 +101,32 @@ Drupal.behaviors.hrJobs = {
         this.loadResults();
       },
 
-      render: function (model){
+      render: function (model) {
         this.loadResults();
       },
 
-      clear: function() {
+      clear: function () {
         $('#jobs-list-table tbody').empty();
       },
 
-      show: function() {
+      show: function () {
         $('#jobs-list').show();
         $('#block-current-search-hr-current-search').show();
       },
 
-      hide: function() {
+      hide: function () {
         $('#jobs-list').hide();
         $('#block-current-search-hr-current-search').hide();
       },
 
-      finishedLoading: function() {
+      finishedLoading: function () {
         $('#loading').hide();
         this.show();
         $('.facetapi-active').html(this.JobsList.totalCount + ' items');
         this.pager();
       },
 
-      pager: function() {
+      pager: function () {
         var nextPage = parseInt(this.currentPage) + 1;
         var previousPage = parseInt(this.currentPage) - 1;
         var count = this.JobsList.totalCount;
@@ -145,7 +149,7 @@ Drupal.behaviors.hrJobs = {
         }
       },
 
-      searchByTitle: function(event) {
+      searchByTitle: function (event) {
         var val = $('#organizations.form-control').val();
           if (val != '' && event.which === 13) {
             this.JobsList.params.title = val;
@@ -166,7 +170,7 @@ Drupal.behaviors.hrJobs = {
 
       tableView: new JobTableView({collection: JobsList, el: 'body'}),
 
-      initialize: function() {
+      initialize: function () {
         this.tableView.router = this;
       },
 
@@ -174,11 +178,11 @@ Drupal.behaviors.hrJobs = {
         this.navigate('table/1', {trigger: true});
       },
 
-      table: function(page) {
+      table: function (page) {
         this.tableView.page(page);
       },
 
-      navigateWithParams: function(url, params) {
+      navigateWithParams: function (url, params) {
         this.navigate(url + '?' + $.param(params), {trigger: true});
       },
     });

@@ -1,11 +1,11 @@
 <?php
+
 /**
  * @file
  * Code for the Tools feature.
  */
 
 include_once 'hr_tools.features.inc';
-
 
 /**
  * Implements hook_menu().
@@ -44,6 +44,9 @@ function hr_tools_menu() {
   return $items;
 }
 
+/**
+ *
+ */
 function hr_tools_ga_report_settings_form($form, $form_state) {
   $form['hr_tools_analytics_private_key_id'] = array(
     '#title' => 'Private key Id',
@@ -76,6 +79,9 @@ function hr_tools_ga_report_settings_form($form, $form_state) {
   return system_settings_form($form);
 }
 
+/**
+ *
+ */
 function hr_tools_ga_report_access($node) {
   if (og_is_group('node', $node)) {
     return user_access('hr_tools_view_google_analytics') || og_user_access('node', $node->nid, 'hr_tools_group_view_google_analytics');
@@ -96,7 +102,7 @@ function hr_tools_og_permission() {
   );
 }
 
-/*
+/**
  * Implements hook_permission().
  */
 function hr_tools_permission() {
@@ -167,7 +173,7 @@ function hr_tools_ga_report($node) {
   $output .= '</ul>';
 
   return array(
-    'analytics' => array (
+    'analytics' => array(
       '#type' => 'markup',
       '#markup' => $output,
       '#attached' => array(
@@ -176,27 +182,29 @@ function hr_tools_ga_report($node) {
         ),
         'js' => array(
           array(
-           'data' => '(function(w,d,s,g,js,fs){g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};js=d.createElement(s);fs=d.getElementsByTagName(s)[0];js.src="https://apis.google.com/js/platform.js";fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load("analytics");};}(window,document,"script"));',
-           'type' => 'inline',
+            'data' => '(function(w,d,s,g,js,fs){g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};js=d.createElement(s);fs=d.getElementsByTagName(s)[0];js.src="https://apis.google.com/js/platform.js";fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load("analytics");};}(window,document,"script"));',
+            'type' => 'inline',
           ),
           drupal_get_path('module', 'hr_tools') . '/js/hr_tools.analytics.js',
           array(
-            'data' => array('hr_tools' => array(
-              'token' => $accessToken,
-              'pathFilter' => $path,
-            )),
+            'data' => array(
+              'hr_tools' => array(
+                'token' => $accessToken,
+                'pathFilter' => $path,
+              ),
+            ),
             'type' => 'setting',
           ),
         ),
       ),
-     ),
+    ),
   );
 }
 
 /**
  * Return performance statistics.
  *
- * Call curl http://0.0.0.0:8088/xyzzy/stats/1 | python -m json.tool
+ * Call curl http://0.0.0.0:8088/xyzzy/stats/1 | python -m json.tool.
  */
 function hr_tools_performace_stats($set, $param) {
   $timers = _hr_tools_performace_stats($set, $param);
@@ -234,7 +242,7 @@ function hr_tools_performace_stats($set, $param) {
 /**
  * Return performance statistics.
  *
- * Call curl http://0.0.0.0:8088/xyzzy/stats/1 | python -m json.tool
+ * Call curl http://0.0.0.0:8088/xyzzy/stats/1 | python -m json.tool.
  */
 function _hr_tools_performace_stats($set, $param) {
   drupal_set_time_limit(300);
@@ -282,7 +290,7 @@ function _hr_tools_performace_stats($set, $param) {
       break;
 
     default:
-      # code...
+      // code...
       break;
   }
 
@@ -305,6 +313,9 @@ function _hr_tools_performace_stats($set, $param) {
   return $timers;
 }
 
+/**
+ *
+ */
 function _hr_tools_performace_stats_set1() {
   global $timers;
   global $hr_tools_external_calls;
@@ -434,6 +445,9 @@ function _hr_tools_performace_stats_set1() {
   $timers[$timer]['queries'] = _hr_tools_queries_get($timer);
 }
 
+/**
+ *
+ */
 function _hr_tools_performace_stats_set2() {
   global $timers;
   global $hr_tools_external_calls;
@@ -500,6 +514,9 @@ function _hr_tools_performace_stats_set2() {
   $timers[$timer]['queries'] = _hr_tools_queries_get($timer);
 }
 
+/**
+ *
+ */
 function _hr_tools_performace_stats_node_rendering($content_types) {
   global $timers;
   global $hr_tools_external_calls;
@@ -564,6 +581,9 @@ function _hr_tools_performace_stats_node_rendering($content_types) {
   }
 }
 
+/**
+ *
+ */
 function _hr_tools_performace_stats_set3() {
   global $timers;
   global $hr_tools_external_calls;
@@ -573,6 +593,9 @@ function _hr_tools_performace_stats_set3() {
   _hr_tools_performace_stats_node_rendering($subset);
 }
 
+/**
+ *
+ */
 function _hr_tools_performace_stats_set4() {
   global $timers;
   global $hr_tools_external_calls;
@@ -582,6 +605,9 @@ function _hr_tools_performace_stats_set4() {
   _hr_tools_performace_stats_node_rendering($subset);
 }
 
+/**
+ *
+ */
 function _hr_tools_performace_stats_set5() {
   global $timers;
   global $hr_tools_external_calls;
@@ -591,6 +617,9 @@ function _hr_tools_performace_stats_set5() {
   _hr_tools_performace_stats_node_rendering($subset);
 }
 
+/**
+ *
+ */
 function _hr_tools_performace_stats_set6() {
   global $timers;
   global $hr_tools_external_calls;
@@ -600,6 +629,9 @@ function _hr_tools_performace_stats_set6() {
   _hr_tools_performace_stats_node_rendering($subset);
 }
 
+/**
+ *
+ */
 function _hr_tools_performace_stats_set7() {
   global $timers;
   global $hr_tools_external_calls;
@@ -678,10 +710,16 @@ function _hr_tools_performace_stats_set7() {
   }
 }
 
+/**
+ *
+ */
 function _hr_tools_queries_start($name = 'hr_tools') {
   Database::startLog($name);
 }
 
+/**
+ *
+ */
 function _hr_tools_queries_get($name = 'hr_tools') {
   $output = array();
   $queries = Database::getLog($name);
@@ -721,6 +759,9 @@ function _hr_tools_queries_get($name = 'hr_tools') {
   return $output;
 }
 
+/**
+ *
+ */
 function hr_tools_drupal_http_request($url, array $options = array()) {
   global $hr_tools_external_calls;
   $caller = debug_backtrace();
@@ -1000,18 +1041,30 @@ function hr_tools_drupal_http_request($url, array $options = array()) {
   $result->code = $code;
 
   switch ($code) {
-    case 200: // OK
-    case 201: // Created
-    case 202: // Accepted
-    case 203: // Non-Authoritative Information
-    case 204: // No Content
-    case 205: // Reset Content
-    case 206: // Partial Content
-    case 304: // Not modified
+    // OK.
+    case 200:
+      // Created.
+    case 201:
+      // Accepted.
+    case 202:
+      // Non-Authoritative Information.
+    case 203:
+      // No Content.
+    case 204:
+      // Reset Content.
+    case 205:
+      // Partial Content.
+    case 206:
+      // Not modified.
+    case 304:
       break;
-    case 301: // Moved permanently
-    case 302: // Moved temporarily
-    case 307: // Moved temporarily
+
+    // Moved permanently.
+    case 301:
+      // Moved temporarily.
+    case 302:
+      // Moved temporarily.
+    case 307:
       $location = $result->headers['location'];
       $options['timeout'] -= timer_read(__FUNCTION__) / 1000;
       if ($options['timeout'] <= 0) {
@@ -1028,6 +1081,7 @@ function hr_tools_drupal_http_request($url, array $options = array()) {
         $result->redirect_url = $location;
       }
       break;
+
     default:
       $result->error = $result->status_message;
   }
@@ -1057,11 +1111,11 @@ function hr_tools_token_info() {
 }
 
 /**
-* Implements hook_tokens().
-*/
+ * Implements hook_tokens().
+ */
 function hr_tools_tokens($type, $tokens, array $data = array(), array $options = array()) {
- $replacements = array();
- if ($type == 'node' && !empty($data['node'])) {
+  $replacements = array();
+  if ($type == 'node' && !empty($data['node'])) {
     $node = $data['node'];
     $wrapper = entity_metadata_wrapper('node', $node);
     foreach ($tokens as $name => $original) {
@@ -1079,6 +1133,7 @@ function hr_tools_tokens($type, $tokens, array $data = array(), array $options =
             $replacements[$original] = $node->nid;
           }
           break;
+
         case 'bundles':
           $replacements[$original] = '';
           if (isset($wrapper->field_bundles)) {

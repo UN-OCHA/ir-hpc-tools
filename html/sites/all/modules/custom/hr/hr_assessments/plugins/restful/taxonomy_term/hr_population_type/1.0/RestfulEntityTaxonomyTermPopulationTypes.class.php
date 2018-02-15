@@ -5,6 +5,9 @@
  * Contains \RestfulEntityTaxonomyTermPopulationTypes.
  */
 
+/**
+ *
+ */
 class RestfulEntityTaxonomyTermPopulationTypes extends \RestfulEntityBaseTaxonomyTerm {
 
 }

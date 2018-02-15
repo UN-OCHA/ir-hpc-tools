@@ -5,6 +5,9 @@
  * Contains \RestfulEntityTaxonomyTermIndicatorStandards.
  */
 
+/**
+ *
+ */
 class RestfulEntityTaxonomyTermIndicatorStandards extends \RestfulEntityBaseTaxonomyTerm {
 
 }

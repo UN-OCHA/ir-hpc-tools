@@ -1,3 +1,9 @@
+<?php
+
+/**
+ * @file
+ */
+?>
 <div class="contacts-disabled-form-wrapper">
   <div class="contacts-disabled-form">
     <div class="message">
