@@ -11,6 +11,6 @@ test ! -d ./html/sites/all/modules/custom || ./bin/phpmd ./html/sites/all/module
 test ! -d ./html/sites/all/modules/features || ./bin/phpmd ./html/sites/all/modules/features text .phpmd.xml --suffixes=php,inc,module,install
 test ! -d ./html/sites/all/themes/custom || ./bin/phpmd ./html/sites/all/themes/custom text .phpmd.xml --suffixes=php,inc,module,install
 
-test ! -d ./html/sites/all/modules/custom || ./bin/phpcpd ./html/sites/all/modules/custom/*/*
-test ! -d ./html/sites/all/modules/features || ./bin/phpmd ./html/sites/all/modules/features/*/*
-test ! -d ./html/sites/all/themes/custom || ./bin/phpmd ./html/sites/all/themes/custom/*/*
+# test ! -d ./html/sites/all/modules/custom || ./bin/phpcpd ./html/sites/all/modules/custom/*/*
+# test ! -d ./html/sites/all/modules/features || ./bin/phpmd ./html/sites/all/modules/features/*/*
+# test ! -d ./html/sites/all/themes/custom || ./bin/phpmd ./html/sites/all/themes/custom/*/*
