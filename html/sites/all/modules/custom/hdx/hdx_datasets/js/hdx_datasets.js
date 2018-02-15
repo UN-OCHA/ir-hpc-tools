@@ -1,3 +1,7 @@
+/**
+ * @file
+ */
+
 (function ($) {
   Drupal.behaviors.hdxDatasets = {
     attach: function (context, settings) {
@@ -22,7 +26,7 @@
           return url;
         },
 
-        countryCodes: function(settings) {
+        countryCodes: function (settings) {
           var country_codes = settings.hdx_datasets.country_codes;
           if (country_codes.length === 0) {
             return '';
