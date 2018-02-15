@@ -8,7 +8,7 @@
 include_once 'acc_applications.features.inc';
 
 /**
- * Implements hook_og_features_registry()
+ * Implements hook_og_features_registry().
  */
 function acc_applications_og_features_registry() {
   $registry = array();
@@ -30,10 +30,10 @@ function acc_applications_og_features_registry() {
  */
 function acc_applications_form_acc_application_node_form_alter(&$form, &$form_state) {
   if (module_exists('hs_taxonomy')) {
-    if (isset($form['field_locations']['und']['#config'])) {
-      $form['field_locations']['und']['#config']['dropbox']['title'] = t('Current selections');
-      $form['field_locations']['und']['#config']['animation_delay'] = 0;
-      $form['field_locations']['und']['#config']['level_labels'] = array(
+    if (isset($form['field_locations'][LANGUAGE_NONE]['#config'])) {
+      $form['field_locations'][LANGUAGE_NONE]['#config']['dropbox']['title'] = t('Current selections');
+      $form['field_locations'][LANGUAGE_NONE]['#config']['animation_delay'] = 0;
+      $form['field_locations'][LANGUAGE_NONE]['#config']['level_labels'] = array(
         'status' => 1,
         'labels' => array(
           0 => t('Country'),
