@@ -6,10 +6,6 @@
  */
 
 include_once 'hr_admin.features.inc';
-/**
- * @file
- * Code for the Admin tools feature.
- */
 
 /**
  * Implements hook_menu().
@@ -23,7 +19,7 @@ function hr_admin_menu() {
     'position' => 'right',
     'weight' => -15,
     'page callback' => 'system_admin_menu_block_page',
-    'access arguments' => array('access administration pages'),
+    'access arguments' => array('administer site configuration'),
     'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
   );

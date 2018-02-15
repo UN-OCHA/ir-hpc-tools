@@ -60,7 +60,12 @@ function hr_stats_menu() {
   $items['group/%/%/admin/analytics/visitors/content'] = array(
     'title' => 'Content',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('hr_stats_reports', 1, 2 , 'visitors_overview_content'),
+    'page arguments' => array(
+      'hr_stats_reports',
+      1,
+      2,
+      'visitors_overview_content',
+    ),
     'access callback' => 'og_user_access',
     'access arguments' => array(1, 2, 'access piwik reports'),
     'file' => 'hr_stats.pages.inc',
@@ -70,7 +75,12 @@ function hr_stats_menu() {
   $items['group/%/%/admin/analytics/visitors/downloads'] = array(
     'title' => 'Downloads',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('hr_stats_reports', 1, 2 , 'visitors_overview_downloads'),
+    'page arguments' => array(
+      'hr_stats_reports',
+      1,
+      2,
+      'visitors_overview_downloads',
+    ),
     'access callback' => 'og_user_access',
     'access arguments' => array(1, 2, 'access piwik reports'),
     'file' => 'hr_stats.pages.inc',
@@ -80,7 +90,12 @@ function hr_stats_menu() {
   $items['group/%/%/admin/analytics/visitors/map'] = array(
     'title' => 'Map',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('hr_stats_reports', 1, 2 , 'visitors_overview_map'),
+    'page arguments' => array(
+      'hr_stats_reports',
+      1,
+      2,
+      'visitors_overview_map',
+    ),
     'access callback' => 'og_user_access',
     'access arguments' => array(1, 2, 'access piwik reports'),
     'file' => 'hr_stats.pages.inc',
@@ -122,7 +137,7 @@ function hr_stats_menu() {
 }
 
 /**
- * Implements hook_og_ui_get_group_admin()
+ * Implements hook_og_ui_get_group_admin().
  */
 function hr_stats_og_ui_get_group_admin($group_type, $gid) {
   $items = array();
@@ -137,7 +152,7 @@ function hr_stats_og_ui_get_group_admin($group_type, $gid) {
 }
 
 /**
- * Implement hook_og_permission().
+ * Implements hook_og_permission().
  */
 function hr_stats_og_permission() {
   $items = array();
@@ -153,7 +168,7 @@ function hr_stats_og_permission() {
 }
 
 /**
- * Implements hook_theme()
+ * Implements hook_theme().
  */
 function hr_stats_theme() {
   return array(
@@ -203,7 +218,7 @@ function hr_stats_admin_settings_form($form_state) {
 }
 
 /**
- *
+ * Get piwik segments.
  */
 function hr_stats_get_raw_piwik_segments($token_auth = '', $site_id = '') {
   if (!isset($token_auth)) {
@@ -234,13 +249,11 @@ function hr_stats_get_raw_piwik_segments($token_auth = '', $site_id = '') {
 
 /**
  * Return a list of segments active on selected site.
- *
- * @return array $segments - array with keys corresponding to the values
  */
 function hr_stats_get_piwik_segments() {
   $segs = hr_stats_get_raw_piwik_segments();
   if (!empty($segs)) {
-    foreach ($segs as $key => $seg) {
+    foreach ($segs as $seg) {
       $segments[] = urldecode($seg['definition']);
     }
     return array_combine($segments, $segments);
@@ -248,7 +261,7 @@ function hr_stats_get_piwik_segments() {
 }
 
 /**
- *
+ * Get URL.
  */
 function hr_stats_get_url() {
   $url = variable_get('piwik_url_https', '');
@@ -259,7 +272,7 @@ function hr_stats_get_url() {
 }
 
 /**
- *
+ * Get Piwik stats.
  */
 function hr_stats_get_piwik_stat($token_auth, $site_id, $method, $period, $date, $segment = '', $additional = '') {
   if ($token_auth == '' || $site_id == '') {
@@ -287,7 +300,7 @@ function hr_stats_get_piwik_stat($token_auth, $site_id, $method, $period, $date,
 }
 
 /**
- *
+ * Get spaces.
  */
 function hr_stats_get_spaces($type, $page = 1) {
   $url = 'https://www.humanitarianresponse.info/api/v1.0/' . $type . '?page=' . $page;
@@ -308,7 +321,7 @@ function hr_stats_get_spaces($type, $page = 1) {
 }
 
 /**
- *
+ * Get file URL.
  */
 function _hr_stats_get_file_url($files_array) {
   $urls = array();
@@ -337,7 +350,7 @@ function _hr_stats_get_file_url($files_array) {
 }
 
 /**
- *
+ * Get URLs.
  */
 function hr_stats_get_urls($space_type, $space, $type, $page = 1) {
   $url = 'https://www.humanitarianresponse.info/api/v1.0/' . $type . '?filter[' . $space_type . ']=' . $space;
@@ -364,7 +377,7 @@ function hr_stats_get_urls($space_type, $space, $type, $page = 1) {
 }
 
 /**
- *
+ * Get full stats.
  */
 function hr_stats_get_full_stats($period, $date) {
   $token_auth = variable_get('hr_stats_piwik_token_auth', '');
@@ -372,7 +385,7 @@ function hr_stats_get_full_stats($period, $date) {
   $segments = hr_stats_get_raw_piwik_segments($token_auth, $site_id);
   $operations = hr_stats_get_spaces('operations');
   $spaces = hr_stats_get_spaces('spaces');
-  $op_ids = array();
+
   // Associate each segment with its operation.
   foreach ($segments as &$segmentref) {
     $defs = explode(';', $segmentref['definition']);
@@ -385,7 +398,6 @@ function hr_stats_get_full_stats($period, $date) {
       if (preg_replace('#^https?://#', '', rtrim($operation['url'], '/')) == $op_url) {
         $segmentref['space'] = $operation;
         $segmentref['space_type'] = 'operation';
-        $op_ids[] = $operation['id'];
       }
     }
     // Find the space by URL.
@@ -494,13 +506,7 @@ function hr_stats_get_full_stats($period, $date) {
 }
 
 /**
- * Helper function to find if a URL (http or https) is in the collection of
- * urls.
- *
- * @param $url
- * @param array $url_collection
- *
- * @return bool
+ * Helper function to find if a URL is in the collection of urls.
  */
 function _hr_stats_helper_in_urls($url, array $url_collection) {
   foreach ($url_collection as $member) {
@@ -513,13 +519,6 @@ function _hr_stats_helper_in_urls($url, array $url_collection) {
 
 /**
  * Helper function to get the HR download global data.
- *
- * @param $token_auth
- * @param $site_id
- * @param $period
- * @param $date
- *
- * @return array
  */
 function _hr_stats_get_hr_downloads($token_auth, $site_id, $period, $date) {
   $downloads = hr_stats_get_piwik_stat($token_auth, $site_id, 'Actions.getDownloads', $period, $date, '', 'expanded=1');

@@ -8,7 +8,7 @@
 include_once 'hr_news.features.inc';
 
 /**
- * Implements hook_og_features_registry()
+ * Implements hook_og_features_registry().
  */
 function hr_news_og_features_registry() {
   $registry = array();
@@ -26,7 +26,7 @@ function hr_news_og_features_registry() {
 }
 
 /**
- * Implements hook_search_api_views_query_alter()
+ * Implements hook_search_api_views_query_alter().
  *
  * Makes the news view available for disasters.
  */
@@ -59,10 +59,10 @@ function hr_news_search_api_views_query_alter(&$view, &$query) {
 function hr_news_form_hr_news_node_form_alter(&$form, &$form_state) {
   _hr_core_fix_entity_reference_ajax_calls($form, $form_state);
   if (module_exists('hs_taxonomy')) {
-    if (isset($form['field_locations']['und']['#config'])) {
-      $form['field_locations']['und']['#config']['dropbox']['title'] = t('Current selections');
-      $form['field_locations']['und']['#config']['animation_delay'] = 0;
-      $form['field_locations']['und']['#config']['level_labels'] = array(
+    if (isset($form['field_locations'][LANGUAGE_NONE]['#config'])) {
+      $form['field_locations'][LANGUAGE_NONE]['#config']['dropbox']['title'] = t('Current selections');
+      $form['field_locations'][LANGUAGE_NONE]['#config']['animation_delay'] = 0;
+      $form['field_locations'][LANGUAGE_NONE]['#config']['level_labels'] = array(
         'status' => 1,
         'labels' => array(
           0 => t('Country'),

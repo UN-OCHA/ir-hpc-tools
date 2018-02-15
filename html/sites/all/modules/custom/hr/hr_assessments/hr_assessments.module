@@ -27,7 +27,7 @@ function hr_assessments_og_features_registry() {
 }
 
 /**
- * Implementation of hook_entity_info_alter().
+ * Implements hook_entity_info_alter().
  */
 function hr_assessments_entity_info_alter(&$entity_info) {
   // Quick links.
@@ -89,7 +89,7 @@ function hr_assessments_menu() {
 
   $items['assessments/global-map'] = array(
     'title' => 'Map',
-    'access callback' => TRUE,
+    'access callback' => array('access content'),
     'page callback' => 'hr_assessments_global_map',
     'type' => MENU_LOCAL_TASK,
     'weight' => 99,
@@ -117,10 +117,10 @@ function hr_assessments_form_hr_assessment_node_form_alter(&$form, &$form_state)
   _hr_core_fix_entity_reference_ajax_calls($form, $form_state);
   hr_sectors_hide_sectors($form, $form_state);
   if (module_exists('hs_taxonomy')) {
-    if (isset($form['field_locations']['und']['#config'])) {
-      $form['field_locations']['und']['#config']['dropbox']['title'] = t('Current selections');
-      $form['field_locations']['und']['#config']['animation_delay'] = 0;
-      $form['field_locations']['und']['#config']['level_labels'] = array(
+    if (isset($form['field_locations'][LANGUAGE_NONE]['#config'])) {
+      $form['field_locations'][LANGUAGE_NONE]['#config']['dropbox']['title'] = t('Current selections');
+      $form['field_locations'][LANGUAGE_NONE]['#config']['animation_delay'] = 0;
+      $form['field_locations'][LANGUAGE_NONE]['#config']['level_labels'] = array(
         'status' => 1,
         'labels' => array(
           0 => t('Country'),
@@ -166,7 +166,7 @@ function hr_assessments_field_widget_form_alter(&$element, &$form_state, $contex
         if (is_numeric($tid)) {
           $option_label = array();
           $parents = taxonomy_get_parents_all($tid);
-          foreach ($parents as $parent_id => $parent) {
+          foreach ($parents as $parent) {
             array_unshift($option_label, entity_label('taxonomy_term', $parent));
           }
           $option = implode(' > ', $option_label);
@@ -177,7 +177,7 @@ function hr_assessments_field_widget_form_alter(&$element, &$form_state, $contex
 }
 
 /**
- * Implements hook_clone_node_alter.
+ * Implements hook_clone_node_alter().
  */
 function hr_assessments_clone_node_alter(&$node, $context) {
   if ($node->type != 'hr_assessment') {

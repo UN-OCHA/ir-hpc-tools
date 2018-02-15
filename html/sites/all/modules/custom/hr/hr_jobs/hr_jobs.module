@@ -28,7 +28,7 @@ function hr_jobs_menu() {
 }
 
 /**
- *
+ * Implements hook_block_info().
  */
 function hr_jobs_block_info() {
   $blocks['hr_jobs_filters'] = array(
@@ -38,7 +38,7 @@ function hr_jobs_block_info() {
 }
 
 /**
- *
+ * Implemtns hook_block_view().
  */
 function hr_jobs_block_view($delta = '') {
   $block = array();

@@ -41,7 +41,7 @@ function hr_core_entity_info_alter(&$entity_info) {
  * Hides fields if they are empty.
  */
 function hr_core_form_alter(&$form, &$form_state, $form_id) {
-  foreach ($form as $id => &$item) {
+  foreach ($form as &$item) {
     if (is_array($item) && isset($item['#type']) && $item['#type'] == 'container') {
       switch ($item['#type']) {
         case 'container':
@@ -92,7 +92,7 @@ function hr_core_path_insert($path) {
 }
 
 /**
- * Implements hook_entity_presave()
+ * Implements hook_entity_presave().
  *
  * Makes sure pathauto is not used when no path is set.
  */
@@ -103,7 +103,7 @@ function hr_core_entity_presave($node, $type) {
 }
 
 /**
- * Implements hook_field_extra_fields()
+ * Implements hook_field_extra_fields().
  */
 function hr_core_field_extra_fields() {
   $content_types = array(
@@ -169,7 +169,7 @@ function _hr_core_files_download_button($entity, $type) {
     return;
   }
 
-  foreach ($items as $delta => $item) {
+  foreach ($items as $item) {
     $fc = field_collection_item_revision_load($item['revision_id']);
 
     $file = field_get_items('field_collection_item', $fc, 'field_file');
@@ -266,7 +266,7 @@ function hr_core_og_context_negotiation_info() {
 }
 
 /**
- *
+ * Context handler.
  */
 function hr_core_og_context_handler($node = NULL) {
   $context = NULL;
@@ -283,7 +283,7 @@ function hr_core_og_context_handler($node = NULL) {
 }
 
 /**
- * Implements hook_token_info()
+ * Implements hook_token_info().
  */
 function hr_core_token_info() {
   $info['site']['og_context_current_group'] = array(
@@ -294,7 +294,7 @@ function hr_core_token_info() {
 }
 
 /**
- * Implements hook_tokens()
+ * Implements hook_tokens().
  */
 function hr_core_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $replacements = array();
@@ -315,12 +315,13 @@ function hr_core_tokens($type, $tokens, array $data = array(), array $options = 
 }
 
 /**
- *
+ * Draft button.
  */
 function _hr_core_draft_button($label) {
   return array(
     '#type' => 'submit',
     '#access' => TRUE,
+    // @codingStandardsIgnoreLine
     '#value' => t($label),
     '#weight' => 6,
     '#submit' =>
@@ -362,8 +363,8 @@ function hr_core_form_node_form_alter(&$form, &$form_state) {
   // Limit disasters/hubs to selected groups on node edit.
   if (isset($form['field_disasters']) || isset($form['field_coordination_hubs'])) {
     $groups = array();
-    if (isset($form['#node']->og_group_ref) && isset($form['#node']->og_group_ref['und'])) {
-      foreach ($form['#node']->og_group_ref['und'] as $group_ref) {
+    if (isset($form['#node']->og_group_ref) && isset($form['#node']->og_group_ref[LANGUAGE_NONE])) {
+      foreach ($form['#node']->og_group_ref[LANGUAGE_NONE] as $group_ref) {
         $groups[] = $group_ref['target_id'];
       }
     }
@@ -392,7 +393,7 @@ function hr_core_form_node_form_alter(&$form, &$form_state) {
           }
           asort($options);
 
-          $form['field_disasters']['und']['#options'] = $options;
+          $form['field_disasters'][LANGUAGE_NONE]['#options'] = $options;
         }
       }
 
@@ -412,7 +413,7 @@ function hr_core_form_node_form_alter(&$form, &$form_state) {
           }
           asort($options);
 
-          $form['field_coordination_hubs']['und']['#options'] = $options;
+          $form['field_coordination_hubs'][LANGUAGE_NONE]['#options'] = $options;
         }
       }
     }
@@ -582,7 +583,8 @@ function hr_core_menu_link_exists($path, $menu_name) {
 }
 
 /**
- * Implements hook_addressfield_default_values_alter()
+ * Implements hook_addressfield_default_values_alter().
+ *
  * Sets default country to the country of the space
  * See https://atrium.humanitarianresponse.info/humanitarian_response/node/4329.
  */
@@ -593,8 +595,10 @@ function hr_core_addressfield_default_values_alter(&$default_values, $context) {
 }
 
 /**
- * Implements hook_languagefield_options_alter()
- * Added Dari as a language. See https://atrium.humanitarianresponse.info/humanitarian_response/node/4367.
+ * Implements hook_languagefield_options_alter().
+ *
+ * Added Dari as a language.
+ * See https://atrium.humanitarianresponse.info/humanitarian_response/node/4367.
  */
 function hr_core_languagefield_options_alter(&$languages, $subsets, $langcode) {
   if (!isset($languages['prs'])) {
@@ -609,7 +613,8 @@ function hr_core_languagefield_options_alter(&$languages, $subsets, $langcode) {
 }
 
 /**
- * Implements hook_panels_new_pane_alter($pane)
+ * Implements hook_panels_new_pane_alter().
+ *
  * Set default panel style to hr_highlighted.
  */
 function hr_core_panels_new_pane_alter(&$pane) {
@@ -617,7 +622,8 @@ function hr_core_panels_new_pane_alter(&$pane) {
 }
 
 /**
- * Redirect user to operation page after deletion of content
+ * Redirect user to operation page after deletion of content.
+ *
  * See http://atrium.humanitarianresponse.info/humanitarian_response/node/3992.
  */
 function hr_core_node_delete($node) {
@@ -635,8 +641,7 @@ function hr_core_form_panels_ipe_edit_control_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Additional form callback that ensures that the panelizer page cache is
- * cleared.
+ * Additional form callback that clears panelizer page cache.
  */
 function hr_core_panels_ipe_clear_cache($form, &$form_state) {
   if (!empty($form_state['panelizer entity'])) {
@@ -872,7 +877,7 @@ function _hr_core_display_cache_content($minutes = 'none', $margin = 5) {
 /**
  * Set caching of panel display.
  */
-function _hr_core_display_cache_content_defaults($minutes = 'none', $margin = 5, $content_type) {
+function _hr_core_display_cache_content_defaults($minutes = 'none', $margin = 5, $content_type = '') {
   $sql = "SELECT * FROM {panels_display} WHERE storage_id LIKE 'node:$content_type%'";
   $result = db_query($sql);
   foreach ($result as $obj) {

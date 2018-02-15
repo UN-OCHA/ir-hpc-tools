@@ -11,7 +11,6 @@
 function hr_locations_update_7000() {
   $entity_type = 'node';
   $field_name = 'field_locations';
-  $field_info = field_info_field($field_name);
 
   $bundles = array(
     'acc_incident',
@@ -44,7 +43,6 @@ function hr_locations_update_7000() {
 function hr_locations_update_7001() {
   $entity_type = 'node';
   $field_name = 'field_locations';
-  $field_info = field_info_field($field_name);
 
   $bundles = array(
     'acc_incident',
@@ -255,7 +253,6 @@ function hr_locations_update_7008(&$sandbox) {
 function hr_locations_update_7009(&$sandbox) {
   $entity_type = 'field_collection_item';
   $field_name = 'field_file';
-  $field_info = field_info_field($field_name);
 
   $bundle = 'field_files_collection';
   $field_instance = field_info_instance($entity_type, $field_name, $bundle);

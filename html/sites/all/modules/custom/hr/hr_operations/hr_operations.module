@@ -32,7 +32,7 @@ function hr_operations_block_view($delta = '') {
       drupal_add_js('https://code.highcharts.com/maps/highmaps.js', 'external');
       drupal_add_js('https://code.highcharts.com/mapdata/custom/world.js', 'external');
       drupal_add_js(drupal_get_path('module', 'hr_operations') . '/js/hr_operations_map.js', 'file');
-      $block['subject'] = t('');
+      $block['subject'] = '';
       $block['content'] = '<div id="operations_map"></div>';
       break;
 
@@ -91,11 +91,11 @@ function hr_operations_block_view($delta = '') {
       break;
 
     case 'operations_status':
-      $block['subject'] = t('');
+      $block['subject'] = '';
       $node_data = node_load(arg(1));
-      if (isset($node_data->field_operation_status['und'][0]['value'])) {
-        if ($node_data->field_operation_status['und'][0]['value'] != "active" && $node_data->field_operation_status['und'][0]['value'] != "") {
-          $block['content'] = '<div class="operation-status ' . $node_data->field_operation_status['und'][0]['value'] . '">' . $node_data->field_operation_status['und'][0]['value'] . '<i class="fa fa-info"></i></div>';
+      if (isset($node_data->field_operation_status[LANGUAGE_NONE][0]['value'])) {
+        if ($node_data->field_operation_status[LANGUAGE_NONE][0]['value'] != "active" && $node_data->field_operation_status[LANGUAGE_NONE][0]['value'] != "") {
+          $block['content'] = '<div class="operation-status ' . $node_data->field_operation_status[LANGUAGE_NONE][0]['value'] . '">' . $node_data->field_operation_status[LANGUAGE_NONE][0]['value'] . '<i class="fa fa-info"></i></div>';
         }
       }
       break;
@@ -104,7 +104,7 @@ function hr_operations_block_view($delta = '') {
 }
 
 /**
- *
+ * Get labels.
  */
 function _hr_operations_get_active_operation_labels() {
   $query = new EntityFieldQuery();
@@ -128,7 +128,7 @@ function _hr_operations_get_active_operation_labels() {
 }
 
 /**
- *
+ * Implements hook_form_FORM_ID_alter().
  */
 function hr_operations_form_hr_operation_node_form_alter(&$form, &$form_state) {
   _hr_core_fix_entity_reference_ajax_calls($form, $form_state);

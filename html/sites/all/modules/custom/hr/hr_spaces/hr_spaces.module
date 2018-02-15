@@ -17,7 +17,7 @@ function hr_spaces_ctools_plugin_directory($module, $plugin) {
 }
 
 /**
- *
+ * Get label.
  */
 function _hr_spaces_get_space_labels($type) {
   $query = new EntityFieldQuery();

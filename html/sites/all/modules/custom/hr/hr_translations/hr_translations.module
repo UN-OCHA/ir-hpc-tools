@@ -7,6 +7,7 @@
 
 /**
  * Implements hook_module_implements_alter().
+ *
  * Allows menu_alter hook to be executed last.
  */
 function hr_translations_module_implements_alter(&$implementations, $hook) {
@@ -21,8 +22,10 @@ function hr_translations_module_implements_alter(&$implementations, $hook) {
 }
 
 /**
- * Implements hook_menu_alter()
- * Forbids access to translate tab to users who don't have permission to edit the node.
+ * Implements hook_menu_alter().
+ *
+ * Forbids access to translate tab to users who don't have permission
+ * to edit the node.
  */
 function hr_translations_menu_alter(&$items) {
   if (isset($items['node/%node/translate'])) {

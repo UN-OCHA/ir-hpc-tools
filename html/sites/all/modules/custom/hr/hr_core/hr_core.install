@@ -17,7 +17,11 @@ function hr_core_update_7001() {
   $base_fields = $result->fetchAllKeyed();
 
   $query = db_select('multisite_redirect')
-    ->fields('multisite_redirect', array('source_site', 'source_path', 'redirect'))
+    ->fields('multisite_redirect', array(
+      'source_site',
+      'source_path',
+      'redirect',
+    ))
     ->condition('source_path', '<front>', '<>')
     ->condition('access', '1429351251', '>')
     ->condition('count', 5, '>');
@@ -264,7 +268,7 @@ function hr_core_update_7014() {
  */
 function hr_core_update_7015() {
   foreach (node_type_get_names() as $type => $name) {
-    _hr_core_display_cache_content_defaults('none', $margin = 5, $type);
+    _hr_core_display_cache_content_defaults('none', 5, $type);
   }
 }
 

@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * Disabled contacts template.
  */
 ?>
 <div class="contacts-disabled-form-wrapper">

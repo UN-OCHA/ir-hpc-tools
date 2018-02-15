@@ -10,7 +10,7 @@ define('HR_DISASTERS_RELIEFWEB_API', 'http://api.reliefweb.int/v1/disasters');
 include_once 'hr_disasters.features.inc';
 
 /**
- * Implements hook_og_features_registry()
+ * Implements hook_og_features_registry().
  */
 function hr_disasters_og_features_registry() {
   $registry = array();
@@ -28,7 +28,8 @@ function hr_disasters_og_features_registry() {
 }
 
 /**
- * Implements hook_cron()
+ * Implements hook_cron().
+ *
  * Updates the latest 50 disaster items taken from Reliefweb.
  */
 function hr_disasters_cron() {
@@ -102,7 +103,7 @@ function _hr_disasters_reliefweb_disaster($id) {
 }
 
 /**
- * Helper function: maps disaster fields from Reliefweb API to hr_disaster nodes.
+ * Maps disaster fields from Reliefweb API to hr_disaster nodes.
  */
 function _hr_disasters_reliefweb_disaster_map(&$node, $fields) {
   $glide_type = taxonomy_get_term_by_name($fields->type[0]->name, 'hr_glide_type');
@@ -169,7 +170,7 @@ function _hr_disasters_reliefweb_disaster_map(&$node, $fields) {
 
   $current_locations = array();
   if (isset($node->og_group_ref[LANGUAGE_NONE])) {
-    foreach ($node->og_group_ref[LANGUAGE_NONE] as $key => $value) {
+    foreach ($node->og_group_ref[LANGUAGE_NONE] as $value) {
       $current_locations[] = $value['target_id'];
     }
   }

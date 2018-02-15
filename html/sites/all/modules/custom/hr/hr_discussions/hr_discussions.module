@@ -8,7 +8,7 @@
 include_once 'hr_discussions.features.inc';
 
 /**
- * Implements hook_og_features_registry()
+ * Implements hook_og_features_registry().
  */
 function hr_discussions_og_features_registry() {
   $registry = array();

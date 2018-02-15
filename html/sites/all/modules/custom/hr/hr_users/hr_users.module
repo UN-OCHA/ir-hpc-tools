@@ -24,7 +24,6 @@ function hr_users_field_formatter_info() {
  */
 function hr_users_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
-  $settings = $display['settings'];
 
   switch ($display['type']) {
     case 'hr_users_skype':
@@ -45,7 +44,7 @@ function hr_users_field_formatter_view($entity_type, $entity, $field, $instance,
 }
 
 /**
- * Implements hook_og_features_registry()
+ * Implements hook_og_features_registry().
  */
 function hr_users_og_features_registry() {
   $registry = array();
@@ -115,8 +114,7 @@ function hr_users_init() {
 }
 
 /**
- * Helper function to load the current user's main profile and ensure the
- * required fields have been filled in.
+ * Load the current user's main profile and ensure required fields are filled.
  */
 function hr_users_check_profile($redirect = NULL) {
   global $user;
@@ -131,7 +129,7 @@ function hr_users_check_profile($redirect = NULL) {
       'user/logout',
     );
     if ($redirect && !in_array($_GET['q'], $allowed_paths)) {
-      drupal_set_message('Please complete your profile before using other site features.');
+      drupal_set_message(t('Please complete your profile before using other site features.'));
       drupal_goto($profile_path);
     }
   }

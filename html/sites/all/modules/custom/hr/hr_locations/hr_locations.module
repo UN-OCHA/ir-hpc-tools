@@ -8,7 +8,8 @@
 include_once 'hr_locations.features.inc';
 
 /**
- * Implement hook_taxonomy_term_presave($term)
+ * Implements hook_taxonomy_term_presave().
+ *
  * Calculates and adds the admin level in a field to the term so that it
  * can be stored in the database.
  */
@@ -21,7 +22,8 @@ function hr_locations_taxonomy_term_presave($term) {
 }
 
 /**
- * Implements hook_query_TAG_alter()
+ * Implements hook_query_TAG_alter().
+ *
  * Allows filter by parent in the API.
  */
 function hr_locations_query_hr_locations_filter_parent_alter($query) {
@@ -35,7 +37,8 @@ function hr_locations_query_hr_locations_filter_parent_alter($query) {
 }
 
 /**
- * Implements hook_shs_json_callbacks_alter()
+ * Implements hook_shs_json_callbacks_alter().
+ *
  * Allows filter by parent in the API.
  */
 function hr_locations_shs_json_callbacks_alter(&$callbacks) {
@@ -43,7 +46,7 @@ function hr_locations_shs_json_callbacks_alter(&$callbacks) {
 }
 
 /**
- *
+ * Get term children for shs.
  */
 function hr_locations_shs_json_term_get_children($vid, $parent = array(), $settings = array(), $field = NULL) {
   $cache_key = "hr_location_cache:" . $vid . '_' . md5(serialize($parent));
@@ -62,7 +65,7 @@ function hr_locations_shs_json_term_get_children($vid, $parent = array(), $setti
 
     $has_children = _hr_locations_taxonomy_get_all_children($scope);
 
-    // Rewrite result set to preserve original sort of terms through JSON request.
+    // Rewrite result set to preserve original sort of terms through JSON.
     foreach ($scope as $terms) {
       foreach ($terms as $tid => $label) {
         $result[] = array(
@@ -80,7 +83,7 @@ function hr_locations_shs_json_term_get_children($vid, $parent = array(), $setti
 }
 
 /**
- *
+ * Get term children.
  */
 function _hr_locations_taxonomy_get_all_children($scope) {
   $tids = array();

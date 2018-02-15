@@ -10,14 +10,14 @@ include_once 'hr_events.features.inc';
 define('HR_EVENTS_WKHTMLTOPDF', 'http://localhost:8441/htmltopdf');
 
 /**
- *
+ * Get base URL.
  */
 function hr_events_wkhtmltopdf_url() {
   return variable_get('hr_events_wkhtmltopdf_url', HR_EVENTS_WKHTMLTOPDF);
 }
 
 /**
- * Implements hook_og_features_registry()
+ * Implements hook_og_features_registry().
  */
 function hr_events_og_features_registry() {
   $registry = array();
@@ -35,7 +35,7 @@ function hr_events_og_features_registry() {
 }
 
 /**
- * Implements hook_views_query_alter()
+ * Implements hook_views_query_alter().
  *
  * Makes the clusters/sectors filter of the calendar work
  * Makes the calendar view available to disasters
@@ -58,7 +58,11 @@ function hr_events_views_query_alter(&$view, &$query) {
               'entity_id'
             );
             $view->query->add_relationship('field_data_field_disasters', $join, 'node');
-            $condition = array('field' => 'field_data_field_disasters.field_disasters_target_id', 'value' => $nid, 'operator' => '=');
+            $condition = array(
+              'field' => 'field_data_field_disasters.field_disasters_target_id',
+              'value' => $nid,
+              'operator' => '=',
+            );
           }
         }
         // If we are filtering the calendar by cluster/sector.
@@ -133,7 +137,7 @@ function hr_events_views_pre_render(&$view) {
         $params[$key] = $param;
       }
     }
-    $view->feed_icon .= '<li>' . l('PDF', str_replace('/events', '/events/pdf', current_path()), array('attributes' => array('target' => 'about:blank'), 'query' => $params)) . '</li>';
+    $view->feed_icon .= '<li>' . l(t('PDF'), str_replace('/events', '/events/pdf', current_path()), array('attributes' => array('target' => 'about:blank'), 'query' => $params)) . '</li>';
   }
 }
 
@@ -186,7 +190,7 @@ function hr_events_menu() {
 }
 
 /**
- *
+ * Create PDF.
  */
 function hr_events_pdf_output($nid) {
   $current_params = array();
@@ -209,6 +213,7 @@ function hr_events_pdf_output($nid) {
   elseif (strpos($path, 'day') !== FALSE) {
     $period = 'day';
   }
+  // @codingStandardsIgnoreLine
   $period = t($period);
   // Determine date.
   $date = date('Y-m');
@@ -230,7 +235,7 @@ function hr_events_pdf_output($nid) {
     'params' => array(
       'print-media-type' => 'true',
       'footer-left' => t('Page [page] of [topage]'),
-      'footer-right' => t('Powered by HUMANITARIAN RESPONSE. Date of creation: [date]') . "\nhttp://www.humanitarianresponse.info",
+      'footer-right' => t("Powered by HUMANITARIAN RESPONSE. Date of creation: [date]\nhttp://www.humanitarianresponse.info"),
       'footer-font-name' => 'Exo 2',
       'footer-font-size' => '8',
       'footer-spacing' => '2',
@@ -250,7 +255,7 @@ function hr_events_pdf_output($nid) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter()
+ * Implements hook_form_FORM_ID_alter().
  */
 function hr_events_form_hr_event_node_form_alter(&$form, &$form_state, $form_id) {
   _hr_core_fix_entity_reference_ajax_calls($form, $form_state);
@@ -296,7 +301,7 @@ function hr_events_form_hr_event_node_form_alter(&$form, &$form_state, $form_id)
 }
 
 /**
- * Implements hook_clone_node_alter.
+ * Implements hook_clone_node_alter().
  */
 function hr_events_clone_node_alter(&$node, $context) {
   if ($node->type != 'hr_event') {

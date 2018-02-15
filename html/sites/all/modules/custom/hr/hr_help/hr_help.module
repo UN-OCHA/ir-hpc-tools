@@ -5,12 +5,12 @@
  * Code for the Help feature.
  */
 
-define('HR_SANDBOX_GID', 1506);
+define('HR_HELP_SANDBOX_GID', 1506);
 
 include_once 'hr_help.features.inc';
 
 /**
- *
+ * Implements hook_block_info().
  */
 function hr_help_block_info() {
   $blocks['hr_help'] = array(
@@ -20,7 +20,7 @@ function hr_help_block_info() {
 }
 
 /**
- *
+ * Implements hook_block_view().
  */
 function hr_help_block_view($delta = '') {
   global $user;
@@ -50,7 +50,8 @@ function hr_help_block_view($delta = '') {
           </button>
           <ul class="dropdown-menu">';
         foreach ($tours as $key => $tour) {
-          if (!in_array($key, $manager_tours) || og_is_member('node', HR_SANDBOX_GID)) {
+          if (!in_array($key, $manager_tours) || og_is_member('node', HR_HELP_SANDBOX_GID)) {
+            // @codingStandardsIgnoreLine
             $block['content'] .= '<li>' . l(t($tour->title), $tour->steps[0]['path'], array('query' => array('tour' => $key))) . '</li>';
           }
         }
@@ -63,7 +64,7 @@ function hr_help_block_view($delta = '') {
 }
 
 /**
- *
+ * Return tours.
  */
 function _hr_help_space_manager_tours() {
   return array(
