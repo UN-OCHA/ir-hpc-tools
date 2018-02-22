@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Update hooks for hr_indicators.
+ */
+
+/**
+ * Enable audit_log module.
+ */
+function hr_indicators_update_7001() {
+  module_enable(array(
+    'audit_log',
+    'audit_log_user',
+    'audit_log_syslog',
+  ));
+}

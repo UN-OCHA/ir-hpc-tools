@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Code for the Admin tools feature.
+ */
+
+include_once 'hr_admin.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function hr_admin_menu() {
+  $items = array();
+
+  $items['admin/config/hrinfo'] = array(
+    'title' => 'Humanitarian Response Admin',
+    'description' => 'Admin tools for Humanitarian Response',
+    'position' => 'right',
+    'weight' => -15,
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
+
+  return $items;
+}
