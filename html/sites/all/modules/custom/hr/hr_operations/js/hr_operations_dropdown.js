@@ -1,6 +1,10 @@
-(function($) {
-  $(document).ready(function() {
-    $("#operations-dropdown").chosen().change(function() {
+/**
+ * @file
+ */
+
+(function ($) {
+  $(document).ready(function () {
+    $("#operations-dropdown").chosen().change(function () {
       document.location.href = $("#operations-dropdown").val();
     });
   });

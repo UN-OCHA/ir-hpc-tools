@@ -5,6 +5,9 @@
  * Contains \RestfulEntityNodeInfographics.
  */
 
+/**
+ *
+ */
 class RestfulEntityNodeInfographics extends \RestfulEntityBaseNode {
 
   /**
@@ -129,24 +132,33 @@ class RestfulEntityNodeInfographics extends \RestfulEntityBaseNode {
     return $public_fields;
   }
 
+  /**
+   *
+   */
   protected function getEntity($wrapper) {
     foreach ($wrapper as &$item) {
-      $array_item = (array)$item;
+      $array_item = (array) $item;
       $properties = array_keys($array_item);
       foreach ($properties as $property) {
         if (!in_array($property, array('id', 'label', 'self'))) {
           unset($array_item[$property]);
         }
       }
-      $item = (object)$array_item;
+      $item = (object) $array_item;
     }
     return $wrapper;
   }
 
+  /**
+   *
+   */
   protected function formatTimestamp($value) {
     return strftime('%F', $value);
   }
 
+  /**
+   *
+   */
   protected function getDisasters($values) {
     $return = array();
     if (!empty($values)) {
@@ -155,7 +167,7 @@ class RestfulEntityNodeInfographics extends \RestfulEntityBaseNode {
         $tmp->glide = $value->field_glide_number[LANGUAGE_NONE][0]['value'];
         $tmp->label = $value->title;
         if (!empty($value->field_reliefweb_id)) {
-          $tmp->self = 'http://api.reliefweb.int/v1/disasters/'.$value->field_reliefweb_id[LANGUAGE_NONE][0]['value'];
+          $tmp->self = 'http://api.reliefweb.int/v1/disasters/' . $value->field_reliefweb_id[LANGUAGE_NONE][0]['value'];
         }
         $return[] = $tmp;
       }
@@ -163,10 +175,16 @@ class RestfulEntityNodeInfographics extends \RestfulEntityBaseNode {
     return $return;
   }
 
+  /**
+   *
+   */
   protected function getBodyRaw($value) {
     return strip_tags($value);
   }
 
+  /**
+   *
+   */
   protected function getFiles($values) {
     $return = array();
     if (!empty($values)) {
@@ -187,6 +205,9 @@ class RestfulEntityNodeInfographics extends \RestfulEntityBaseNode {
     return $return;
   }
 
+  /**
+   *
+   */
   protected function getDataSources($values) {
     $return = array();
     if (!empty($values)) {

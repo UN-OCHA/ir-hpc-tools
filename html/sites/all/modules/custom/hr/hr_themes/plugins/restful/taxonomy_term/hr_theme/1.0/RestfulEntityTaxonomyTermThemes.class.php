@@ -5,6 +5,9 @@
  * Contains \RestfulEntityTaxonomyTermThemes.
  */
 
+/**
+ *
+ */
 class RestfulEntityTaxonomyTermThemes extends \RestfulEntityBaseTaxonomyTerm {
 
 }

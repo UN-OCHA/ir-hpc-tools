@@ -5,6 +5,9 @@
  * Contains \RestfulEntityNodeOperations.
  */
 
+/**
+ *
+ */
 class RestfulEntityNodeOperations extends \RestfulEntityBaseNode {
 
   /**

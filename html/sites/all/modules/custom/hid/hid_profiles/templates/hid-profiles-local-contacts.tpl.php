@@ -1,5 +1,9 @@
 <?php
-  // @TODO: Make the stuff translatable.
+
+/**
+ * @file
+ * Make the stuff translatable.
+ */
 ?>
 <div class="feed-icon text-right"><div class="btn-group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">

@@ -5,6 +5,9 @@
  * Contains \RestfulEntityNodeSpaces.
  */
 
+/**
+ *
+ */
 class RestfulEntityNodeSpaces extends \RestfulEntityBaseNode {
 
   /**
@@ -50,16 +53,19 @@ class RestfulEntityNodeSpaces extends \RestfulEntityBaseNode {
     return $public_fields;
   }
 
+  /**
+   *
+   */
   protected function getEntity($wrapper) {
     foreach ($wrapper as &$item) {
-      $array_item = (array)$item;
+      $array_item = (array) $item;
       $properties = array_keys($array_item);
       foreach ($properties as $property) {
         if (!in_array($property, array('id', 'label', 'self'))) {
           unset($array_item[$property]);
         }
       }
-      $item = (object)$array_item;
+      $item = (object) $array_item;
     }
     return $wrapper;
   }

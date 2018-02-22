@@ -66,7 +66,7 @@ Some available modules are similar or related to Panels Content Cache:
 
 Credits / Contact
 ------------------------------------------------------------------------------
-Currently maintained by Damien McKenna [1]. Originally written by Graham Taylor [2].
+Currently maintained by Damien McKenna [1]. Originally written by Graham Taylor.
 
 Ongoing development is sponsored by Mediacurrent [3].
 

@@ -1,4 +1,5 @@
-/* Copyright (c) 2006-2013 by OpenLayers Contributors (see authors.txt for
+/**
+ * @file Copyright (c) 2006-2013 by OpenLayers Contributors (see authors.txt for
  * full list of contributors). Published under the 2-clause BSD license.
  * See license.txt in the OpenLayers distribution or repository for the
  * full text of the license. */
@@ -25,89 +26,88 @@
  */
 OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
 
-    /**  
-     * Property: layerStates 
-     * {Array(Object)} Basically a copy of the "state" of the map's layers 
+    /**
+     * Property: layerStates
+     * {Array(Object)} Basically a copy of the "state" of the map's layers
      *     the last time the control was drawn. We have this in order to avoid
      *     unnecessarily redrawing the control.
      */
     layerStates: null,
 
-  // DOM Elements
-
+  // DOM Elements.
     /**
      * Property: layersDiv
-     * {DOMElement}
+     * {DOMElement}.
      */
     layersDiv: null,
 
     /**
      * Property: baseLayersDiv
-     * {DOMElement}
+     * {DOMElement}.
      */
     baseLayersDiv: null,
 
     /**
      * Property: baseLayers
-     * {Array(Object)}
+     * {Array(Object)}.
      */
     baseLayers: null,
 
 
     /**
      * Property: dataLbl
-     * {DOMElement}
+     * {DOMElement}.
      */
     dataLbl: null,
 
     /**
      * Property: dataLayersDiv
-     * {DOMElement}
+     * {DOMElement}.
      */
     dataLayersDiv: null,
 
     /**
      * Property: dataLayers
-     * {Array(Object)}
+     * {Array(Object)}.
      */
     dataLayers: null,
 
 
     /**
      * Property: minimizeDiv
-     * {DOMElement}
+     * {DOMElement}.
      */
     minimizeDiv: null,
 
     /**
      * Property: maximizeDiv
-     * {DOMElement}
+     * {DOMElement}.
      */
     maximizeDiv: null,
 
     /**
      * APIProperty: ascending
-     * {Boolean}
+     * {Boolean}.
      */
     ascending: true,
 
     /**
-     * Constructor: OpenLayers.Control.LayerSwitcher
+     * Constructor: OpenLayers.Control.LayerSwitcher.
      *
      * Parameters:
      * options - {Object}
      */
-    initialize: function(options) {
+    initialize: function (options) {
         OpenLayers.Control.prototype.initialize.apply(this, arguments);
         this.layerStates = [];
     },
 
     /**
-     * APIMethod: destroy
+     * APIMethod: destroy.
      */
-    destroy: function() {
+    destroy: function () {
 
-        //clear out layers info and unregister their events
+        // Clear out layers info and unregister their events.
         this.clearLayersArray("base");
         this.clearLayersArray("data");
 
@@ -125,12 +125,12 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
     },
 
     /**
-     * Method: setMap
+     * Method: setMap.
      *
      * Properties:
      * map - {<OpenLayers.Map>}
      */
-    setMap: function(map) {
+    setMap: function (map) {
         OpenLayers.Control.prototype.setMap.apply(this, arguments);
 
         this.map.events.on({
@@ -143,48 +143,51 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
         if (this.outsideViewport) {
             this.events.attachToElement(this.div);
             this.events.register("buttonclick", this, this.onButtonClick);
-        } else {
+        }
+else {
             this.map.events.register("buttonclick", this, this.onButtonClick);
         }
     },
 
     /**
-     * Method: draw
+     * Method: draw.
      *
      * Returns:
      * {DOMElement} A reference to the DIV DOMElement containing the
      *     switcher tabs.
      */
-    draw: function() {
+    draw: function () {
         OpenLayers.Control.prototype.draw.apply(this);
 
-        // create layout divs
+        // Create layout divs.
         this.loadContents();
 
-        // set mode to minimize
-        if(!this.outsideViewport) {
+        // Set mode to minimize.
+        if (!this.outsideViewport) {
             this.minimizeControl();
         }
 
-        // populate div with current info
+        // Populate div with current info.
         this.redraw();
 
         return this.div;
     },
 
     /**
-     * Method: onButtonClick
+     * Method: onButtonClick.
      *
      * Parameters:
      * evt - {Event}
      */
-    onButtonClick: function(evt) {
+    onButtonClick: function (evt) {
         var button = evt.buttonElement;
         if (button === this.minimizeDiv) {
             this.minimizeControl();
-        } else if (button === this.maximizeDiv) {
+        }
+else if (button === this.maximizeDiv) {
             this.maximizeControl();
-        } else if (button._layerSwitcher === this.id) {
+        }
+else if (button._layerSwitcher === this.id) {
             if (button["for"]) {
                 button = document.getElementById(button["for"]);
             }
@@ -193,14 +196,15 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
                 if (layer.isBaseLayer) {
                     button.checked = true;
                     this.map.setBaseLayer(layer);
-                } else {
+                }
+else {
                     var buttons = document.getElementsByTagName('input');
-                    for (var i=0, len=buttons.length; i<len; i++) {
+                    for (var i = 0, len = buttons.length; i < len; i++) {
                         buttons[i].checked = false;
                     }
 
                     button.checked = true;
-                    for(var i=0, len=this.dataLayers.length; i<len; i++) {
+                    for (var i = 0, len = this.dataLayers.length; i < len; i++) {
                         var layerEntry = this.dataLayers[i];
                         if (layerEntry.inputElem._layer == button._layer) {
                             layerEntry.layer.setVisibility(true);
@@ -222,7 +226,7 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
      * Parameters:
      * layersType - {String}
      */
-    clearLayersArray: function(layersType) {
+    clearLayersArray: function (layersType) {
         this[layersType + "LayersDiv"].innerHTML = "";
         this[layersType + "Layers"] = [];
     },
@@ -235,19 +239,19 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
      * Returns:
      * {Boolean} The layer state changed since the last redraw() call.
      */
-    checkRedraw: function() {
-        if ( !this.layerStates.length ||
-             (this.map.layers.length != this.layerStates.length) ) {
+    checkRedraw: function () {
+        if (!this.layerStates.length ||
+             (this.map.layers.length != this.layerStates.length)) {
             return true;
         }
 
         for (var i = 0, len = this.layerStates.length; i < len; i++) {
             var layerState = this.layerStates[i];
             var layer = this.map.layers[i];
-            if ( (layerState.name != layer.name) ||
+            if ((layerState.name != layer.name) ||
                  (layerState.inRange != layer.inRange) ||
                  (layerState.id != layer.id) ||
-                 (layerState.visibility != layer.visibility) ) {
+                 (layerState.visibility != layer.visibility)) {
                 return true;
             }
         }
@@ -262,16 +266,16 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
      *     radio-button group and lists each data layer with a checkbox.
      *
      * Returns:
-     * {DOMElement} A reference to the DIV DOMElement containing the control
+     * {DOMElement} A reference to the DIV DOMElement containing the control.
      */
-    redraw: function() {
-        //if the state hasn't changed since last redraw, no need
+    redraw: function () {
+        // If the state hasn't changed since last redraw, no need
         // to do anything. Just return the existing div.
         if (!this.checkRedraw()) {
             return this.div;
         }
 
-        //clear out previous layers
+        // Clear out previous layers.
         this.clearLayersArray("base");
         this.clearLayersArray("data");
 
@@ -284,7 +288,7 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
         // and enter an infinite loop.
         var len = this.map.layers.length;
         this.layerStates = new Array(len);
-        for (var i=0; i <len; i++) {
+        for (var i = 0; i < len; i++) {
             var layer = this.map.layers[i];
             this.layerStates[i] = {
                 'name': layer.name,
@@ -295,8 +299,9 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
         }
 
         var layers = this.map.layers.slice();
-        if (!this.ascending) { layers.reverse(); }
-        for(var i=0, len=layers.length; i<len; i++) {
+        if (!this.ascending) {
+layers.reverse(); }
+        for (var i = 0, len = layers.length; i < len; i++) {
             var layer = layers[i];
             var baseLayer = layer.isBaseLayer;
 
@@ -304,16 +309,17 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
 
                 if (baseLayer) {
                     containsBaseLayers = true;
-                } else {
+                }
+else {
                     containsOverlays = true;
                 }
 
-                // only check a baselayer if it is *the* baselayer, check data
-                //  layers if they are visible
+                // Only check a baselayer if it is *the* baselayer, check data
+                //  layers if they are visible.
                 var checked = (baseLayer) ? (layer == this.map.baseLayer)
                                           : layer.getVisibility();
 
-                // create input element
+                // Create input element.
                 var inputElem = document.createElement("input"),
                     // The input shall have an id attribute so we can use
                     // labels to interact with them.
@@ -341,10 +347,10 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
                     inputElem.disabled = true;
                 }
 
-                // create span
+                // Create span.
                 var labelSpan = document.createElement("label");
-                // this isn't the DOM attribute 'for', but an arbitrary name we
-                // use to find the appropriate input element in <onButtonClick>
+                // This isn't the DOM attribute 'for', but an arbitrary name we
+                // use to find the appropriate input element in <onButtonClick>.
                 labelSpan["for"] = inputElem.id;
                 OpenLayers.Element.addClass(labelSpan, "labelSpan olButton");
                 labelSpan._layer = layer.id;
@@ -356,9 +362,8 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
                 labelSpan.innerHTML = layer.name;
                 labelSpan.style.verticalAlign = (baseLayer) ? "bottom"
                                                             : "baseline";
-                // create line break
+                // Create line break.
                 var br = document.createElement("br");
-
 
                 var groupArray = (baseLayer) ? this.baseLayers
                                              : this.dataLayers;
@@ -368,7 +373,6 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
                     'labelSpan': labelSpan
                 });
 
-
                 var groupDiv = (baseLayer) ? this.baseLayersDiv
                                            : this.dataLayersDiv;
                 groupDiv.appendChild(inputElem);
@@ -377,10 +381,10 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
             }
         }
 
-        // if no overlays, dont display the overlay label
+        // If no overlays, dont display the overlay label.
         this.dataLbl.style.display = (containsOverlays) ? "" : "none";
 
-        // if no baselayers, dont display the baselayer label
+        // If no baselayers, dont display the baselayer label.
         this.baseLbl.style.display = (containsBaseLayers) ? "" : "none";
 
         return this.div;
@@ -393,18 +397,18 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
      *     visual state corresponds to what the user has selected in
      *     the control.
      */
-    updateMap: function() {
+    updateMap: function () {
 
-        // set the newly selected base layer
-        for(var i=0, len=this.baseLayers.length; i<len; i++) {
+        // Set the newly selected base layer.
+        for (var i = 0, len = this.baseLayers.length; i < len; i++) {
             var layerEntry = this.baseLayers[i];
             if (layerEntry.inputElem.checked) {
                 this.map.setBaseLayer(layerEntry.layer, false);
             }
         }
 
-        // set the correct visibilities for the overlays
-        for(var i=0, len=this.dataLayers.length; i<len; i++) {
+        // Set the correct visibilities for the overlays.
+        for (var i = 0, len = this.dataLayers.length; i < len; i++) {
             var layerEntry = this.dataLayers[i];
             layerEntry.layer.setVisibility(layerEntry.inputElem.checked);
         }
@@ -413,15 +417,15 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
 
     /**
      * Method: maximizeControl
-     * Set up the labels and divs for the control
+     * Set up the labels and divs for the control.
      *
      * Parameters:
      * e - {Event}
      */
-    maximizeControl: function(e) {
+    maximizeControl: function (e) {
 
-        // set the div's width and height to empty values, so
-        // the div dimensions can be controlled by CSS
+        // Set the div's width and height to empty values, so
+        // the div dimensions can be controlled by CSS.
         this.div.style.width = "";
         this.div.style.height = "";
 
@@ -435,17 +439,17 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
     /**
      * Method: minimizeControl
      * Hide all the contents of the control, shrink the size,
-     *     add the maximize icon
+     *     add the maximize icon.
      *
      * Parameters:
      * e - {Event}
      */
-    minimizeControl: function(e) {
+    minimizeControl: function (e) {
 
-        // to minimize the control we set its div's width
+        // To minimize the control we set its div's width
         // and height to 0px, we cannot just set "display"
         // to "none" because it would hide the maximize
-        // div
+        // div.
         this.div.style.width = "0px";
         this.div.style.height = "0px";
 
@@ -459,12 +463,12 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
     /**
      * Method: showControls
      * Hide/Show all LayerSwitcher controls depending on whether we are
-     *     minimized or not
+     *     minimized or not.
      *
      * Parameters:
      * minimize - {Boolean}
      */
-    showControls: function(minimize) {
+    showControls: function (minimize) {
 
         this.maximizeDiv.style.display = minimize ? "" : "none";
         this.minimizeDiv.style.display = minimize ? "none" : "";
@@ -474,11 +478,11 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
 
     /**
      * Method: loadContents
-     * Set up the labels and divs for the control
+     * Set up the labels and divs for the control.
      */
-    loadContents: function() {
+    loadContents: function () {
 
-        // layers list div
+        // Layers list div.
         this.layersDiv = document.createElement("div");
         this.layersDiv.id = this.id + "_layersDiv";
         OpenLayers.Element.addClass(this.layersDiv, "layersDiv");
@@ -502,7 +506,8 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
             this.layersDiv.appendChild(this.baseLayersDiv);
             this.layersDiv.appendChild(this.dataLbl);
             this.layersDiv.appendChild(this.dataLayersDiv);
-        } else {
+        }
+else {
             this.layersDiv.appendChild(this.dataLbl);
             this.layersDiv.appendChild(this.dataLayersDiv);
             this.layersDiv.appendChild(this.baseLbl);
@@ -511,7 +516,7 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
 
         this.div.appendChild(this.layersDiv);
 
-        // maximize button div
+        // Maximize button div.
         var img = OpenLayers.Util.getImageLocation('layer-switcher-maximize.png');
         this.maximizeDiv = OpenLayers.Util.createAlphaImageDiv(
                                     "OpenLayers_Control_MaximizeDiv",
@@ -524,7 +529,7 @@ OpenLayers.Control.LayerSwitcherRadio = OpenLayers.Class(OpenLayers.Control, {
 
         this.div.appendChild(this.maximizeDiv);
 
-        // minimize button div
+        // Minimize button div.
         var img = OpenLayers.Util.getImageLocation('layer-switcher-minimize.png');
         this.minimizeDiv = OpenLayers.Util.createAlphaImageDiv(
                                     "OpenLayers_Control_MinimizeDiv",

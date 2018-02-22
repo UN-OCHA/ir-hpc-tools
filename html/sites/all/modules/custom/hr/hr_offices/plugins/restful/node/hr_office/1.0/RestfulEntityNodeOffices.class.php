@@ -5,6 +5,9 @@
  * Contains \RestfulEntityNodeOffices.
  */
 
+/**
+ *
+ */
 class RestfulEntityNodeOffices extends \RestfulEntityBaseNode {
 
   /**

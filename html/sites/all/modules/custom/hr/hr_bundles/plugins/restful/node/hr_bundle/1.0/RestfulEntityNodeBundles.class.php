@@ -5,6 +5,9 @@
  * Contains \RestfulEntityNodeBundles.
  */
 
+/**
+ *
+ */
 class RestfulEntityNodeBundles extends \RestfulEntityBaseNode {
 
   /**
@@ -20,7 +23,6 @@ class RestfulEntityNodeBundles extends \RestfulEntityBaseNode {
     $public_fields['type'] = array(
       'property' => 'field_bundle_type',
     );
-
 
     $public_fields['global_cluster'] = array(
       'property' => 'field_sector',
@@ -82,6 +84,9 @@ class RestfulEntityNodeBundles extends \RestfulEntityBaseNode {
     return $public_fields;
   }
 
+  /**
+   *
+   */
   protected function getEntity($wrapper) {
     $single = FALSE;
     foreach ($wrapper as $id => &$item) {
@@ -94,21 +99,24 @@ class RestfulEntityNodeBundles extends \RestfulEntityBaseNode {
         }
       }
       else {
-        $array_item = (array)$item;
+        $array_item = (array) $item;
         $properties = array_keys($array_item);
         foreach ($properties as $property) {
           if (!in_array($property, array('id', 'label', 'self', 'country'))) {
             unset($array_item[$property]);
           }
         }
-        $item = (object)$array_item;
+        $item = (object) $array_item;
       }
     }
     return $wrapper;
   }
 
+  /**
+   *
+   */
   protected function getClusterCoordinators($wrapper) {
-    $return  = array();
+    $return = array();
     if (!empty($wrapper)) {
       foreach ($wrapper as $item) {
         $tmp = new stdClass();

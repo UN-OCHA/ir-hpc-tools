@@ -1,17 +1,23 @@
-(function($) {
-  $(function() {
+/**
+ * @file
+ */
+
+(function ($) {
+  $(function () {
 
     var activeProtocol = window.location.protocol;
 
-    // Test base Url
-    if ( activeProtocol === 'file' || window.location.host.indexOf('fiddle') >= 0) {
-      var baseurl = 'http://dev1.humanitarianresponse.info/'; // Local
-    } else {
-      var baseurl = activeProtocol + '//' + window.location.host + '/'; // Server
+    // Test base Url.
+    if (activeProtocol === 'file' || window.location.host.indexOf('fiddle') >= 0) {
+      var baseurl = 'http://dev1.humanitarianresponse.info/'; // Local.
+    }
+    else {
+      var baseurl = activeProtocol + '//' + window.location.host + '/'; // Server.
     }
 
     /**
-     * [jsFiddleLink set this to good jsFiddle]
+     * Set this to good jsFiddle.
+     *
      * @type {String}
      */
     var jsFiddleLink = 'http://jsfiddle.net/guillaumev/32ouwf76/';
@@ -19,7 +25,7 @@
     var themeurl = baseurl + 'sites/all/themes/humanitarianresponse/';
     var iconsurl = themeurl + 'assets/images/icons/75/Clusters/';
 
-    //Icons data
+    // Icons data.
     var iconname   = new Array();
     var iconext    = ".png";
     iconname[1]    = "CM" + iconext;
@@ -38,7 +44,7 @@
     iconname[5406] = "MA" + iconext;
     iconname[11]   = "W" + iconext;
 
-    //Aor data (aor[id] = parent)
+    // Aor data (aor[id] = parent)
     var aor   = new Array();
     aor[5403] = "10";
     aor[5404] = "10";
@@ -46,15 +52,15 @@
     aor[5406] = "10";
 
     /**
-     * map overlay tips
-     **/
+     * Map overlay tips.
+     */
 
-    $('#close-overlay, #ok-overlay').click( // closing events
-      function() {
+    $('#close-overlay, #ok-overlay').click(// Closing events.
+      function () {
         var overlay = $(this).parent();
         overlay.animate({
           'opacity': 0
-        }, 800, function() {
+        }, 800, function () {
           overlay.remove();
         });
       });
@@ -62,11 +68,11 @@
     var $mapOverlay = $('#clusters-map-overlay').clone(true);
 
     function appendOverlay($overlay) {
-      // append map
+      // Append map.
       $('#clusters-map').append($overlay);
     }
 
-    // set option btn in burger embed the map
+    // Set option btn in burger embed the map.
     Highcharts.getOptions().exporting.buttons.contextButton.menuItems.push({
         text: 'Embed this map',
         onclick: function () {
@@ -76,20 +82,20 @@
 
     /**
      * @return array of all datas
-     **/
+     */
 
     function getPaginateResults(url, callBack) {
       $.ajax({
         url: url,
         async: false
-      }).done(function(firstResult) {
+      }).done(function (firstResult) {
         var returnResults = firstResult.data;
         while (firstResult.next) {
           $.ajax({
               url: firstResult.next.href,
               async: false
             })
-            .done(function(dataPager) {
+            .done(function (dataPager) {
               firstResult = dataPager;
               returnResults = returnResults.concat(dataPager.data);
             });
@@ -99,12 +105,12 @@
     };
 
     /**
-     * Set allOperations
-     **/
+     * Set allOperations.
+     */
     var allOperations;
     getPaginateResults(
       baseurl + '/api/v1.0/operations?filter[type]=country&fields=self,country,id',
-      function(res) {
+      function (res) {
         allOperations = res;
       }
     );
@@ -118,140 +124,153 @@
 
       if ($("#types .type.active").length == 0) {
         var activeTypes = $("#types .type");
-      } else {
+      }
+else {
         var activeTypes = $("#types .type.active");
       }
 
       var urls = new Array();
-      $.each(activeTypes, function() {
+      $.each(activeTypes, function () {
         urls.push(baseurl + "api/v1.0/bundles?filter[type]=" + $(this).attr('type-id') + "&" + filters.join("&"));
       });
 
-      if($("#global-clusters .sub-icons .icon.active").length == 1) {
+      if ($("#global-clusters .sub-icons .icon.active").length == 1) {
         urls.push(baseurl + "api/v1.0/bundles?filter[type]=aor&" + filters.join("&"));
       }
 
       var countriesMap = new Array();
 
-      $.each(urls, function(i, url) {
-        // Get Data
+      $.each(urls, function (i, url) {
+        // Get Data.
         $.ajax({
             url: url,
             async: false
           })
-          .done(function(data) {
+          .done(function (data) {
             var search = data.data;
-            // Pager loop
+            // Pager loop.
             while (data.next) {
-              delete data; // Reset data
+              delete data; // Reset data.
               $.ajax({
                   url: data.next.href,
                   async: false
                 })
-                .done(function(dataPager) {
+                .done(function (dataPager) {
                   data = dataPager;
                   search = search.concat(data.data);
                 });
             }
 
-            $.each(search, function(i, result) {
+            $.each(search, function (i, result) {
 
               if (result.operation != null) {
                 result.operation[0].clustername = result.label + " (" + result.operation[0].label + ")";
-              } else {
+              }
+else {
                 return true;
               }
 
-              //Lead agencies
-              if(result.lead_agencies != null) {
+              // Lead agencies.
+              if (result.lead_agencies != null) {
                 result.operation[0].lead_agencies = "<br/>Lead agencies: ";
-                $.each(result.lead_agencies, function(i, val) {
-                  if(i > 0) { result.operation[0].lead_agencies+= ", "; }
-                  result.operation[0].lead_agencies+= val.label + " ";
+                $.each(result.lead_agencies, function (i, val) {
+                  if (i > 0) {
+result.operation[0].lead_agencies += ", "; }
+                  result.operation[0].lead_agencies += val.label + " ";
                 });
-              } else {
+              }
+else {
                 result.operation[0].lead_agencies = "";
               }
-              //Co-leads
-              if(result.partners != null) {
+              // Co-leads.
+              if (result.partners != null) {
                 result.operation[0].partners = "<br/>Co-leads: ";
-                $.each(result.partners, function(i, val) {
-                  if(i > 0) { result.operation[0].partners+= ", "; }
-                  result.operation[0].partners+= val.label + " ";
+                $.each(result.partners, function (i, val) {
+                  if (i > 0) {
+result.operation[0].partners += ", "; }
+                  result.operation[0].partners += val.label + " ";
                 });
-              } else {
+              }
+else {
                 result.operation[0].partners = "";
               }
-              //Activation document
-              if(result.activation_document != null) {
+              // Activation document.
+              if (result.activation_document != null) {
                 // @Modifs here
                 result.operation[0].activation_document = "<br/>Activation documents: " + result.activation_document.label;
-              } else {
+              }
+else {
                 result.operation[0].activation_document = "";
               }
-              //Cluster coordinators
-              if(result.cluster_coordinators != null) {
+              // Cluster coordinators.
+              if (result.cluster_coordinators != null) {
                 result.operation[0].cluster_coordinators = "<br/>Cluster coordinators: ";
-                $.each(result.cluster_coordinators, function(i, val) {
-                  if(i > 0) { result.operation[0].cluster_coordinators+= "- "; }
+                $.each(result.cluster_coordinators, function (i, val) {
+                  if (i > 0) {
+result.operation[0].cluster_coordinators += "- "; }
                   result.operation[0].cluster_coordinators += val.name + " (" + val.email + ") ";
                 });
-              } else {
+              }
+else {
                 result.operation[0].cluster_coordinators = "";
               }
 
-              //Lead agencies
+              // Lead agencies.
               if (result.lead_agencies != null) {
                 result.operation[0].lead_agencies = "<br/>Lead agencies: ";
-                $.each(result.lead_agencies, function(i, val) {
+                $.each(result.lead_agencies, function (i, val) {
                   if (i > 0) {
                     result.operation[0].lead_agencies += ", ";
                   }
                   result.operation[0].lead_agencies += val.label + " ";
                 });
-              } else {
+              }
+else {
                 result.operation[0].lead_agencies = "";
               }
 
-              //Co-leads
+              // Co-leads.
               if (result.partners != null) {
                 result.operation[0].partners = "<br/>Co-leads: ";
-                $.each(result.partners, function(i, val) {
+                $.each(result.partners, function (i, val) {
                   if (i > 0) {
                     result.operation[0].partners += ", ";
                   }
                   result.operation[0].partners += val.label + " ";
                 });
-              } else {
+              }
+else {
                 result.operation[0].partners = "";
               }
 
-            //Activation document
+            // Activation document.
             if (result.activation_document != null) {
               result.operation[0].activation_document = "<br/>Activation documents: " + result.activation_document.label;
-            } else {
+            }
+else {
               result.operation[0].activation_document = "";
             }
-            //Cluster coordinators
+            // Cluster coordinators.
             if (result.cluster_coordinators != null) {
               result.operation[0].cluster_coordinators = "<br/>Cluster coordinators: ";
-              $.each(result.cluster_coordinators, function(i, val) {
+              $.each(result.cluster_coordinators, function (i, val) {
                 if (i > 0) {
                   result.operation[0].cluster_coordinators += "- ";
                 }
                 result.operation[0].cluster_coordinators += val.name + " (" + val.email + ") ";
               });
-            } else {
+            }
+else {
               result.operation[0].cluster_coordinators = "";
             }
 
-            //Color
+            // Color.
             if (result.type == "cluster" || result.type == "aor") {
               result.operation[0].color = '#cc606d';
             }
-            
-            // add country object
-            $.each(allOperations, function(i, data) {
+
+            // Add country object.
+            $.each(allOperations, function (i, data) {
               var country = data.country;
               if (country != null && result.operation[0].id == data.id) {
                 result.operation[0].country = country;
@@ -263,8 +282,8 @@
         });
       });
 
-      $(countriesMap).each(function(i) {
-        // Set country code
+      $(countriesMap).each(function (i) {
+        // Set country code.
         if (countriesMap[i].country != null) {
           countriesMap[i].mapCode = countriesMap[i].country.pcode;
         }
@@ -274,17 +293,18 @@
     }
 
     /**
-     * [initMap Initiate the chartmap]
-     * @param  {[obj]} mapData [datas formatted highchat way]
+     * Initiate the chartmap.
+     *
+     * @param {[obj]} mapData [datas formatted highchat way]
      */
     function initMap(mapData) {
       $('#clusters-map').highcharts('Map', {
         colors: ['#cd8064'],
         chart: {
-          backgroundColor: '#E0ECED', // bg map
+          backgroundColor: '#E0ECED', // Bg map.
           borderRadius: 0,
           events: {
-            load: function() {
+            load: function () {
               $("#clusters-map").removeClass('loading');
             }
           }
@@ -322,33 +342,34 @@
       });
     }
 
-    //Define click action
+    // Define click action.
     var $globalClusters = $("#global-clusters");
 
-    $globalClusters.on("mousedown", ".icon", 
-      function() {
+    $globalClusters.on("mousedown", ".icon",
+      function () {
         $("#clusters-map").addClass('loading');
-      }).on("click", ".icon", function() {
+      }).on("click", ".icon", function () {
         $(".icon.active").removeClass('active');
         $(this).addClass('active');
         updateMap();
       });
-    $("#types").on("mousedown", ".type", 
-      function() {
+    $("#types").on("mousedown", ".type",
+      function () {
         $("#clusters-map").addClass('loading');
-      }).on("click", ".type", function() {
+      }).on("click", ".type", function () {
         $(this).toggleClass('active');
         updateMap();
       });
 
-    //Get Icon list
-    $.getJSON(baseurl + 'api/v1.0/global_clusters', function(data) {
+    // Get Icon list.
+    $.getJSON(baseurl + 'api/v1.0/global_clusters', function (data) {
       var global_clusters = data.data;
       var definedClusters = {};
-      $.each(global_clusters, function(i, global_cluster) { // Render Parent Cluster
+      $.each(global_clusters, function (i, global_cluster) { // Render Parent Cluster.
         if (typeof aor[global_cluster.id] == "undefined") {
           $("#global-clusters").append('<div id="cluster-' + global_cluster.id + '" cluster-id="' + global_cluster.id + '" class="icon"><img src="' + iconsurl + iconname[global_cluster.id] + '" alt="' + global_cluster.label + '"/></div>');
-        } else {
+        }
+else {
           definedClusters[global_cluster.id] = global_cluster;
         }
       });
@@ -361,7 +382,7 @@
       }
     });
 
-    $globalClusters.on('mouseenter', '.icon', function() { // tooltip hover clusters
+    $globalClusters.on('mouseenter', '.icon', function () { // Tooltip hover clusters.
       var img = $(this).find('img'),
         title = img.attr('alt');
       var tooltip = [
@@ -370,7 +391,7 @@
         '</div>'
       ].join('');
       img.before(tooltip);
-    }).on('mouseleave', '.icon', function() {
+    }).on('mouseleave', '.icon', function () {
       $(this).children().first().fadeOut().remove();
     });
 

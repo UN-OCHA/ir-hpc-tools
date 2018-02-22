@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Bookmarks feature.
@@ -6,6 +7,9 @@
 
 include_once 'hr_bookmarks.features.inc';
 
+/**
+ * Implements hook_block_info().
+ */
 function hr_bookmarks_block_info() {
   $blocks['hr_favorite_spaces'] = array(
     'info' => t('Favorite spaces'),
@@ -13,8 +17,10 @@ function hr_bookmarks_block_info() {
   return $blocks;
 }
 
+/**
+ * Implements hook_block_view().
+ */
 function hr_bookmarks_block_view($delta = '') {
-  global $user;
   $block = array();
   switch ($delta) {
     case 'hr_favorite_spaces':
@@ -32,13 +38,13 @@ function hr_bookmarks_block_view($delta = '') {
           <ul class="dropdown-menu">';
         if (isset($flags['hr_favorite_space'])) {
           foreach ($flags['hr_favorite_space'] as $gid => $space) {
-            //debug($space);
+            // debug($space);
             $node = node_load($gid);
-            $block['content'] .= '<li>'.l($node->title, 'node/'.$gid).'</li>';
+            $block['content'] .= '<li>' . l($node->title, 'node/' . $gid) . '</li>';
           }
         }
         if ($context_gid != NULL) {
-          $block['content'] .= '<li>'.flag_create_link('hr_favorite_space', $context_gid, array('after_flagging' => FALSE)).'</li>';
+          $block['content'] .= '<li>' . flag_create_link('hr_favorite_space', $context_gid, array('after_flagging' => FALSE)) . '</li>';
         }
         $block['content'] .= '</ul></div>';
       }
@@ -46,4 +52,3 @@ function hr_bookmarks_block_view($delta = '') {
   }
   return $block;
 }
-

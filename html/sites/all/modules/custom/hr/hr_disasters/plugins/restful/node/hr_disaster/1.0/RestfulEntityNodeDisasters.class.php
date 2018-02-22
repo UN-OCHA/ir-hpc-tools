@@ -5,6 +5,9 @@
  * Contains \RestfulEntityNodeDisasters.
  */
 
+/**
+ *
+ */
 class RestfulEntityNodeDisasters extends \RestfulEntityBaseNode {
 
   /**
@@ -33,7 +36,7 @@ class RestfulEntityNodeDisasters extends \RestfulEntityBaseNode {
     $public_fields['reliefweb_id'] = array(
       'property' => 'field_reliefweb_id',
     );
-    
+
     $public_fields['body-html'] = array(
       'property' => 'body',
       'sub_property' => 'value',
@@ -64,31 +67,40 @@ class RestfulEntityNodeDisasters extends \RestfulEntityBaseNode {
     return $public_fields;
   }
 
+  /**
+   *
+   */
   protected function getEntity($wrapper) {
     foreach ($wrapper as &$item) {
-      $array_item = (array)$item;
+      $array_item = (array) $item;
       $properties = array_keys($array_item);
       foreach ($properties as $property) {
         if (!in_array($property, array('id', 'label', 'self'))) {
           unset($array_item[$property]);
         }
       }
-      $item = (object)$array_item;
+      $item = (object) $array_item;
     }
     return $wrapper;
   }
 
+  /**
+   *
+   */
   protected function getBodyRaw($value) {
     return strip_tags($value);
   }
 
+  /**
+   *
+   */
   protected function getDisasterUrl($wrapper) {
     $rid = $wrapper->field_reliefweb_id->value();
     if (!$rid) {
       return $this->versionedUrl($wrapper->getIdentifier());
     }
     else {
-      return 'http://api.reliefweb.int/v1/disasters/'.$rid;
+      return 'http://api.reliefweb.int/v1/disasters/' . $rid;
     }
   }
 

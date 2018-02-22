@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Events feature.
@@ -8,12 +9,15 @@ include_once 'hr_events.features.inc';
 
 define('HR_EVENTS_WKHTMLTOPDF', 'http://localhost:8441/htmltopdf');
 
+/**
+ * Get base URL.
+ */
 function hr_events_wkhtmltopdf_url() {
   return variable_get('hr_events_wkhtmltopdf_url', HR_EVENTS_WKHTMLTOPDF);
 }
 
 /**
- * Implements hook_og_features_registry()
+ * Implements hook_og_features_registry().
  */
 function hr_events_og_features_registry() {
   $registry = array();
@@ -31,7 +35,7 @@ function hr_events_og_features_registry() {
 }
 
 /**
- * Implements hook_views_query_alter()
+ * Implements hook_views_query_alter().
  *
  * Makes the clusters/sectors filter of the calendar work
  * Makes the calendar view available to disasters
@@ -42,37 +46,44 @@ function hr_events_views_query_alter(&$view, &$query) {
     $add_join = FALSE;
     foreach ($query->where as &$condition_group) {
       foreach ($condition_group['conditions'] as &$condition) {
-        // Makes the calendar view available to disasters
+        // Makes the calendar view available to disasters.
         if ($condition['field'] == 'og_membership.gid = :og_membership_og_group_ref_target_id2 ' && $condition['operator'] == 'formula') {
           $nid = $condition['value'][':og_membership_og_group_ref_target_id2'];
           $node = node_load($nid);
           if ($node->type == 'hr_disaster') {
-            $join = new views_join;
+            $join = new views_join();
             $join->construct('field_data_field_disasters',
               'node',
               'nid',
               'entity_id'
             );
             $view->query->add_relationship('field_data_field_disasters', $join, 'node');
-            $condition = array('field' => 'field_data_field_disasters.field_disasters_target_id', 'value' => $nid, 'operator' => '=');
+            $condition = array(
+              'field' => 'field_data_field_disasters.field_disasters_target_id',
+              'value' => $nid,
+              'operator' => '=',
+            );
           }
         }
-        // If we are filtering the calendar by cluster/sector
+        // If we are filtering the calendar by cluster/sector.
         if ($condition['field'] == 'og_membership.gid' && $condition['operator'] == 'in') {
           $condition['field'] = 'og_membership2.gid';
           $add_join = TRUE;
         }
       }
     }
-    // Then add a join to og_membership to the query
+    // Then add a join to og_membership to the query.
     if ($add_join) {
-      $join = new views_join;
+      $join = new views_join();
       $join->construct('og_membership',
-          'node',  // left table
-          'nid',   // left field
-          'etid'   // field
+      // Left table.
+          'node',
+      // Left field.
+          'nid',
+      // field.
+          'etid'
       );
-      $view->query->add_relationship('og_membership2',$join,'node');
+      $view->query->add_relationship('og_membership2', $join, 'node');
     }
   }
 }
@@ -80,7 +91,7 @@ function hr_events_views_query_alter(&$view, &$query) {
 /**
  * Implements hook_search_api_views_query_alter().
  *
- * Makes the events view available for disasters
+ * Makes the events view available for disasters.
  */
 function hr_events_search_api_views_query_alter(&$view, &$query) {
   if ($view->name == 'hr_events') {
@@ -126,14 +137,14 @@ function hr_events_views_pre_render(&$view) {
         $params[$key] = $param;
       }
     }
-    $view->feed_icon .= '<li>'.l('PDF', str_replace('/events', '/events/pdf', current_path()), array('attributes' => array('target' => 'about:blank'), 'query' => $params)).'</li>';
+    $view->feed_icon .= '<li>' . l(t('PDF'), str_replace('/events', '/events/pdf', current_path()), array('attributes' => array('target' => 'about:blank'), 'query' => $params)) . '</li>';
   }
 }
 
 /**
  * Implements hook_views_pre_view().
  *
- * Shows the selected filters in the print display for PDF output
+ * Shows the selected filters in the print display for PDF output.
  */
 function hr_events_views_pre_view(&$view, &$display_id, &$args) {
   if ($view->name == 'hr_events_calendar' && ($display_id == 'print_master' || $display_id == 'print_week' || $display_id == 'print_day')) {
@@ -149,10 +160,10 @@ function hr_events_views_pre_view(&$view, &$display_id, &$args) {
     foreach ($filters as $key => $filter) {
       if (isset($filter['exposed']) && $filter['exposed'] == TRUE && isset($_GET[$key]) && $_GET[$key] != 'All') {
         if ($i == 0) {
-          $header .= '<div class="filters">'.t('Filter criteria');
+          $header .= '<div class="filters">' . t('Filter criteria');
         }
         $entity = entity_load_single($entity_types[$key], $_GET[$key]);
-        $header .= '<span class="filter">'.entity_label($entity_types[$key], $entity).'</span>';
+        $header .= '<span class="filter">' . entity_label($entity_types[$key], $entity) . '</span>';
         $i++;
       }
     }
@@ -178,6 +189,9 @@ function hr_events_menu() {
   return $items;
 }
 
+/**
+ * Create PDF.
+ */
 function hr_events_pdf_output($nid) {
   $current_params = array();
   foreach ($_GET as $key => $param) {
@@ -191,7 +205,7 @@ function hr_events_pdf_output($nid) {
   $label = entity_label('node', $node);
   $label = transliteration_clean_filename($label);
   $html_path = str_replace('/pdf', '/print', $path);
-  // Determine period
+  // Determine period.
   $period = 'month';
   if (strpos($path, 'week') !== FALSE) {
     $period = 'week';
@@ -199,8 +213,9 @@ function hr_events_pdf_output($nid) {
   elseif (strpos($path, 'day') !== FALSE) {
     $period = 'day';
   }
+  // @codingStandardsIgnoreLine
   $period = t($period);
-  // Determine date
+  // Determine date.
   $date = date('Y-m');
   $date_pos = strpos($path, '/20');
   if ($date_pos !== FALSE) {
@@ -213,14 +228,14 @@ function hr_events_pdf_output($nid) {
       $date = date('Y-m-d');
     }
   }
-  // Print PDF using wkhtmltopdf service
+  // Print PDF using wkhtmltopdf service.
   $html_url = url($html_path, array('absolute' => TRUE, 'query' => $current_params));
   $params = array(
     'url' => $html_url,
     'params' => array(
       'print-media-type' => 'true',
       'footer-left' => t('Page [page] of [topage]'),
-      'footer-right' => t('Powered by HUMANITARIAN RESPONSE. Date of creation: [date]')."\nhttp://www.humanitarianresponse.info",
+      'footer-right' => t("Powered by HUMANITARIAN RESPONSE. Date of creation: [date]\nhttp://www.humanitarianresponse.info"),
       'footer-font-name' => 'Exo 2',
       'footer-font-size' => '8',
       'footer-spacing' => '2',
@@ -233,14 +248,14 @@ function hr_events_pdf_output($nid) {
     'method' => 'POST',
   );
   drupal_add_http_header('Content-Type', 'application/pdf; charset=utf-8');
-  drupal_add_http_header('Content-Disposition', 'attachment;filename="'.t('calendar').'-'.$label.'-'.$period.'-'.$date.'.pdf"');
+  drupal_add_http_header('Content-Disposition', 'attachment;filename="' . t('calendar') . '-' . $label . '-' . $period . '-' . $date . '.pdf"');
   $output = chr_curl_http_request($url, $req_params);
   echo $output->data;
   exit;
 }
 
 /**
- * Implements hook_form_FORM_ID_alter()
+ * Implements hook_form_FORM_ID_alter().
  */
 function hr_events_form_hr_event_node_form_alter(&$form, &$form_state, $form_id) {
   _hr_core_fix_entity_reference_ajax_calls($form, $form_state);
@@ -286,7 +301,7 @@ function hr_events_form_hr_event_node_form_alter(&$form, &$form_state, $form_id)
 }
 
 /**
- * Implements hook_clone_node_alter.
+ * Implements hook_clone_node_alter().
  */
 function hr_events_clone_node_alter(&$node, $context) {
   if ($node->type != 'hr_event') {

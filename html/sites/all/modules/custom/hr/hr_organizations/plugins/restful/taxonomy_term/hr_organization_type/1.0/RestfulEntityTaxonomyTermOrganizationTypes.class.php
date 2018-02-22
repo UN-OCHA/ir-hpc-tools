@@ -5,6 +5,9 @@
  * Contains \RestfulEntityTaxonomyTermOrganizationTypes.
  */
 
+/**
+ *
+ */
 class RestfulEntityTaxonomyTermOrganizationTypes extends \RestfulEntityBaseTaxonomyTerm {
 
   /**
@@ -19,6 +22,5 @@ class RestfulEntityTaxonomyTermOrganizationTypes extends \RestfulEntityBaseTaxon
 
     return $public_fields;
   }
-
 
 }

@@ -5,6 +5,9 @@
  * Contains \RestfulEntityTaxonomyTermOrganizations.
  */
 
+/**
+ * RestfulEntityTaxonomyTermOrganizations class.
+ */
 class RestfulEntityTaxonomyTermOrganizations extends \RestfulEntityBaseTaxonomyTerm {
 
   /**

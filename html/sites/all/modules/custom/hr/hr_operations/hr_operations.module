@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Operations feature.
@@ -26,14 +27,15 @@ function hr_operations_block_info() {
  * Implements hook_block_view().
  */
 function hr_operations_block_view($delta = '') {
-  switch($delta) {
+  switch ($delta) {
     case 'operations_map':
       drupal_add_js('https://code.highcharts.com/maps/highmaps.js', 'external');
       drupal_add_js('https://code.highcharts.com/mapdata/custom/world.js', 'external');
       drupal_add_js(drupal_get_path('module', 'hr_operations') . '/js/hr_operations_map.js', 'file');
-      $block['subject'] = t('');
+      $block['subject'] = '';
       $block['content'] = '<div id="operations_map"></div>';
       break;
+
     case 'operations_dropdown':
       drupal_add_library('chosen', 'drupal.chosen');
       $block['subject'] = t('Operations');
@@ -83,16 +85,17 @@ function hr_operations_block_view($delta = '') {
       $block['content'] .= '<p class="text-center"><select id="operations-dropdown" data-placeholder="All Operations" class="hr-goto-dropdown"><option value="_none"></option>';
       $labels = _hr_operations_get_active_operation_labels();
       foreach ($labels as $path => $label) {
-        $block['content'] .= '<option value="'.$path.'">'.$label.'</option>';
+        $block['content'] .= '<option value="' . $path . '">' . $label . '</option>';
       }
       $block['content'] .= '</select></p>';
       break;
+
     case 'operations_status':
-      $block['subject'] = t('');
+      $block['subject'] = '';
       $node_data = node_load(arg(1));
-      if(isset($node_data->field_operation_status['und'][0]['value'])) {
-        if($node_data->field_operation_status['und'][0]['value'] != "active" && $node_data->field_operation_status['und'][0]['value'] != "") {
-          $block['content'] = '<div class="operation-status ' . $node_data->field_operation_status['und'][0]['value'] . '">' . $node_data->field_operation_status['und'][0]['value'] . '<i class="fa fa-info"></i></div>';
+      if (isset($node_data->field_operation_status[LANGUAGE_NONE][0]['value'])) {
+        if ($node_data->field_operation_status[LANGUAGE_NONE][0]['value'] != "active" && $node_data->field_operation_status[LANGUAGE_NONE][0]['value'] != "") {
+          $block['content'] = '<div class="operation-status ' . $node_data->field_operation_status[LANGUAGE_NONE][0]['value'] . '">' . $node_data->field_operation_status[LANGUAGE_NONE][0]['value'] . '<i class="fa fa-info"></i></div>';
         }
       }
       break;
@@ -100,6 +103,9 @@ function hr_operations_block_view($delta = '') {
   return $block;
 }
 
+/**
+ * Get labels.
+ */
 function _hr_operations_get_active_operation_labels() {
   $query = new EntityFieldQuery();
   $result = $query
@@ -111,7 +117,7 @@ function _hr_operations_get_active_operation_labels() {
   $entities = entity_load('node', array_keys($result['node']));
   $labels = array();
   foreach ($entities as $nid => $entity) {
-    $path = url('node/'.$nid, array('absolute' => TRUE));
+    $path = url('node/' . $nid, array('absolute' => TRUE));
     if (!empty($entity->field_website)) {
       $path = $entity->field_website[LANGUAGE_NONE][0]['url'];
     }
@@ -121,6 +127,9 @@ function _hr_operations_get_active_operation_labels() {
   return $labels;
 }
 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
 function hr_operations_form_hr_operation_node_form_alter(&$form, &$form_state) {
   _hr_core_fix_entity_reference_ajax_calls($form, $form_state);
   // Disable title and country in edit mode.

@@ -1,3 +1,7 @@
+/**
+ * @file
+ */
+
 (function ($) {
   Drupal.behaviors.hr_toolsAnalytics = {
     attach: function (context, settings) {
@@ -16,7 +20,7 @@
       function handleReportingResults(results, headers) {
         var output = [];
         if (!results.code) {
-          for( var i = 0, report; report = results.reports[i]; ++i ) {
+          for (var i = 0, report; report = results.reports[i]; ++i) {
             if (report.data.rows && report.data.rows.length) {
               var table = ['<table>'];
 
@@ -27,14 +31,14 @@
               }
               else {
                 table.push('<tr><th>', report.columnHeader.dimensions.join('</th><th>').replace('ga:', ''), '</th>');
-                for (var i=0, header; header = report.columnHeader.metricHeader.metricHeaderEntries[i]; ++i) {
+                for (var i = 0, header; header = report.columnHeader.metricHeader.metricHeaderEntries[i]; ++i) {
                   table.push('<th>', header.name.replace('ga:', ''), '</th>');
                 }
                 table.push('</tr>');
               }
 
-              for (var rowIndex=0, row; row = report.data.rows[rowIndex]; ++rowIndex) {
-                for(var dateRangeIndex=0, dateRange; dateRange = row.metrics[dateRangeIndex]; ++dateRangeIndex) {
+              for (var rowIndex = 0, row; row = report.data.rows[rowIndex]; ++rowIndex) {
+                for (var dateRangeIndex = 0, dateRange; dateRange = row.metrics[dateRangeIndex]; ++dateRangeIndex) {
                   table.push('<tr><td>', row.dimensions.join('</td><td>'), '</td>');
                   table.push('<td>', dateRange.values.join('</td><td>'), '</td></tr>');
                 }
@@ -42,12 +46,14 @@
               table.push('</table>');
 
               output.push(table.join(''));
-            } else {
+            }
+else {
               output.push('<p>No rows found.</p>');
             }
           }
           return output;
-        } else {
+        }
+else {
           console.log('There was an error: ' + results.message);
         }
       }
@@ -68,7 +74,7 @@
             'type': 'PIE',
             'options': {
               'width': '100%',
-              'pieHole': 4/9
+              'pieHole': 4 / 9
             }
           }
         });
@@ -105,7 +111,7 @@
             'type': 'PIE',
             'options': {
               'width': '100%',
-              'pieHole': 4/9,
+              'pieHole': 4 / 9,
             }
           }
         });
@@ -190,7 +196,7 @@
         });
       }
 
-      gapi.analytics.ready(function() {
+      gapi.analytics.ready(function () {
         gapi.analytics.auth.authorize({
           'serverAuth': {
             'access_token': token

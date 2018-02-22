@@ -1,3 +1,10 @@
+<?php
+
+/**
+ * @file
+ * Disabled contacts template.
+ */
+?>
 <div class="contacts-disabled-form-wrapper">
   <div class="contacts-disabled-form">
     <div class="message">

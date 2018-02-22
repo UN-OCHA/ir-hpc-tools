@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Disasters feature.
@@ -9,7 +10,7 @@ define('HR_DISASTERS_RELIEFWEB_API', 'http://api.reliefweb.int/v1/disasters');
 include_once 'hr_disasters.features.inc';
 
 /**
- * Implements hook_og_features_registry()
+ * Implements hook_og_features_registry().
  */
 function hr_disasters_og_features_registry() {
   $registry = array();
@@ -27,18 +28,19 @@ function hr_disasters_og_features_registry() {
 }
 
 /**
- * Implements hook_cron()
- * Updates the latest 50 disaster items taken from Reliefweb
+ * Implements hook_cron().
+ *
+ * Updates the latest 50 disaster items taken from Reliefweb.
  */
 function hr_disasters_cron() {
   hr_disasters_reliefweb_disasters(50);
 }
 
 /**
- * Updates the latest number disaster items taken from Reliefweb
+ * Updates the latest number disaster items taken from Reliefweb.
  */
 function hr_disasters_reliefweb_disasters($number) {
-  $url = HR_DISASTERS_RELIEFWEB_API.'?sort[]=date:desc&limit='.$number;
+  $url = HR_DISASTERS_RELIEFWEB_API . '?sort[]=date:desc&limit=' . $number;
   $json = file_get_contents($url);
   $disasters = json_decode($json);
   foreach ($disasters->data as $data) {
@@ -47,12 +49,12 @@ function hr_disasters_reliefweb_disasters($number) {
 }
 
 /**
- * Updates one single disaster from Reliefweb
+ * Updates one single disaster from Reliefweb.
  */
 function _hr_disasters_reliefweb_disaster($id) {
-  $url = HR_DISASTERS_RELIEFWEB_API.'/'.$id;
+  $url = HR_DISASTERS_RELIEFWEB_API . '/' . $id;
   $json = file_get_contents($url);
-  // Process the request only if it worked
+  // Process the request only if it worked.
   if (!empty($json)) {
     $disaster = json_decode($json);
     $fields = $disaster->data[0]->fields;
@@ -77,9 +79,9 @@ function _hr_disasters_reliefweb_disaster($id) {
         $nid = reset($nids);
         $node = node_load($nid);
         $wrapper = entity_metadata_wrapper('node', $nid);
-        if(isset($wrapper->field_hr_disaster_sync_disaster)) {
+        if (isset($wrapper->field_hr_disaster_sync_disaster)) {
           $field_sync_disaster = $wrapper->field_hr_disaster_sync_disaster->value();
-          if(empty($field_sync_disaster)) {
+          if (empty($field_sync_disaster)) {
             if (_hr_disasters_reliefweb_disaster_map($node, $fields)) {
               node_save($node);
             }
@@ -101,7 +103,7 @@ function _hr_disasters_reliefweb_disaster($id) {
 }
 
 /**
- * Helper function: maps disaster fields from Reliefweb API to hr_disaster nodes
+ * Maps disaster fields from Reliefweb API to hr_disaster nodes.
  */
 function _hr_disasters_reliefweb_disaster_map(&$node, $fields) {
   $glide_type = taxonomy_get_term_by_name($fields->type[0]->name, 'hr_glide_type');
@@ -168,7 +170,7 @@ function _hr_disasters_reliefweb_disaster_map(&$node, $fields) {
 
   $current_locations = array();
   if (isset($node->og_group_ref[LANGUAGE_NONE])) {
-    foreach ($node->og_group_ref[LANGUAGE_NONE] as $key => $value) {
+    foreach ($node->og_group_ref[LANGUAGE_NONE] as $value) {
       $current_locations[] = $value['target_id'];
     }
   }
@@ -177,7 +179,7 @@ function _hr_disasters_reliefweb_disaster_map(&$node, $fields) {
   }
 
   foreach ($fields->country as $country) {
-    // Make sure country exists as an operation
+    // Make sure country exists as an operation.
     $nid = _hr_disasters_get_operation_by_name($country->name);
     if (!empty($nid)) {
       if (!in_array($nid, $current_locations)) {
@@ -191,7 +193,7 @@ function _hr_disasters_reliefweb_disaster_map(&$node, $fields) {
 }
 
 /**
- * Helper function: retrieves an operation by name
+ * Helper function: retrieves an operation by name.
  */
 function _hr_disasters_get_operation_by_name($name) {
   $query = new EntityFieldQuery();
