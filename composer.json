@@ -1,6 +1,6 @@
 {
-    "name": "unocha/ctest",
-    "description": "The UN-OCHA composer drupal project skeleton",
+    "name": "unocha/ir-hpc-tools",
+    "description": "Indicator registry drupal 7 site.",
     "type": "project",
     "require": {
         "php": ">=7.1",
@@ -11,10 +11,7 @@
         "ext-pdo": "*",
         "ext-pdo_mysql": "*",
         "ext-xml": "*",
-        "drupal/composer_autoloader": "^1.0",
-        "drupal/ctools": "^1.12",
-        "drupal/drupal": "7.56",
-        "drupal/views": "^3.18"
+        "drupal/composer_autoloader": "^1.0"
     },
     "require-dev": {
         "drush/drush": "~8.0",
@@ -27,8 +24,8 @@
     },
     "authors": [
         {
-            "name": "Peter Lieverdink",
-            "email": "peterl@humanitarianresponse.info"
+            "name": "OCHA",
+            "email": "info@humanitarianresponse.info"
         }
     ],
     "repositories": [
