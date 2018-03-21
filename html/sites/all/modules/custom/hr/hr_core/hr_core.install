@@ -286,3 +286,28 @@ function hr_core_update_7016() {
 
   module_enable($enable);
 }
+
+/**
+ * Delete all beans.
+ */
+function hr_core_update_7017() {
+  $beans = bean_get_all_beans();
+  foreach ($beans as $bean) {
+    $bean->delete();
+  }
+
+  $disable = array('bean_pane', 'bean');
+
+  module_disable($disable);
+  drupal_uninstall_modules($disable);
+}
+
+/**
+ * Disable modules.
+ */
+function hr_core_update_7017() {
+  $disable = array('context_og', 'calendar');
+
+  module_disable($disable);
+  drupal_uninstall_modules($disable);
+}
