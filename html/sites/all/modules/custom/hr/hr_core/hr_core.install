@@ -311,3 +311,13 @@ function hr_core_update_7017() {
   module_disable($disable);
   drupal_uninstall_modules($disable);
 }
+
+/**
+ * Disable organic groups.
+ */
+function hr_core_update_7017() {
+  $disable = array('og');
+
+  module_disable($disable);
+  drupal_uninstall_modules($disable);
+}
