@@ -22,7 +22,6 @@ dependencies[] = link_icons
 dependencies[] = list
 dependencies[] = masquerade
 dependencies[] = node
-dependencies[] = og
 dependencies[] = openlayers
 dependencies[] = openlayers_views
 dependencies[] = options

@@ -22,7 +22,6 @@ dependencies[] = linkit
 dependencies[] = list
 dependencies[] = locale
 dependencies[] = node
-dependencies[] = og_menu
 dependencies[] = openlayers
 dependencies[] = panelizer
 dependencies[] = panels
