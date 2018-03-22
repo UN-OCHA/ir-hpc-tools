@@ -305,7 +305,7 @@ function hr_core_update_7017() {
 /**
  * Disable modules.
  */
-function hr_core_update_7017() {
+function hr_core_update_7018() {
   $disable = array('context_og', 'calendar');
 
   module_disable($disable);
@@ -315,8 +315,39 @@ function hr_core_update_7017() {
 /**
  * Disable organic groups.
  */
-function hr_core_update_7017() {
+function hr_core_update_7019() {
   $disable = array('og');
+
+  module_disable($disable);
+  drupal_uninstall_modules($disable);
+}
+
+/**
+ * Disable all views except indicator.
+ */
+function hr_core_update_7020() {
+  ctools_include('export');
+  $views = views_get_all_views();
+
+  foreach ($views as $view) {
+    if ($view->name == 'hr_indicators') {
+      continue;
+    }
+    ctools_export_crud_set_status('views_view', $view, TRUE);
+  }
+}
+
+/**
+ * Disable organic groups.
+ */
+function hr_core_update_7021() {
+  $disable = array(
+    'hr_layout',
+    'hr_pages',
+    'hr_search',
+    'hr_spaces',
+    'hr_users',
+  );
 
   module_disable($disable);
   drupal_uninstall_modules($disable);
