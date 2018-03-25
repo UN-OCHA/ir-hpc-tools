@@ -1,3 +1,8 @@
+# Theme
+
+node_modules folder is committed as well, is this needed?
+
+
 # Feeds
 
 On admin/structure/feeds
