@@ -338,7 +338,7 @@ function hr_core_update_7020() {
 }
 
 /**
- * Disable organic groups.
+ * Disable obsolete HR modules.
  */
 function hr_core_update_7021() {
   $disable = array(
@@ -347,6 +347,20 @@ function hr_core_update_7021() {
     'hr_search',
     'hr_spaces',
     'hr_users',
+  );
+
+  module_disable($disable);
+  drupal_uninstall_modules($disable);
+}
+
+/**
+ * Disable obsolete modules.
+ */
+function hr_core_update_7022() {
+  $disable = array(
+    'field_collection',
+    'flag',
+    'bootstrap_tour',
   );
 
   module_disable($disable);
