@@ -103,16 +103,6 @@ function hr_indicators_views_default_views() {
   $handler->display->display_options['sorts']['field_ind_code']['id'] = 'field_ind_code';
   $handler->display->display_options['sorts']['field_ind_code']['table'] = 'search_api_index_default_node_index';
   $handler->display->display_options['sorts']['field_ind_code']['field'] = 'field_ind_code';
-  /* Contextual filter: Indexed Node: Space(s) */
-  $handler->display->display_options['arguments']['og_group_ref']['id'] = 'og_group_ref';
-  $handler->display->display_options['arguments']['og_group_ref']['table'] = 'search_api_index_default_node_index';
-  $handler->display->display_options['arguments']['og_group_ref']['field'] = 'og_group_ref';
-  $handler->display->display_options['arguments']['og_group_ref']['default_action'] = 'not found';
-  $handler->display->display_options['arguments']['og_group_ref']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['og_group_ref']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['og_group_ref']['summary_options']['override'] = TRUE;
-  $handler->display->display_options['arguments']['og_group_ref']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['og_group_ref']['not'] = 0;
   /* Filter criterion: Indexed Node: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_default_node_index';
@@ -286,15 +276,6 @@ function hr_indicators_views_default_views() {
   $handler->display->display_options['fields']['field_ind_cross_tagging']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_ind_cross_tagging']['bypass_access'] = 0;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Indexed Node: Space(s) */
-  $handler->display->display_options['arguments']['og_group_ref']['id'] = 'og_group_ref';
-  $handler->display->display_options['arguments']['og_group_ref']['table'] = 'search_api_index_default_node_index';
-  $handler->display->display_options['arguments']['og_group_ref']['field'] = 'og_group_ref';
-  $handler->display->display_options['arguments']['og_group_ref']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['og_group_ref']['default_argument_type'] = 'og_context';
-  $handler->display->display_options['arguments']['og_group_ref']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['og_group_ref']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['og_group_ref']['not'] = 0;
   $handler->display->display_options['path'] = 'node/%/indicators/xls';
   $handler->display->display_options['displays'] = array(
     'table' => 'table',
@@ -451,15 +432,6 @@ function hr_indicators_views_default_views() {
   $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
   $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Indexed Node: Space(s) */
-  $handler->display->display_options['arguments']['og_group_ref']['id'] = 'og_group_ref';
-  $handler->display->display_options['arguments']['og_group_ref']['table'] = 'search_api_index_default_node_index';
-  $handler->display->display_options['arguments']['og_group_ref']['field'] = 'og_group_ref';
-  $handler->display->display_options['arguments']['og_group_ref']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['og_group_ref']['default_argument_type'] = 'og_context';
-  $handler->display->display_options['arguments']['og_group_ref']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['og_group_ref']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['og_group_ref']['not'] = 0;
   $handler->display->display_options['path'] = 'node/%/indicators/xml';
   $handler->display->display_options['displays'] = array(
     'table' => 'table',
