@@ -1,5 +1,9 @@
 # PHP coverage
 
+## Todo
+
+- add config to run on certain paths like cron
+
 ## Install
 
 - `composer install`
