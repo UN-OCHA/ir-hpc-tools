@@ -3,7 +3,6 @@ description = Puts the layout of the site in place
 core = 7.x
 package = Humanitarianresponse
 dependencies[] = bean_pane
-dependencies[] = context_og
 dependencies[] = ctools
 dependencies[] = entityreference_autocomplete
 dependencies[] = fts_visualization
