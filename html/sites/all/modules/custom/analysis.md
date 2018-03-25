@@ -28,6 +28,22 @@ Obsolete
 
 Needed
 
+# Modules
+
+- special_menu_items
+- visualization
+- "Email Contact Form Settings"
+- honeypot
+- linkit
+- mollom
+- node clone?
+- calendar?
+- PDF preview
+- tmgmt
+- RSS
+- Display cache
+
+
 # HR modules
 
 ## hr_admin
