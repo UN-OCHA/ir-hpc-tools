@@ -1,3 +1,25 @@
+# Feeds
+
+On admin/structure/feeds
+
+Obsolete?
+
+- Infographics
+- News
+- Sectors
+- Space categories
+- Spaces
+
+Indicators one only run on submission, so probably no longer needed.
+
+# Cron
+
+No custom cron function found.
+
+# Context
+
+ebola_datasets?
+
 # Access modules
 
 Obsolete
