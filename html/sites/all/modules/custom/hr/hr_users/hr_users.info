@@ -12,7 +12,6 @@ dependencies[] = entityreference
 dependencies[] = features
 dependencies[] = hr_core
 dependencies[] = hr_layout
-dependencies[] = hr_sectors
 dependencies[] = image
 dependencies[] = js
 dependencies[] = link

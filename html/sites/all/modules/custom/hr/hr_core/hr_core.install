@@ -388,3 +388,18 @@ function hr_core_update_7023() {
   module_disable($disable);
   drupal_uninstall_modules($disable);
 }
+
+/**
+ * Disable obsolete modules.
+ */
+function hr_core_update_7024() {
+  $disable = array(
+    'hr_admin',
+    'hr_notifications',
+    'hr_sectors',
+    'hr_spaces',
+  );
+
+  module_disable($disable);
+  drupal_uninstall_modules($disable);
+}

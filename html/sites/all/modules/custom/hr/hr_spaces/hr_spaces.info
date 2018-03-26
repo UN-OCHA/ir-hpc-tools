@@ -5,7 +5,6 @@ package = Humanitarianresponse
 dependencies[] = feeds
 dependencies[] = hr_api
 dependencies[] = hr_core
-dependencies[] = hr_notifications
 dependencies[] = hr_users
 dependencies[] = link_icons
 dependencies[] = taxonomy
