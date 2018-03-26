@@ -366,3 +366,52 @@ function hr_core_update_7022() {
   module_disable($disable);
   drupal_uninstall_modules($disable);
 }
+
+/**
+ * Disable obsolete modules.
+ */
+function hr_core_update_7023() {
+  $disable = array(
+    'special_menu_items',
+    'publishcontent',
+    'visualization',
+    'honeypot',
+    'linkit',
+    'mollom',
+    'node_clone',
+    'calendar',
+    'pdfpreview',
+    'tmgmt',
+    'display_cache',
+  );
+
+  module_disable($disable);
+  drupal_uninstall_modules($disable);
+}
+
+/**
+ * Disable obsolete HR modules.
+ */
+function hr_core_update_7024() {
+  $disable = array(
+    'hr_admin',
+    'hr_notifications',
+    'hr_sectors',
+    'hr_spaces',
+  );
+
+  module_disable($disable);
+  drupal_uninstall_modules($disable);
+}
+
+/**
+ * Disable feeds modules.
+ */
+function hr_core_update_7025() {
+  $disable = array(
+    'feeds',
+  );
+
+  module_disable($disable);
+  drupal_uninstall_modules($disable);
+}
