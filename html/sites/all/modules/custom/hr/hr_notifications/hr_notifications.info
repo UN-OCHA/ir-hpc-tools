@@ -5,7 +5,6 @@ package = Humanitarianresponse
 dependencies[] = ctools
 dependencies[] = entity
 dependencies[] = features
-dependencies[] = flag
 dependencies[] = list
 dependencies[] = rules
 dependencies[] = text
