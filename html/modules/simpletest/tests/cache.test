@@ -152,17 +152,6 @@ class CacheSavingCase extends CacheTestCase {
   }
 
   /**
-   * Test a long key.
-   */
-  function testLongKey() {
-    // Check with a long key.
-    $long_cid = str_repeat('a', 300);
-    cache_set($long_cid, 'test', 'cache');
-    $cache = cache_get($long_cid, 'cache');
-    $this->assertTrue(isset($cache->data) && $cache->data === 'test', 'Cache with a long key is saved and restored properly.');
-  }
-
-  /**
    * Check or a variable is stored and restored properly.
    */
   function checkVariable($var) {
@@ -204,32 +193,25 @@ class CacheGetMultipleUnitTest extends CacheTestCase {
   function testCacheMultiple() {
     $item1 = $this->randomName(10);
     $item2 = $this->randomName(10);
-    $item3 = $this->randomName(10);
-    $long_cid = str_repeat('a', 300);
     cache_set('item1', $item1, $this->default_bin);
     cache_set('item2', $item2, $this->default_bin);
-    cache_set($long_cid, $item3, $this->default_bin);
     $this->assertTrue($this->checkCacheExists('item1', $item1), 'Item 1 is cached.');
     $this->assertTrue($this->checkCacheExists('item2', $item2), 'Item 2 is cached.');
-    $this->assertTrue($this->checkCacheExists($long_cid, $item3), 'Item 3 is cached.');
 
-    // Fetch all records from the database with cache_get_multiple().
-    $item_ids = array('item1', 'item2', $long_cid);
+    // Fetch both records from the database with cache_get_multiple().
+    $item_ids = array('item1', 'item2');
     $items = cache_get_multiple($item_ids, $this->default_bin);
     $this->assertEqual($items['item1']->data, $item1, 'Item was returned from cache successfully.');
     $this->assertEqual($items['item2']->data, $item2, 'Item was returned from cache successfully.');
-    $this->assertEqual($items[$long_cid]->data, $item3, 'Item was returned from cache successfully.');
 
-    // Remove 2 items from the cache.
+    // Remove one item from the cache.
     cache_clear_all('item2', $this->default_bin);
-    cache_clear_all($long_cid, $this->default_bin);
 
     // Confirm that only one item is returned by cache_get_multiple().
     $item_ids = array('item1', 'item2');
     $items = cache_get_multiple($item_ids, $this->default_bin);
     $this->assertEqual($items['item1']->data, $item1, 'Item was returned from cache successfully.');
     $this->assertFalse(isset($items['item2']), 'Item was not returned from the cache.');
-    $this->assertFalse(isset($items[$long_cid]), 'Item was not returned from the cache.');
     $this->assertTrue(count($items) == 1, 'Only valid cache entries returned.');
   }
 }
@@ -264,81 +246,60 @@ class CacheClearCase extends CacheTestCase {
 
     $this->assertCacheRemoved(t('Cache was removed after clearing cid.'), 'test_cid_clear');
 
-    $long_cid = str_repeat('a', 300);
-    cache_set($long_cid, $this->default_value, $this->default_bin);
-    $this->assertCacheExists(t('Long cache was set for clearing cid.'), $this->default_value, $long_cid);
-    cache_clear_all($long_cid, $this->default_bin);
-    $this->assertCacheRemoved(t('Long cache was removed after clearing cid.'), $long_cid);
-
     cache_set('test_cid_clear1', $this->default_value, $this->default_bin);
     cache_set('test_cid_clear2', $this->default_value, $this->default_bin);
-    cache_set($long_cid, $this->default_value, $this->default_bin);
     $this->assertTrue($this->checkCacheExists('test_cid_clear1', $this->default_value)
-                      && $this->checkCacheExists('test_cid_clear2', $this->default_value)
-                      && $this->checkCacheExists($long_cid, $this->default_value),
-                      'Three caches were created for checking cid "*" with wildcard false.');
+                      && $this->checkCacheExists('test_cid_clear2', $this->default_value),
+                      'Two caches were created for checking cid "*" with wildcard false.');
     cache_clear_all('*', $this->default_bin);
     $this->assertTrue($this->checkCacheExists('test_cid_clear1', $this->default_value)
-                      && $this->checkCacheExists('test_cid_clear2', $this->default_value)
-                      && $this->checkCacheExists($long_cid, $this->default_value),
-                      'Three caches still exists after clearing cid "*" with wildcard false.');
+                      && $this->checkCacheExists('test_cid_clear2', $this->default_value),
+                      'Two caches still exists after clearing cid "*" with wildcard false.');
   }
 
   /**
    * Test clearing using wildcard.
    */
   function testClearWildcard() {
-    $long_cid = str_repeat('a', 300);
     cache_set('test_cid_clear1', $this->default_value, $this->default_bin);
     cache_set('test_cid_clear2', $this->default_value, $this->default_bin);
-    cache_set($long_cid, $this->default_value, $this->default_bin);
     $this->assertTrue($this->checkCacheExists('test_cid_clear1', $this->default_value)
-                      && $this->checkCacheExists('test_cid_clear2', $this->default_value)
-                      && $this->checkCacheExists($long_cid, $this->default_value),
-                      'Three caches were created for checking cid "*" with wildcard true.');
+                      && $this->checkCacheExists('test_cid_clear2', $this->default_value),
+                      'Two caches were created for checking cid "*" with wildcard true.');
     cache_clear_all('*', $this->default_bin, TRUE);
     $this->assertFalse($this->checkCacheExists('test_cid_clear1', $this->default_value)
-                      || $this->checkCacheExists('test_cid_clear2', $this->default_value)
-                      || $this->checkCacheExists($long_cid, $this->default_value),
-                      'Three caches removed after clearing cid "*" with wildcard true.');
+                      || $this->checkCacheExists('test_cid_clear2', $this->default_value),
+                      'Two caches removed after clearing cid "*" with wildcard true.');
 
-    $long_cid = 'test_' . str_repeat('a', 300);
     cache_set('test_cid_clear1', $this->default_value, $this->default_bin);
     cache_set('test_cid_clear2', $this->default_value, $this->default_bin);
-    cache_set($long_cid, $this->default_value, $this->default_bin);
     $this->assertTrue($this->checkCacheExists('test_cid_clear1', $this->default_value)
-                      && $this->checkCacheExists('test_cid_clear2', $this->default_value)
-                      && $this->checkCacheExists($long_cid, $this->default_value),
-                      'Three caches were created for checking cid substring with wildcard true.');
+                      && $this->checkCacheExists('test_cid_clear2', $this->default_value),
+                      'Two caches were created for checking cid substring with wildcard true.');
     cache_clear_all('test_', $this->default_bin, TRUE);
     $this->assertFalse($this->checkCacheExists('test_cid_clear1', $this->default_value)
-                      || $this->checkCacheExists('test_cid_clear2', $this->default_value)
-                      || $this->checkCacheExists($long_cid, $this->default_value),
-                      'Three caches removed after clearing cid substring with wildcard true.');
+                      || $this->checkCacheExists('test_cid_clear2', $this->default_value),
+                      'Two caches removed after clearing cid substring with wildcard true.');
   }
 
   /**
    * Test clearing using an array.
    */
   function testClearArray() {
-    // Create four cache entries.
-    $long_cid = str_repeat('a', 300);
+    // Create three cache entries.
     cache_set('test_cid_clear1', $this->default_value, $this->default_bin);
     cache_set('test_cid_clear2', $this->default_value, $this->default_bin);
     cache_set('test_cid_clear3', $this->default_value, $this->default_bin);
-    cache_set($long_cid, $this->default_value, $this->default_bin);
     $this->assertTrue($this->checkCacheExists('test_cid_clear1', $this->default_value)
                       && $this->checkCacheExists('test_cid_clear2', $this->default_value)
-                      && $this->checkCacheExists('test_cid_clear3', $this->default_value)
-                      && $this->checkCacheExists($long_cid, $this->default_value),
-                      'Four cache entries were created.');
+                      && $this->checkCacheExists('test_cid_clear3', $this->default_value),
+                      'Three cache entries were created.');
 
-    // Clear three entries using an array.
-    cache_clear_all(array('test_cid_clear1', 'test_cid_clear2', $long_cid), $this->default_bin);
+    // Clear two entries using an array.
+    cache_clear_all(array('test_cid_clear1', 'test_cid_clear2'), $this->default_bin);
     $this->assertFalse($this->checkCacheExists('test_cid_clear1', $this->default_value)
-                       || $this->checkCacheExists('test_cid_clear2', $this->default_value)
-                       || $this->checkCacheExists($long_cid, $this->default_value),
-                       'Three cache entries removed after clearing with an array.');
+                       || $this->checkCacheExists('test_cid_clear2', $this->default_value),
+                       'Two cache entries removed after clearing with an array.');
 
     $this->assertTrue($this->checkCacheExists('test_cid_clear3', $this->default_value),
                       'Entry was not cleared from the cache');

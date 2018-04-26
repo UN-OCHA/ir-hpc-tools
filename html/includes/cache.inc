@@ -345,11 +345,6 @@ class DrupalDatabaseCache implements DrupalCacheInterface {
    * Implements DrupalCacheInterface::getMultiple().
    */
   function getMultiple(&$cids) {
-    $cid_mapping = array();
-    foreach ($cids as $cid) {
-      $cid_mapping[$this->normalizeCid($cid)] = $cid;
-    }
-
     try {
       // Garbage collection necessary when enforcing a minimum cache lifetime.
       $this->garbageCollection($this->bin);
@@ -361,11 +356,9 @@ class DrupalDatabaseCache implements DrupalCacheInterface {
       // is used here only due to the performance overhead we would incur
       // otherwise. When serving an uncached page, the overhead of using
       // db_select() is a much smaller proportion of the request.
-      $result = db_query('SELECT cid, data, created, expire, serialized FROM {' . db_escape_table($this->bin) . '} WHERE cid IN (:cids)', array(':cids' => array_keys($cid_mapping)));
+      $result = db_query('SELECT cid, data, created, expire, serialized FROM {' . db_escape_table($this->bin) . '} WHERE cid IN (:cids)', array(':cids' => $cids));
       $cache = array();
       foreach ($result as $item) {
-        // Map the cache ID back to the original.
-        $item->cid = $cid_mapping[$item->cid];
         $item = $this->prepareItem($item);
         if ($item) {
           $cache[$item->cid] = $item;
@@ -479,7 +472,7 @@ class DrupalDatabaseCache implements DrupalCacheInterface {
 
     try {
       db_merge($this->bin)
-        ->key(array('cid' => $this->normalizeCid($cid)))
+        ->key(array('cid' => $cid))
         ->fields($fields)
         ->execute();
     }
@@ -540,22 +533,22 @@ class DrupalDatabaseCache implements DrupalCacheInterface {
         }
         else {
           db_delete($this->bin)
-            ->condition('cid', db_like($this->normalizeCid($cid)) . '%', 'LIKE')
+            ->condition('cid', db_like($cid) . '%', 'LIKE')
             ->execute();
         }
       }
       elseif (is_array($cid)) {
-        $cid = array_values(array_map(array($this, 'normalizeCid'), $cid));
         // Delete in chunks when a large array is passed.
-        foreach (array_chunk($cid, 1000) as $cids_chunk) {
+        do {
           db_delete($this->bin)
-            ->condition('cid', $cids_chunk, 'IN')
+            ->condition('cid', array_splice($cid, 0, 1000), 'IN')
             ->execute();
         }
+        while (count($cid));
       }
       else {
         db_delete($this->bin)
-          ->condition('cid', $this->normalizeCid($cid))
+          ->condition('cid', $cid)
           ->execute();
       }
     }
@@ -593,29 +586,5 @@ class DrupalDatabaseCache implements DrupalCacheInterface {
     $schema = drupal_get_schema($this->bin);
     // Confirm that all fields are present.
     return isset($schema['fields']) && !array_diff($fields, array_keys($schema['fields']));
-  }
-
-  /**
-   * Normalizes a cache ID in order to comply with database limitations.
-   *
-   * @param string $cid
-   *   The passed in cache ID.
-   *
-   * @return string
-   *   An ASCII-encoded cache ID that is at most 255 characters long.
-   */
-  protected function normalizeCid($cid) {
-    // Nothing to do if the ID is a US ASCII string of 255 characters or less.
-    $cid_is_ascii = mb_check_encoding($cid, 'ASCII');
-    if (strlen($cid) <= 255 && $cid_is_ascii) {
-      return $cid;
-    }
-    // Return a string that uses as much as possible of the original cache ID
-    // with the hash appended.
-    $hash = drupal_hash_base64($cid);
-    if (!$cid_is_ascii) {
-      return $hash;
-    }
-    return substr($cid, 0, 255 - strlen($hash)) . $hash;
   }
 }
