@@ -10,7 +10,7 @@
 function hr_sectors_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_sector'
+  // Exported field_base: 'field_sector'.
   $field_bases['field_sector'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -47,7 +47,7 @@ function hr_sectors_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_sector_type'
+  // Exported field_base: 'field_sector_type'.
   $field_bases['field_sector_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -78,7 +78,7 @@ function hr_sectors_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_sectors'
+  // Exported field_base: 'field_sectors'.
   $field_bases['field_sectors'] = array(
     'active' => 1,
     'cardinality' => -1,

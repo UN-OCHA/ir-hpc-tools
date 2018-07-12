@@ -8,18 +8,6 @@
 include_once 'hr_search.features.inc';
 
 /**
- * Implements hook_form_FORM_ID_alter().
- */
-function hr_search_form_views_exposed_form_alter(&$form, $form_state) {
-  $context = og_context();
-  if (isset($context['gid']) && $form['#id'] == 'views-exposed-form-hr-search-space') {
-    $form['#action'] = '/' . drupal_get_path_alias('node/' . $context['gid'] . '/search');
-    $node = node_load($context['gid']);
-    $form['#info']['filter-search_api_views_fulltext']['label'] = t('Search') . ' ' . $node->title;
-  }
-}
-
-/**
  * Implements hook_facetapi_facet_info_alter().
  */
 function hr_search_facetapi_facet_info_alter(array &$facet_info, array $searcher_info) {

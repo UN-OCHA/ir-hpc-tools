@@ -10,7 +10,7 @@
 function hr_users_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'profile2-main-field_first_name'
+  // Exported field_instance: 'profile2-main-field_first_name'.
   $field_instances['profile2-main-field_first_name'] = array(
     'bundle' => 'main',
     'default_value' => NULL,
@@ -57,7 +57,7 @@ function hr_users_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-main-field_last_name'
+  // Exported field_instance: 'profile2-main-field_last_name'.
   $field_instances['profile2-main-field_last_name'] = array(
     'bundle' => 'main',
     'default_value' => NULL,
@@ -106,20 +106,8 @@ function hr_users_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Check this if you could not find user');
-  t('Email');
-  t('Enter your job title here');
   t('First name');
-  t('If you selected Other in the above field, enter the name of your organization here');
-  t('Job Title');
   t('Last name');
-  t('Name');
-  t('Organization');
-  t('Organization name');
-  t('Phones');
-  t('Select the organization you work for');
-  t('Start typing the name of the person you would like to reference as a contact. If you can not find him/her, check the box below and enter the contact details manually.');
-  t('User');
 
   return $field_instances;
 }

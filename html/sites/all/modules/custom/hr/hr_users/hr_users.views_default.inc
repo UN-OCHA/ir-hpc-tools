@@ -95,15 +95,11 @@ function hr_users_views_default_views() {
   $handler->display->display_options['fields']['status']['type_custom_true'] = 'Published';
   $handler->display->display_options['fields']['status']['type_custom_false'] = 'Draft';
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Field: Content: Space(s) */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['og_group_ref']['id'] = 'og_group_ref';
   $handler->display->display_options['fields']['og_group_ref']['table'] = 'og_membership';
   $handler->display->display_options['fields']['og_group_ref']['field'] = 'og_group_ref';
   $handler->display->display_options['fields']['og_group_ref']['label'] = 'Space';
-  $handler->display->display_options['fields']['og_group_ref']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['og_group_ref']['delta_offset'] = '0';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -209,15 +205,15 @@ function hr_users_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'You have not checked in to any operation yet.';
   $handler->display->display_options['empty']['area']['format'] = 'panopoly_wysiwyg_text';
-  /* Relationship: OG membership: Group Node from OG membership */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['og_membership_related_node_group']['id'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['field'] = 'og_membership_related_node_group';
-  /* Relationship: OG membership: User from OG membership */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['og_membership_related_user']['id'] = 'og_membership_related_user';
   $handler->display->display_options['relationships']['og_membership_related_user']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_membership_related_user']['field'] = 'og_membership_related_user';
-  /* Field: OG membership: Type */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'og_membership';
   $handler->display->display_options['fields']['type']['field'] = 'type';
@@ -237,13 +233,12 @@ function hr_users_views_default_views() {
     'title_class' => '',
   );
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 1;
-  /* Field: OG membership: Created */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'og_membership';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = 'Member since';
-  $handler->display->display_options['fields']['created']['date_format'] = 'raw time ago';
-  /* Field: OG membership: OG user roles in group */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['og_roles']['id'] = 'og_roles';
   $handler->display->display_options['fields']['og_roles']['table'] = 'og_membership';
   $handler->display->display_options['fields']['og_roles']['field'] = 'og_roles';
@@ -253,7 +248,7 @@ function hr_users_views_default_views() {
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['relationship'] = 'og_membership_related_node_group';
-  /* Contextual filter: OG membership: Entity id */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['etid']['id'] = 'etid';
   $handler->display->display_options['arguments']['etid']['table'] = 'og_membership';
   $handler->display->display_options['arguments']['etid']['field'] = 'etid';
@@ -262,7 +257,7 @@ function hr_users_views_default_views() {
   $handler->display->display_options['arguments']['etid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['etid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['etid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: OG membership: Entity_type */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['entity_type']['id'] = 'entity_type';
   $handler->display->display_options['filters']['entity_type']['table'] = 'og_membership';
   $handler->display->display_options['filters']['entity_type']['field'] = 'entity_type';
@@ -306,8 +301,8 @@ function hr_users_views_default_views() {
     t('next ›'),
     t('last »'),
     t('You have not checked in to any operation yet.'),
-    t('Group node from OG membership'),
-    t('user from OG membership'),
+    t('og_membership_related_node_group'),
+    t('og_membership_related_user'),
     t('Space'),
     t('Member since'),
     t('Roles'),
@@ -361,29 +356,26 @@ function hr_users_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Job Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_job_title_other']['id'] = 'field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['table'] = 'field_data_field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['field'] = 'field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['relationship'] = 'profile';
   $handler->display->display_options['fields']['field_job_title_other']['label'] = '';
   $handler->display->display_options['fields']['field_job_title_other']['element_label_colon'] = FALSE;
-  /* Field: Content: Location */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
   $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
   $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
   $handler->display->display_options['fields']['field_location']['relationship'] = 'profile';
   $handler->display->display_options['fields']['field_location']['label'] = '';
   $handler->display->display_options['fields']['field_location']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_location']['settings'] = array(
-    'link' => 0,
-  );
-  /* Sort criterion: Field: Last name (field_last_name) */
+  /* Sort criterion: Profile: Last name (field_last_name) */
   $handler->display->display_options['sorts']['field_last_name_value']['id'] = 'field_last_name_value';
   $handler->display->display_options['sorts']['field_last_name_value']['table'] = 'field_data_field_last_name';
   $handler->display->display_options['sorts']['field_last_name_value']['field'] = 'field_last_name_value';
   $handler->display->display_options['sorts']['field_last_name_value']['relationship'] = 'profile';
-  /* Contextual filter: User: Group membership (og_user_node) */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['og_user_node_target_id']['id'] = 'og_user_node_target_id';
   $handler->display->display_options['arguments']['og_user_node_target_id']['table'] = 'og_membership';
   $handler->display->display_options['arguments']['og_user_node_target_id']['field'] = 'og_user_node_target_id';
@@ -424,23 +416,20 @@ function hr_users_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Job Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_job_title_other']['id'] = 'field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['table'] = 'field_data_field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['field'] = 'field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['relationship'] = 'profile';
   $handler->display->display_options['fields']['field_job_title_other']['label'] = '';
   $handler->display->display_options['fields']['field_job_title_other']['element_label_colon'] = FALSE;
-  /* Field: Content: Location */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
   $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
   $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
   $handler->display->display_options['fields']['field_location']['relationship'] = 'profile';
   $handler->display->display_options['fields']['field_location']['label'] = '';
   $handler->display->display_options['fields']['field_location']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_location']['settings'] = array(
-    'link' => 0,
-  );
   $handler->display->display_options['path'] = 'node/%/people';
 
   /* Display: List */
@@ -463,7 +452,7 @@ function hr_users_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Job Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_job_title_other']['id'] = 'field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['table'] = 'field_data_field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['field'] = 'field_job_title_other';
@@ -480,116 +469,10 @@ function hr_users_views_default_views() {
 
   /* Display: Map data */
   $handler = $view->new_display('openlayers', 'Map data', 'map_data');
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'openlayers_data';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'tid',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
-  $handler->display->display_options['style_options']['data_source'] = array(
-    'value' => 'wkt',
-    'other_lat' => 'tid',
-    'other_lon' => 'tid',
-    'wkt' => 'field_geofield',
-    'other_top' => 'tid',
-    'other_right' => 'tid',
-    'other_bottom' => 'tid',
-    'other_left' => 'tid',
-    'name_field' => 'nothing_1',
-    'description_field' => 'nothing',
-    'style_field' => '',
-  );
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: User: Profile */
-  $handler->display->display_options['relationships']['profile']['id'] = 'profile';
-  $handler->display->display_options['relationships']['profile']['table'] = 'users';
-  $handler->display->display_options['relationships']['profile']['field'] = 'profile';
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_location_target_id']['id'] = 'field_location_target_id';
-  $handler->display->display_options['relationships']['field_location_target_id']['table'] = 'field_data_field_location';
-  $handler->display->display_options['relationships']['field_location_target_id']['field'] = 'field_location_target_id';
-  $handler->display->display_options['relationships']['field_location_target_id']['relationship'] = 'profile';
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Taxonomy term: Term ID */
-  $handler->display->display_options['fields']['tid']['id'] = 'tid';
-  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['tid']['field'] = 'tid';
-  $handler->display->display_options['fields']['tid']['relationship'] = 'field_location_target_id';
-  $handler->display->display_options['fields']['tid']['label'] = '';
-  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['tid']['separator'] = '';
-  /* Field: Taxonomy term: Geofield */
-  $handler->display->display_options['fields']['field_geofield']['id'] = 'field_geofield';
-  $handler->display->display_options['fields']['field_geofield']['table'] = 'field_data_field_geofield';
-  $handler->display->display_options['fields']['field_geofield']['field'] = 'field_geofield';
-  $handler->display->display_options['fields']['field_geofield']['relationship'] = 'field_location_target_id';
-  $handler->display->display_options['fields']['field_geofield']['label'] = '';
-  $handler->display->display_options['fields']['field_geofield']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_geofield']['click_sort_column'] = 'geom';
-  $handler->display->display_options['fields']['field_geofield']['settings'] = array(
-    'data' => 'full',
-  );
-  /* Field: Taxonomy term: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'field_location_target_id';
-  $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  /* Field: User: Name */
-  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
-  $handler->display->display_options['fields']['name_1']['table'] = 'users';
-  $handler->display->display_options['fields']['name_1']['field'] = 'name';
-  $handler->display->display_options['fields']['name_1']['label'] = '';
-  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
-  /* Field: Field: Job Title */
-  $handler->display->display_options['fields']['field_job_title_other']['id'] = 'field_job_title_other';
-  $handler->display->display_options['fields']['field_job_title_other']['table'] = 'field_data_field_job_title_other';
-  $handler->display->display_options['fields']['field_job_title_other']['field'] = 'field_job_title_other';
-  $handler->display->display_options['fields']['field_job_title_other']['relationship'] = 'profile';
-  $handler->display->display_options['fields']['field_job_title_other']['label'] = '';
-  $handler->display->display_options['fields']['field_job_title_other']['element_label_colon'] = FALSE;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
-  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_1']['label'] = '';
-  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[name_1] ([field_job_title_other])';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: User: Group membership (og_user_node) */
-  $handler->display->display_options['arguments']['og_user_node_target_id']['id'] = 'og_user_node_target_id';
-  $handler->display->display_options['arguments']['og_user_node_target_id']['table'] = 'og_membership';
-  $handler->display->display_options['arguments']['og_user_node_target_id']['field'] = 'og_user_node_target_id';
-  $handler->display->display_options['arguments']['og_user_node_target_id']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['og_user_node_target_id']['default_argument_type'] = 'og_context';
-  $handler->display->display_options['arguments']['og_user_node_target_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['og_user_node_target_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['og_user_node_target_id']['summary_options']['items_per_page'] = '25';
 
   /* Display: Map */
   $handler = $view->new_display('page', 'Map', 'map');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'openlayers_map';
-  $handler->display->display_options['style_options']['map'] = 'hr_people';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -667,16 +550,16 @@ function hr_users_views_default_views() {
   $handler->display->display_options['relationships']['profile']['id'] = 'profile';
   $handler->display->display_options['relationships']['profile']['table'] = 'users';
   $handler->display->display_options['relationships']['profile']['field'] = 'profile';
-  /* Relationship: OG membership: OG membership from User */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'users';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
-  /* Relationship: OG membership: Group Node from OG membership */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['og_membership_related_node_group']['id'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['field'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['relationship'] = 'og_membership_rel';
-  /* Relationship: OG membership: OG Roles from membership */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['og_users_roles']['id'] = 'og_users_roles';
   $handler->display->display_options['relationships']['og_users_roles']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_users_roles']['field'] = 'og_users_roles';
@@ -701,26 +584,22 @@ function hr_users_views_default_views() {
   $handler->display->display_options['fields']['title']['relationship'] = 'og_membership_related_node_group';
   $handler->display->display_options['fields']['title']['label'] = 'Operations & Clusters';
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: OG membership: OG user roles in group */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['og_roles']['id'] = 'og_roles';
   $handler->display->display_options['fields']['og_roles']['table'] = 'og_membership';
   $handler->display->display_options['fields']['og_roles']['field'] = 'og_roles';
   $handler->display->display_options['fields']['og_roles']['relationship'] = 'og_membership_rel';
   $handler->display->display_options['fields']['og_roles']['label'] = 'Roles';
-  /* Field: Field: Job Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_job_title_other']['id'] = 'field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['table'] = 'field_data_field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['field'] = 'field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['relationship'] = 'profile';
-  /* Field: Field: Organization */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_organizations']['id'] = 'field_organizations';
   $handler->display->display_options['fields']['field_organizations']['table'] = 'field_data_field_organizations';
   $handler->display->display_options['fields']['field_organizations']['field'] = 'field_organizations';
   $handler->display->display_options['fields']['field_organizations']['relationship'] = 'profile';
-  $handler->display->display_options['fields']['field_organizations']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_organizations']['delta_offset'] = '0';
   /* Field: User: Created date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'users';
@@ -777,13 +656,15 @@ function hr_users_views_default_views() {
     188284353 => 0,
     235660466 => 0,
   );
-  /* Filter criterion: OG membership: Entity id */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['etid']['id'] = 'etid';
   $handler->display->display_options['filters']['etid']['table'] = 'og_membership';
   $handler->display->display_options['filters']['etid']['field'] = 'etid';
   $handler->display->display_options['filters']['etid']['relationship'] = 'og_membership_rel';
   $handler->display->display_options['filters']['etid']['operator'] = '!=';
-  $handler->display->display_options['filters']['etid']['value']['value'] = '1';
+  $handler->display->display_options['filters']['etid']['value'] = array(
+    'value' => '1',
+  );
   $handler->display->display_options['filters']['etid']['group'] = 1;
   $handler->display->display_options['filters']['etid']['expose']['operator_id'] = 'etid_op';
   $handler->display->display_options['filters']['etid']['expose']['label'] = 'Entity id';
@@ -798,7 +679,7 @@ function hr_users_views_default_views() {
     188284353 => 0,
     235660466 => 0,
   );
-  /* Filter criterion: OG user roles: Role Name */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['name']['id'] = 'name';
   $handler->display->display_options['filters']['name']['table'] = 'og_role';
   $handler->display->display_options['filters']['name']['field'] = 'name';
@@ -853,16 +734,16 @@ function hr_users_views_default_views() {
   $handler->display->display_options['relationships']['profile']['id'] = 'profile';
   $handler->display->display_options['relationships']['profile']['table'] = 'users';
   $handler->display->display_options['relationships']['profile']['field'] = 'profile';
-  /* Relationship: OG membership: OG membership from User */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'users';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
-  /* Relationship: OG membership: Group Node from OG membership */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['og_membership_related_node_group']['id'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['field'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['relationship'] = 'og_membership_rel';
-  /* Relationship: OG membership: OG Roles from membership */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['og_users_roles']['id'] = 'og_users_roles';
   $handler->display->display_options['relationships']['og_users_roles']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_users_roles']['field'] = 'og_users_roles';
@@ -888,26 +769,22 @@ function hr_users_views_default_views() {
   $handler->display->display_options['fields']['title']['relationship'] = 'og_membership_related_node_group';
   $handler->display->display_options['fields']['title']['label'] = 'Operations & Clusters';
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: OG membership: OG user roles in group */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['og_roles']['id'] = 'og_roles';
   $handler->display->display_options['fields']['og_roles']['table'] = 'og_membership';
   $handler->display->display_options['fields']['og_roles']['field'] = 'og_roles';
   $handler->display->display_options['fields']['og_roles']['relationship'] = 'og_membership_rel';
   $handler->display->display_options['fields']['og_roles']['label'] = 'Roles';
-  /* Field: Field: Job Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_job_title_other']['id'] = 'field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['table'] = 'field_data_field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['field'] = 'field_job_title_other';
   $handler->display->display_options['fields']['field_job_title_other']['relationship'] = 'profile';
-  /* Field: Field: Organization */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_organizations']['id'] = 'field_organizations';
   $handler->display->display_options['fields']['field_organizations']['table'] = 'field_data_field_organizations';
   $handler->display->display_options['fields']['field_organizations']['field'] = 'field_organizations';
   $handler->display->display_options['fields']['field_organizations']['relationship'] = 'profile';
-  $handler->display->display_options['fields']['field_organizations']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_organizations']['delta_offset'] = '0';
   /* Field: User: Created date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'users';
@@ -953,15 +830,17 @@ function hr_users_views_default_views() {
     'hr_operation' => 'hr_operation',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: OG membership: Entity id */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['etid']['id'] = 'etid';
   $handler->display->display_options['filters']['etid']['table'] = 'og_membership';
   $handler->display->display_options['filters']['etid']['field'] = 'etid';
   $handler->display->display_options['filters']['etid']['relationship'] = 'og_membership_rel';
   $handler->display->display_options['filters']['etid']['operator'] = '!=';
-  $handler->display->display_options['filters']['etid']['value']['value'] = '1';
+  $handler->display->display_options['filters']['etid']['value'] = array(
+    'value' => '1',
+  );
   $handler->display->display_options['filters']['etid']['group'] = 1;
-  /* Filter criterion: OG user roles: Role Name */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['name']['id'] = 'name';
   $handler->display->display_options['filters']['name']['table'] = 'og_role';
   $handler->display->display_options['filters']['name']['field'] = 'name';
@@ -1010,21 +889,18 @@ function hr_users_views_default_views() {
     t('List'),
     t('[picture_1] '),
     t('Map data'),
-    t('Taxonomy term entity referenced from field_location'),
-    t('.'),
-    t('[name_1] ([field_job_title_other])'),
     t('Map'),
     t('User groups'),
     t('Displaying number of  @start - @end of @total'),
-    t('OG membership from user'),
-    t('Group node from OG membership'),
-    t('OG Roles from OG membership'),
+    t('og_membership_rel'),
+    t('og_membership_related_node_group'),
+    t('og_users_roles'),
     t('Name'),
     t('Email'),
     t('Operations & Clusters'),
     t('Roles'),
-    t('Job Title'),
-    t('Organization'),
+    t('Broken handler field_data_field_job_title_other.field_job_title_other'),
+    t('Broken handler field_data_field_organizations.field_organizations'),
     t('Created date'),
     t('Content Type'),
     t('Entity id'),

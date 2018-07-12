@@ -21,6 +21,8 @@ function hr_indicators_context_default_contexts() {
       'values' => array(
         'node/*/indicators' => 'node/*/indicators',
         'node/*/indicators/*' => 'node/*/indicators/*',
+        'indicators' => 'indicators',
+        'indicators/*' => 'indicators/*',
       ),
     ),
   );

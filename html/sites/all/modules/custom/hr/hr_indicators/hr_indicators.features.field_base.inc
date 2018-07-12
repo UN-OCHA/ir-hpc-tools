@@ -10,21 +10,13 @@
 function hr_indicators_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_ind_code'
+  // Exported field_base: 'field_ind_code'.
   $field_bases['field_ind_code'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_code',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -41,21 +33,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_ind_comments'
+  // Exported field_base: 'field_ind_comments'.
   $field_bases['field_ind_comments'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_comments',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -71,21 +55,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_ind_cross_tagging'
+  // Exported field_base: 'field_ind_cross_tagging'.
   $field_bases['field_ind_cross_tagging'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_cross_tagging',
-    'foreign keys' => array(
-      'taxonomy_term_data' => array(
-        'columns' => array(
-          'target_id' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -116,21 +92,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_ind_data_sources'
+  // Exported field_base: 'field_ind_data_sources'.
   $field_bases['field_ind_data_sources'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_data_sources',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -146,21 +114,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_ind_denominator'
+  // Exported field_base: 'field_ind_denominator'.
   $field_bases['field_ind_denominator'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_denominator',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -176,21 +136,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_ind_disaggregation'
+  // Exported field_base: 'field_ind_disaggregation'.
   $field_bases['field_ind_disaggregation'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_disaggregation',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -206,21 +158,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_ind_domain'
+  // Exported field_base: 'field_ind_domain'.
   $field_bases['field_ind_domain'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_domain',
-    'foreign keys' => array(
-      'taxonomy_term_data' => array(
-        'columns' => array(
-          'target_id' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -251,21 +195,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_ind_general_guidance'
+  // Exported field_base: 'field_ind_general_guidance'.
   $field_bases['field_ind_general_guidance'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_general_guidance',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -281,21 +217,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_ind_guidance_baseline'
+  // Exported field_base: 'field_ind_guidance_baseline'.
   $field_bases['field_ind_guidance_baseline'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_guidance_baseline',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -311,21 +239,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_ind_guidance_phases'
+  // Exported field_base: 'field_ind_guidance_phases'.
   $field_bases['field_ind_guidance_phases'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_guidance_phases',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -341,14 +261,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_ind_key'
+  // Exported field_base: 'field_ind_key'.
   $field_bases['field_ind_key'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_key',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -369,21 +288,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_ind_numerator'
+  // Exported field_base: 'field_ind_numerator'.
   $field_bases['field_ind_numerator'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_numerator',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -399,7 +310,7 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_ind_phase_applicability'
+  // Exported field_base: 'field_ind_phase_applicability'.
   $field_bases['field_ind_phase_applicability'] = array(
     'active' => 1,
     'cardinality' => 6,
@@ -409,7 +320,6 @@ function hr_indicators_field_default_field_bases() {
     'field_permissions' => array(
       'type' => 0,
     ),
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -434,14 +344,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_ind_response'
+  // Exported field_base: 'field_ind_response'.
   $field_bases['field_ind_response'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_response',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -462,21 +371,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_ind_standards'
+  // Exported field_base: 'field_ind_standards'.
   $field_bases['field_ind_standards'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_standards',
-    'foreign keys' => array(
-      'taxonomy_term_data' => array(
-        'columns' => array(
-          'target_id' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -507,21 +408,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_ind_threshold'
+  // Exported field_base: 'field_ind_threshold'.
   $field_bases['field_ind_threshold'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_threshold',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -537,21 +430,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_ind_types'
+  // Exported field_base: 'field_ind_types'.
   $field_bases['field_ind_types'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_types',
-    'foreign keys' => array(
-      'taxonomy_term_data' => array(
-        'columns' => array(
-          'target_id' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -582,21 +467,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_ind_unit'
+  // Exported field_base: 'field_ind_unit'.
   $field_bases['field_ind_unit'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_unit',
-    'foreign keys' => array(
-      'taxonomy_term_data' => array(
-        'columns' => array(
-          'target_id' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -627,21 +504,13 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_ind_unit_desc'
+  // Exported field_base: 'field_ind_unit_desc'.
   $field_bases['field_ind_unit_desc'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ind_unit_desc',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',

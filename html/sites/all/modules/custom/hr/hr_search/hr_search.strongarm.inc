@@ -22,7 +22,8 @@ function hr_search_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'facetapi_pretty_paths_searcher_search_api@default_node_index_options';
   $strongarm->value = array(
-    'sort_path_segments' => 0,
+    'sort_path_segments' => 1,
+    'base_path_provider' => 'default',
   );
   $export['facetapi_pretty_paths_searcher_search_api@default_node_index_options'] = $strongarm;
 

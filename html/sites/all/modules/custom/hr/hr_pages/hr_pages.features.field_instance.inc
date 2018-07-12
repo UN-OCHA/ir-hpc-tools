@@ -10,7 +10,7 @@
 function hr_pages_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-hr_page-body'
+  // Exported field_instance: 'node-hr_page-body'.
   $field_instances['node-hr_page-body'] = array(
     'bundle' => 'hr_page',
     'default_value' => NULL,
@@ -61,7 +61,7 @@ function hr_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hr_page-field_page_menu'
+  // Exported field_instance: 'node-hr_page-field_page_menu'.
   $field_instances['node-hr_page-field_page_menu'] = array(
     'bundle' => 'hr_page',
     'default_value' => array(
@@ -111,147 +111,7 @@ function hr_pages_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hr_page-group_content_access'
-  $field_instances['node-hr_page-group_content_access'] = array(
-    'bundle' => 'hr_page',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 4,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'group_content_access',
-    'label' => 'Group content visibility',
-    'required' => TRUE,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'view modes' => array(
-      'full' => array(
-        'label' => 'above',
-        'type' => 'list_default',
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'type' => 'list_default',
-      ),
-    ),
-    'widget' => array(
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => 0,
-      ),
-      'type' => 'options_select',
-      'weight' => 5,
-    ),
-    'widget_type' => 'options_select',
-  );
-
-  // Exported field_instance: 'node-hr_page-og_group_ref'
-  $field_instances['node-hr_page-og_group_ref'] = array(
-    'bundle' => 'hr_page',
-    'default_value' => NULL,
-    'default_value_function' => 'entityreference_prepopulate_field_default_value',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'og_ui',
-        'settings' => array(),
-        'type' => 'og_list_default',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'og_group_ref',
-    'label' => 'Space(s)',
-    'required' => 1,
-    'settings' => array(
-      'behaviors' => array(
-        'og_widget' => array(
-          'access_override' => 0,
-          'admin' => array(
-            'widget_type' => 'entityreference_autocomplete',
-          ),
-          'default' => array(
-            'widget_type' => 'options_select',
-          ),
-          'status' => TRUE,
-        ),
-        'prepopulate' => array(
-          'action' => 'none',
-          'action_on_edit' => 0,
-          'fallback' => 'form_error',
-          'providers' => array(
-            'og_context' => 0,
-            'url' => 1,
-          ),
-          'skip_perm' => 0,
-          'status' => 1,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'view modes' => array(
-      'full' => array(
-        'custom settings' => FALSE,
-        'label' => 'Full',
-        'type' => 'og_list_default',
-      ),
-      'teaser' => array(
-        'custom settings' => FALSE,
-        'label' => 'Teaser',
-        'type' => 'og_list_default',
-      ),
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'og',
-      'settings' => array(),
-      'type' => 'og_complex',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-hr_page-title_field'
+  // Exported field_instance: 'node-hr_page-title_field'.
   $field_instances['node-hr_page-title_field'] = array(
     'bundle' => 'hr_page',
     'default_value' => NULL,
@@ -303,10 +163,7 @@ function hr_pages_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Clusters/Sectors');
-  t('Group content visibility');
   t('Hide vertical menu');
-  t('Space(s)');
   t('Title');
 
   return $field_instances;

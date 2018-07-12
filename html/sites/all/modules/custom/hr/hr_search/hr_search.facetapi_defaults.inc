@@ -514,6 +514,8 @@ function hr_search_facetapi_default_facet_settings() {
     'facet_search_ids' => array(),
     'exclude' => 0,
     'pretty_paths_alias' => 'ind-key',
+    'individual_parent' => 0,
+    'limit_active_items' => 0,
   );
   $export['search_api@default_node_index::field_ind_key'] = $facet;
 
@@ -856,6 +858,7 @@ function hr_search_facetapi_default_facet_settings() {
     'exclude' => 0,
     'pretty_paths_alias' => 'global-clusters',
     'limit_active_items' => 0,
+    'individual_parent' => 0,
   );
   $export['search_api@default_node_index::field_sectors'] = $facet;
 
