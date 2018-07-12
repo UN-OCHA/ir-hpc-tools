@@ -13,7 +13,6 @@ dependencies[] = hr_layout
 dependencies[] = search_api
 dependencies[] = search_api_db
 dependencies[] = search_api_facetapi
-dependencies[] = search_api_solr
 dependencies[] = search_api_sorts
 dependencies[] = search_api_sorts_widget
 dependencies[] = search_api_views

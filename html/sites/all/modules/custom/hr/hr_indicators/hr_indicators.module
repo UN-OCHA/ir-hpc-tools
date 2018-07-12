@@ -6,3 +6,12 @@
  */
 
 include_once 'hr_indicators.features.inc';
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function hr_indicators_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'restful') {
+    return 'plugins/' . $plugin;
+  }
+}
