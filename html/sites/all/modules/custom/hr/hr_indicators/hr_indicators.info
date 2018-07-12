@@ -4,6 +4,7 @@ core = 7.x
 package = Humanitarianresponse
 dependencies[] = context
 dependencies[] = current_search
+dependencies[] = facetapi
 dependencies[] = field_validation
 dependencies[] = hr_api
 dependencies[] = hr_sectors
