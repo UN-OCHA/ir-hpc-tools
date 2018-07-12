@@ -10,7 +10,7 @@
 function hr_sectors_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-hr_sector-body'
+  // Exported field_instance: 'node-hr_sector-body'.
   $field_instances['node-hr_sector-body'] = array(
     'bundle' => 'hr_sector',
     'default_value' => NULL,
@@ -61,7 +61,7 @@ function hr_sectors_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hr_sector-field_acronym'
+  // Exported field_instance: 'node-hr_sector-field_acronym'.
   $field_instances['node-hr_sector-field_acronym'] = array(
     'bundle' => 'hr_sector',
     'default_value' => NULL,
@@ -112,7 +112,7 @@ function hr_sectors_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hr_sector-field_email'
+  // Exported field_instance: 'node-hr_sector-field_email'.
   $field_instances['node-hr_sector-field_email'] = array(
     'bundle' => 'hr_sector',
     'default_value' => NULL,
@@ -158,7 +158,7 @@ function hr_sectors_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hr_sector-field_image'
+  // Exported field_instance: 'node-hr_sector-field_image'.
   $field_instances['node-hr_sector-field_image'] = array(
     'bundle' => 'hr_sector',
     'deleted' => 0,
@@ -195,6 +195,7 @@ function hr_sectors_field_default_field_instances() {
       'alt_field' => 0,
       'default_image' => 0,
       'entity_translation_sync' => FALSE,
+      'file_chooser_field_enabled' => FALSE,
       'file_directory' => 'sector/icons',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -229,104 +230,7 @@ function hr_sectors_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hr_sector-field_mailchimp_api_key'
-  $field_instances['node-hr_sector-field_mailchimp_api_key'] = array(
-    'bundle' => 'hr_sector',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_mailchimp_api_key',
-    'label' => 'Mailchimp API key',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'linkit' => array(
-        'enable' => 0,
-        'insert_plugin' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'node-hr_sector-field_mailchimp_list'
-  $field_instances['node-hr_sector-field_mailchimp_list'] = array(
-    'bundle' => 'hr_sector',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 8,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_mailchimp_list',
-    'label' => 'Mailchimp List',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => 1,
-      ),
-      'type' => 'options_select',
-      'weight' => 12,
-    ),
-  );
-
-  // Exported field_instance: 'node-hr_sector-field_sector_type'
+  // Exported field_instance: 'node-hr_sector-field_sector_type'.
   $field_instances['node-hr_sector-field_sector_type'] = array(
     'bundle' => 'hr_sector',
     'default_value' => NULL,
@@ -372,7 +276,7 @@ function hr_sectors_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hr_sector-field_social_media'
+  // Exported field_instance: 'node-hr_sector-field_social_media'.
   $field_instances['node-hr_sector-field_social_media'] = array(
     'bundle' => 'hr_sector',
     'default_value' => NULL,
@@ -439,7 +343,7 @@ function hr_sectors_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hr_sector-field_website'
+  // Exported field_instance: 'node-hr_sector-field_website'.
   $field_instances['node-hr_sector-field_website'] = array(
     'bundle' => 'hr_sector',
     'default_value' => NULL,
@@ -502,131 +406,7 @@ function hr_sectors_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hr_sector-group_access'
-  $field_instances['node-hr_sector-group_access'] = array(
-    'bundle' => 'hr_sector',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 9,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'group_access',
-    'label' => 'Group visibility',
-    'required' => TRUE,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'view modes' => array(
-      'full' => array(
-        'label' => 'above',
-        'type' => 'options_onoff',
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'type' => 'options_onoff',
-      ),
-    ),
-    'widget' => array(
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 6,
-    ),
-    'widget_type' => 'options_select',
-  );
-
-  // Exported field_instance: 'node-hr_sector-group_group'
-  $field_instances['node-hr_sector-group_group'] = array(
-    'bundle' => 'hr_sector',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Determine if this is an OG group.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'og_ui',
-        'settings' => array(
-          'field_name' => FALSE,
-        ),
-        'type' => 'og_group_subscribe',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'display_label' => 1,
-    'entity_type' => 'node',
-    'field_name' => 'group_group',
-    'label' => 'Group',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'view modes' => array(
-      'full' => array(
-        'custom settings' => FALSE,
-        'label' => 'Full',
-        'type' => 'og_group_subscribe',
-      ),
-      'teaser' => array(
-        'custom settings' => FALSE,
-        'label' => 'Teaser',
-        'type' => 'og_group_subscribe',
-      ),
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 0,
-        'og_hide' => 0,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'node-hr_sector-title_field'
+  // Exported field_instance: 'node-hr_sector-title_field'.
   $field_instances['node-hr_sector-title_field'] = array(
     'bundle' => 'hr_sector',
     'default_value' => NULL,
@@ -680,13 +460,8 @@ function hr_sectors_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Acronym');
   t('Body');
-  t('Determine if this is an OG group.');
   t('Email');
-  t('Group');
-  t('Group visibility');
   t('Icon');
-  t('Mailchimp API key');
-  t('Mailchimp List');
   t('Name');
   t('Social media');
   t('Type');

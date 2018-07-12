@@ -38,12 +38,13 @@ function hr_search_default_search_api_index() {
     "name" : "Default node index",
     "machine_name" : "default_node_index",
     "description" : "An automatically created search index for indexing node data. Might be configured to specific needs.",
-    "server" : "hr_solr",
+    "server" : "local",
     "item_type" : "node",
     "options" : {
+      "datasource" : { "bundles" : [] },
       "index_directly" : 1,
-      "published_safe" : 0,
       "cron_limit" : "100",
+      "published_safe" : 0,
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
           "status" : 0,
@@ -208,42 +209,6 @@ function hr_search_default_search_api_index() {
         "body:value" : { "type" : "text" },
         "changed" : { "type" : "date" },
         "created" : { "type" : "date" },
-        "field_asst_collection_method" : { "type" : "list\\u003Cstring\\u003E" },
-        "field_asst_date:value" : { "type" : "date" },
-        "field_asst_date:value2" : { "type" : "date" },
-        "field_asst_freq" : { "type" : "string" },
-        "field_asst_key_findings" : { "type" : "text" },
-        "field_asst_methodology" : { "type" : "text" },
-        "field_asst_other_location" : { "type" : "text", "boost" : "0.5" },
-        "field_asst_status" : { "type" : "string" },
-        "field_asst_subject" : { "type" : "text" },
-        "field_asst_unit" : { "type" : "list\\u003Cstring\\u003E" },
-        "field_bundles" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
-        "field_bundles:field_sector" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
-        "field_coordination_hubs" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
-        "field_dataset_categories" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_dataset_types" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_disaster_status" : { "type" : "string" },
-        "field_disasters" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
-        "field_document_type" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_document_type:field_acronym" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_document_type:name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_ds_abstract:value" : { "type" : "text" },
-        "field_ds_datasources:value" : { "type" : "text" },
-        "field_ds_date" : { "type" : "date" },
-        "field_ds_instructions:value" : { "type" : "text" },
-        "field_ds_recent_changes:value" : { "type" : "text" },
-        "field_ds_summary:value" : { "type" : "text" },
-        "field_event_category" : { "type" : "integer", "entity_type" : "taxonomy_term" },
-        "field_event_date:value" : { "type" : "list\\u003Cdate\\u003E" },
-        "field_event_date:value2" : { "type" : "list\\u003Cdate\\u003E" },
-        "field_first_name" : { "type" : "string" },
-        "field_funding_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
-        "field_fundings" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
-        "field_fundings:field_acronym" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_fundings:title" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_geographic_level" : { "type" : "integer", "entity_type" : "node" },
-        "field_glide_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_ind_code" : { "type" : "string" },
         "field_ind_comments" : { "type" : "text", "boost" : "0.5" },
         "field_ind_cross_tagging" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
@@ -262,33 +227,8 @@ function hr_search_default_search_api_index() {
         "field_ind_types" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_ind_unit" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_ind_unit_desc" : { "type" : "text", "boost" : "0.5" },
-        "field_infographic_type" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_infographic_type:field_acronym" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_infographic_type:name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_languages:safe_value" : { "type" : "list\\u003Cstring\\u003E" },
-        "field_last_name" : { "type" : "string" },
-        "field_location" : { "type" : "integer", "entity_type" : "taxonomy_term" },
-        "field_location:field_geofield:geom" : { "type" : "string" },
-        "field_location:field_geofield:lat" : { "type" : "decimal" },
-        "field_location:field_geofield:lon" : { "type" : "decimal" },
-        "field_locations" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_locations:field_geofield:geom" : { "type" : "list\\u003Cstring\\u003E" },
-        "field_locations:field_geofield:lat" : { "type" : "list\\u003Cdecimal\\u003E" },
-        "field_locations:field_geofield:lon" : { "type" : "list\\u003Cdecimal\\u003E" },
-        "field_organizations" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_organizations2" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_organizations:field_acronym" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_organizations:name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_population_types" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_publication_date" : { "type" : "date" },
-        "field_sector" : { "type" : "integer", "entity_type" : "node" },
         "field_sectors" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
-        "field_terms_of_use:value" : { "type" : "text" },
-        "field_themes" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_themes:field_acronym" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_themes:name" : { "type" : "list\\u003Ctext\\u003E" },
         "language" : { "type" : "string" },
-        "og_group_ref" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "promote" : { "type" : "boolean" },
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_aggregation_1" : { "type" : "text" },
@@ -304,7 +244,8 @@ function hr_search_default_search_api_index() {
       "sorts_widget" : { "enabled" : 1, "autosubmit" : 1, "autosubmit_hide" : 1, "title" : "" }
     },
     "enabled" : "1",
-    "read_only" : "0"
+    "read_only" : "0",
+    "path" : { "pathauto" : "0" }
   }');
   return $items;
 }
@@ -314,27 +255,216 @@ function hr_search_default_search_api_index() {
  */
 function hr_search_default_search_api_server() {
   $items = array();
-  $items['hr_solr'] = entity_import('search_api_server', '{
-    "name" : "Solr",
-    "machine_name" : "hr_solr",
+  $items['local'] = entity_import('search_api_server', '{
+    "name" : "Local",
+    "machine_name" : "local",
     "description" : "",
-    "class" : "search_api_solr_service",
+    "class" : "search_api_db_service",
     "options" : {
-      "clean_ids" : true,
-      "scheme" : "http",
-      "host" : "10.5.204.31",
-      "port" : "8983",
-      "path" : "\\/solr\\/core0",
-      "http_user" : "",
-      "http_pass" : "",
-      "excerpt" : 0,
-      "retrieve_data" : 0,
-      "highlight_data" : 0,
-      "http_method" : "AUTO",
-      "autocorrect_spell" : 1,
-      "autocorrect_suggest_words" : 1
+      "database" : "default:default",
+      "min_chars" : "1",
+      "partial_matches" : 1,
+      "indexes" : { "default_node_index" : {
+          "type" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "type",
+            "type" : "string",
+            "boost" : "1.0"
+          },
+          "title" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "5.0"
+          },
+          "promote" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "promote",
+            "type" : "boolean",
+            "boost" : "1.0"
+          },
+          "sticky" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "sticky",
+            "type" : "boolean",
+            "boost" : "1.0"
+          },
+          "created" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "created",
+            "type" : "date",
+            "boost" : "1.0"
+          },
+          "changed" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "changed",
+            "type" : "date",
+            "boost" : "1.0"
+          },
+          "author" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "author",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "search_api_language" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "search_api_language",
+            "type" : "string",
+            "boost" : "1.0"
+          },
+          "body:value" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "1.0"
+          },
+          "language" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "language",
+            "type" : "string",
+            "boost" : "1.0"
+          },
+          "url" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "url",
+            "type" : "uri",
+            "boost" : "1.0"
+          },
+          "status" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "status",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "field_ind_code" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "field_ind_code",
+            "type" : "string",
+            "boost" : "1.0"
+          },
+          "field_ind_comments" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "0.5"
+          },
+          "field_ind_data_sources" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "0.5"
+          },
+          "field_ind_denominator" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "0.5"
+          },
+          "field_ind_disaggregation" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "0.5"
+          },
+          "field_ind_general_guidance" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "0.5"
+          },
+          "field_ind_guidance_baseline" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "0.5"
+          },
+          "field_ind_guidance_phases" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "0.5"
+          },
+          "field_ind_numerator" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "0.5"
+          },
+          "field_ind_threshold" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "0.5"
+          },
+          "field_ind_unit_desc" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "0.5"
+          },
+          "title_field" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "1.0"
+          },
+          "field_sectors" : {
+            "table" : "search_api_db_default_node_index_field_sectors",
+            "column" : "value",
+            "type" : "list\\u003Cinteger\\u003E",
+            "boost" : "1.0"
+          },
+          "field_ind_cross_tagging" : {
+            "table" : "search_api_db_default_node_index_field_ind_cross_tagging",
+            "column" : "value",
+            "type" : "list\\u003Cinteger\\u003E",
+            "boost" : "1.0"
+          },
+          "field_ind_domain" : {
+            "table" : "search_api_db_default_node_index_field_ind_domain",
+            "column" : "value",
+            "type" : "list\\u003Cinteger\\u003E",
+            "boost" : "1.0"
+          },
+          "field_ind_key" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "field_ind_key",
+            "type" : "boolean",
+            "boost" : "1.0"
+          },
+          "field_ind_response" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "field_ind_response",
+            "type" : "boolean",
+            "boost" : "1.0"
+          },
+          "field_ind_standards" : {
+            "table" : "search_api_db_default_node_index_field_ind_standards",
+            "column" : "value",
+            "type" : "list\\u003Cinteger\\u003E",
+            "boost" : "1.0"
+          },
+          "field_ind_types" : {
+            "table" : "search_api_db_default_node_index_field_ind_types",
+            "column" : "value",
+            "type" : "list\\u003Cinteger\\u003E",
+            "boost" : "1.0"
+          },
+          "field_ind_unit" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "field_ind_unit",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "search_api_aggregation_1" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "1.0"
+          },
+          "search_api_aggregation_2" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
+            "boost" : "1.0"
+          },
+          "search_api_access_node" : {
+            "table" : "search_api_db_default_node_index_search_api_access_node",
+            "column" : "value",
+            "type" : "list\\u003Cstring\\u003E",
+            "boost" : "1.0"
+          }
+        }
+      }
     },
-    "enabled" : "1"
+    "enabled" : "1",
+    "path" : { "pathauto" : "0" }
   }');
   return $items;
 }
@@ -354,15 +484,8 @@ function hr_search_default_search_api_sort() {
     "default_sort" : "0",
     "default_sort_no_terms" : "0",
     "default_order" : "desc",
-    "settings" : {
-      "default_true" : "0",
-      "search_ids" : {
-        "search_api_views:hr_datasets:list" : "search_api_views:hr_datasets:list",
-        "search_api_views:hr_datasets:master" : "search_api_views:hr_datasets:master",
-        "search_api_views:hr_datasets:table" : "search_api_views:hr_datasets:table"
-      }
-    },
-    "options" : { "field_name" : "Date changed" }
+    "options" : { "field_name" : "Date changed" },
+    "path" : { "pathauto" : "0" }
   }');
   $items['default_node_index__created'] = entity_import('search_api_sort', '{
     "index_id" : "default_node_index",
@@ -374,17 +497,8 @@ function hr_search_default_search_api_sort() {
     "default_sort" : "0",
     "default_sort_no_terms" : "0",
     "default_order" : "desc",
-    "settings" : {
-      "default_true" : "0",
-      "search_ids" : {
-        "search_api_views:hr_news:list" : "search_api_views:hr_news:list",
-        "search_api_views:hr_news:page" : "search_api_views:hr_news:page",
-        "search_api_views:hr_datasets:list" : "search_api_views:hr_datasets:list",
-        "search_api_views:hr_datasets:master" : "search_api_views:hr_datasets:master",
-        "search_api_views:hr_datasets:table" : "search_api_views:hr_datasets:table"
-      }
-    },
-    "options" : { "field_name" : "Date created" }
+    "options" : { "field_name" : "Date created" },
+    "path" : { "pathauto" : "0" }
   }');
   $items['default_node_index__field_asst_date:value'] = entity_import('search_api_sort', '{
     "index_id" : "default_node_index",
@@ -396,14 +510,8 @@ function hr_search_default_search_api_sort() {
     "default_sort" : "0",
     "default_sort_no_terms" : "0",
     "default_order" : "desc",
-    "settings" : {
-      "default_true" : "0",
-      "search_ids" : {
-        "search_api_views:hr_assessments:master" : "search_api_views:hr_assessments:master",
-        "search_api_views:hr_assessments:table" : "search_api_views:hr_assessments:table"
-      }
-    },
-    "options" : { "field_name" : "Report Date \\u00bb Start date" }
+    "options" : { "field_name" : "field_asst_date:value" },
+    "path" : { "pathauto" : "0" }
   }');
   $items['default_node_index__field_ds_date'] = entity_import('search_api_sort', '{
     "index_id" : "default_node_index",
@@ -415,15 +523,8 @@ function hr_search_default_search_api_sort() {
     "default_sort" : "0",
     "default_sort_no_terms" : "0",
     "default_order" : "desc",
-    "settings" : {
-      "default_true" : "0",
-      "search_ids" : {
-        "search_api_views:hr_datasets:list" : "search_api_views:hr_datasets:list",
-        "search_api_views:hr_datasets:master" : "search_api_views:hr_datasets:master",
-        "search_api_views:hr_datasets:table" : "search_api_views:hr_datasets:table"
-      }
-    },
-    "options" : { "field_name" : "Dataset Date" }
+    "options" : { "field_name" : "field_ds_date" },
+    "path" : { "pathauto" : "0" }
   }');
   $items['default_node_index__field_first_name'] = entity_import('search_api_sort', '{
     "index_id" : "default_node_index",
@@ -435,15 +536,8 @@ function hr_search_default_search_api_sort() {
     "default_sort" : "0",
     "default_sort_no_terms" : "0",
     "default_order" : "desc",
-    "settings" : {
-      "default_true" : "0",
-      "search_ids" : {
-        "search_api_views:hr_contacts:table" : "search_api_views:hr_contacts:table",
-        "search_api_views:hr_contacts:list" : "search_api_views:hr_contacts:list",
-        "search_api_views:hr_contacts:master" : "search_api_views:hr_contacts:master"
-      }
-    },
-    "options" : { "field_name" : "First name" }
+    "options" : { "field_name" : "field_first_name" },
+    "path" : { "pathauto" : "0" }
   }');
   $items['default_node_index__field_last_name'] = entity_import('search_api_sort', '{
     "index_id" : "default_node_index",
@@ -455,15 +549,8 @@ function hr_search_default_search_api_sort() {
     "default_sort" : "0",
     "default_sort_no_terms" : "0",
     "default_order" : "desc",
-    "settings" : {
-      "default_true" : "0",
-      "search_ids" : {
-        "search_api_views:hr_contacts:table" : "search_api_views:hr_contacts:table",
-        "search_api_views:hr_contacts:list" : "search_api_views:hr_contacts:list",
-        "search_api_views:hr_contacts:master" : "search_api_views:hr_contacts:master"
-      }
-    },
-    "options" : { "field_name" : "Last name" }
+    "options" : { "field_name" : "field_last_name" },
+    "path" : { "pathauto" : "0" }
   }');
   $items['default_node_index__field_publication_date'] = entity_import('search_api_sort', '{
     "index_id" : "default_node_index",
@@ -475,17 +562,8 @@ function hr_search_default_search_api_sort() {
     "default_sort" : "0",
     "default_sort_no_terms" : "1",
     "default_order" : "desc",
-    "settings" : {
-      "default_true" : "0",
-      "search_ids" : {
-        "search_api_views:hr_documents:list" : "search_api_views:hr_documents:list",
-        "search_api_views:hr_documents:table" : "search_api_views:hr_documents:table",
-        "search_api_views:hr_documents:master" : "search_api_views:hr_documents:master",
-        "search_api_views:hr_infographics:table" : "search_api_views:hr_infographics:table",
-        "search_api_views:hr_infographics:master" : "search_api_views:hr_infographics:master"
-      }
-    },
-    "options" : { "field_name" : "Publication Date" }
+    "options" : { "field_name" : "field_publication_date" },
+    "path" : { "pathauto" : "0" }
   }');
   return $items;
 }

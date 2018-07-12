@@ -6,3 +6,182 @@
  */
 
 include_once 'hr_indicators.features.inc';
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function hr_indicators_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'restful') {
+    return 'plugins/' . $plugin;
+  }
+}
+
+/**
+ * Migrate from postgres.
+ */
+function _hr_indicators_migrate_data_from_postgres() {
+  // Migrate nodes.
+  $tables = array(
+    'node',
+  );
+
+  foreach ($tables as $table) {
+    db_set_active('source');
+    if (db_table_exists($table)) {
+      $records = db_query("SELECT * FROM {" . $table . "} WHERE type in ('hr_sector', 'hr_indicator', 'hr_page') ", array(), array())->fetchAll();
+
+      db_set_active();
+      if (db_table_exists($table)) {
+        db_truncate($table)->execute();
+        foreach ($records as $record) {
+            drupal_write_record($table, $record);
+        }
+      }
+    }
+    db_set_active();
+  }
+
+  $tables = array(
+    'node_access',
+    'node_revision',
+    'taxonomy_index',
+    'taxonomy_term_data',
+    'taxonomy_term_hierarchy',
+    'taxonomy_vocabulary',
+    'url_alias',
+  );
+  foreach ($tables as $table) {
+    db_set_active('source');
+    if (db_table_exists($table)) {
+      $records = db_query("SELECT * FROM {" . $table . "} ", array(), array())->fetchAll();
+
+      db_set_active();
+      if (db_table_exists($table)) {
+        db_truncate($table)->execute();
+        foreach ($records as $record) {
+          drupal_write_record($table, $record);
+        }
+      }
+    }
+    db_set_active();
+  }
+
+  // Migrate fields.
+  $tables = array(
+    'field_data_body',
+    'field_data_description_field',
+    'field_data_field_acronym',
+    'field_data_field_address',
+    'field_data_field_email',
+    'field_data_field_emails',
+    'field_data_field_file_image_alt_text',
+    'field_data_field_file_image_title_text',
+    'field_data_field_files',
+    'field_data_field_first_name',
+    'field_data_field_image',
+    'field_data_field_ind_code',
+    'field_data_field_ind_comments',
+    'field_data_field_ind_cross_tagging',
+    'field_data_field_ind_data_sources',
+    'field_data_field_ind_denominator',
+    'field_data_field_ind_disaggregation',
+    'field_data_field_ind_domain',
+    'field_data_field_ind_general_guidance',
+    'field_data_field_ind_guidance_baseline',
+    'field_data_field_ind_guidance_phases',
+    'field_data_field_ind_key',
+    'field_data_field_ind_numerator',
+    'field_data_field_ind_phase_applicability',
+    'field_data_field_ind_response',
+    'field_data_field_ind_standards',
+    'field_data_field_ind_threshold',
+    'field_data_field_ind_types',
+    'field_data_field_ind_unit',
+    'field_data_field_ind_unit_desc',
+    'field_data_field_last_name',
+    'field_data_field_links',
+    'field_data_field_page_menu',
+    'field_data_field_phones',
+    'field_data_field_related_content',
+    'field_data_field_sector',
+    'field_data_field_sector_type',
+    'field_data_field_sectors',
+    'field_data_field_social_media',
+    'field_data_field_space_category',
+    'field_data_field_space_type',
+    'field_data_field_users',
+    'field_data_field_website',
+    'field_data_group_access',
+    'field_data_group_content_access',
+    'field_data_group_group',
+    'field_data_title_field',
+    'field_revision_body',
+    'field_revision_description_field',
+    'field_revision_field_acronym',
+    'field_revision_field_address',
+    'field_revision_field_email',
+    'field_revision_field_emails',
+    'field_revision_field_file_image_alt_text',
+    'field_revision_field_file_image_title_text',
+    'field_revision_field_files',
+    'field_revision_field_first_name',
+    'field_revision_field_image',
+    'field_revision_field_ind_code',
+    'field_revision_field_ind_comments',
+    'field_revision_field_ind_cross_tagging',
+    'field_revision_field_ind_data_sources',
+    'field_revision_field_ind_denominator',
+    'field_revision_field_ind_disaggregation',
+    'field_revision_field_ind_domain',
+    'field_revision_field_ind_general_guidance',
+    'field_revision_field_ind_guidance_baseline',
+    'field_revision_field_ind_guidance_phases',
+    'field_revision_field_ind_key',
+    'field_revision_field_ind_numerator',
+    'field_revision_field_ind_phase_applicability',
+    'field_revision_field_ind_response',
+    'field_revision_field_ind_standards',
+    'field_revision_field_ind_threshold',
+    'field_revision_field_ind_types',
+    'field_revision_field_ind_unit',
+    'field_revision_field_ind_unit_desc',
+    'field_revision_field_last_name',
+    'field_revision_field_links',
+    'field_revision_field_page_menu',
+    'field_revision_field_phones',
+    'field_revision_field_related_content',
+    'field_revision_field_sector',
+    'field_revision_field_sector_type',
+    'field_revision_field_sectors',
+    'field_revision_field_social_media',
+    'field_revision_field_space_category',
+    'field_revision_field_space_type',
+    'field_revision_field_users',
+    'field_revision_field_website',
+    'field_revision_group_access',
+    'field_revision_group_content_access',
+    'field_revision_group_group',
+    'field_revision_title_field',
+  );
+
+  foreach ($tables as $table) {
+    db_set_active('source');
+    if (db_table_exists($table)) {
+      $records = db_query("SELECT * FROM {" . $table . "} WHERE (bundle in ('hr_sector', 'hr_indicator', 'hr_page') OR entity_type = 'taxonomy_term')", array(), array())->fetchAll();
+
+      db_set_active();
+
+      if (db_table_exists($table)) {
+        db_truncate($table)->execute();
+        foreach ($records as $record) {
+          drupal_write_record($table, $record);
+        }
+      }
+    }
+    db_set_active();
+
+  }
+
+  db_query("UPDATE node SET uid = 1 WHERE uid <> 1");
+  db_query("UPDATE node_revision SET uid = 1 WHERE uid <> 1");
+}

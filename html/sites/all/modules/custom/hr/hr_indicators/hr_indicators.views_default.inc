@@ -142,7 +142,7 @@ function hr_indicators_views_default_views() {
   /* Display: Table */
   $handler = $view->new_display('page', 'Table', 'table');
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['path'] = 'node/%/indicators';
+  $handler->display->display_options['path'] = 'indicators';
   $handler->display->display_options['menu']['title'] = 'Table';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
@@ -276,7 +276,7 @@ function hr_indicators_views_default_views() {
   $handler->display->display_options['fields']['field_ind_cross_tagging']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_ind_cross_tagging']['bypass_access'] = 0;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  $handler->display->display_options['path'] = 'node/%/indicators/xls';
+  $handler->display->display_options['path'] = 'indicators/xls';
   $handler->display->display_options['displays'] = array(
     'table' => 'table',
     'default' => 0,
@@ -432,7 +432,7 @@ function hr_indicators_views_default_views() {
   $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
   $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  $handler->display->display_options['path'] = 'node/%/indicators/xml';
+  $handler->display->display_options['path'] = 'indicators/xml';
   $handler->display->display_options['displays'] = array(
     'table' => 'table',
     'default' => 0,
@@ -458,7 +458,6 @@ function hr_indicators_views_default_views() {
     t('Sub-domain'),
     t('Title'),
     t('Description'),
-    t('All'),
     t('Search Indicators'),
     t('Table'),
     t('XLS'),
