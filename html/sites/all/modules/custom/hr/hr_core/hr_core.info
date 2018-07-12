@@ -30,7 +30,6 @@ dependencies[] = redirect
 dependencies[] = role_export
 dependencies[] = strongarm
 dependencies[] = text
-dependencies[] = title
 dependencies[] = toolbar
 dependencies[] = views_data_export
 features[ctools][] = elysia_cron:default_elysia_cron_rules:1
