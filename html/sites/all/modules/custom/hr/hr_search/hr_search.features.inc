@@ -259,7 +259,7 @@ function hr_search_default_search_api_server() {
     "name" : "Local",
     "machine_name" : "local",
     "description" : "",
-    "class" : "search_api_db_service",
+    "class" : "search_api_solr_service",
     "options" : {
       "database" : "default:default",
       "min_chars" : "1",
