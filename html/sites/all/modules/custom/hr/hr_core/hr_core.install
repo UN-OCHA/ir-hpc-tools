@@ -11,3 +11,12 @@
 function hr_core_install() {
   variable_set('theme_default', 'registry');
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Enable search_api_solr_overrides, so the solr config can be enforced.
+ */
+function hr_core_update_7001() {
+  module_enable(array('search_api_solr_overrides'));
+}
