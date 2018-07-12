@@ -78,7 +78,7 @@ function hr_sectors_views_default_views() {
   $handler->display->display_options['fields']['field_website']['empty'] = '[path]';
   $handler->display->display_options['fields']['field_website']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_website']['type'] = 'link_plain';
-  /* Field: Field: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';

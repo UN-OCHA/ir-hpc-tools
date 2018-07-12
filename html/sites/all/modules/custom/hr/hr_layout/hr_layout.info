@@ -9,6 +9,7 @@ dependencies[] = fieldable_panels_panes
 dependencies[] = hr_core
 dependencies[] = locale
 dependencies[] = page_manager
+dependencies[] = strongarm
 features[context][] = sitewide
 features[context][] = within_space
 features[ctools][] = context:context:3

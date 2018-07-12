@@ -41,9 +41,10 @@ function hr_search_default_search_api_index() {
     "server" : "local",
     "item_type" : "node",
     "options" : {
+      "datasource" : { "bundles" : [] },
       "index_directly" : 1,
-      "published_safe" : 0,
       "cron_limit" : "100",
+      "published_safe" : 0,
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
           "status" : 0,
