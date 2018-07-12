@@ -374,23 +374,23 @@ function hr_layout_default_page_manager_pages() {
     'title_heading' => 'h2',
     'body' => '<div class="icons-list">
 	<p>
-		<a href="/en/indicators/global-clusters/1">
+		<a href="/indicators/global-clusters/1">
 		<span class="icon-cccm"></span>Camp Coordination and Camp Management</a>
 	</p>
 	<p>
-		<a href="/en/indicators/global-clusters/2"><span class="icon-early-recovery"></span>Early Recovery</a>
+		<a href="/indicators/global-clusters/2"><span class="icon-early-recovery"></span>Early Recovery</a>
 	</p>
 	<p>
-		<a href="/en/indicators/global-clusters/3"><span class="icon-education"></span>Education</a>
+		<a href="/indicators/global-clusters/3"><span class="icon-education"></span>Education</a>
 	</p>
 	<p>
-		<a href="/en/indicators/global-clusters/5"><span class="icon-telecom"></span>Emergency Telecommunications</a>
+		<a href="/indicators/global-clusters/5"><span class="icon-telecom"></span>Emergency Telecommunications</a>
 	</p>
 	<p>
-		<a href="/en/indicators/global-clusters/6"><span class="icon-foodsecurity"></span>Food Security</a>
+		<a href="/indicators/global-clusters/6"><span class="icon-foodsecurity"></span>Food Security</a>
 	</p>
 	<p>
-		<a href="/en/indicators/global-clusters/7"><span class="icon-health"></span>Health</a>
+		<a href="/indicators/global-clusters/7"><span class="icon-health"></span>Health</a>
 	</p>
 </div>',
     'format' => 'panopoly_html_text',
@@ -428,7 +428,7 @@ function hr_layout_default_page_manager_pages() {
     'body' => '<div class="icons-list">
 
 <p>
-<a href="/en/indicators/global-clusters/8">
+<a href="/indicators/global-clusters/8">
 
 <span class="icon-logistics"></span>Logistics</a>
 
@@ -436,25 +436,25 @@ function hr_layout_default_page_manager_pages() {
 
 <p>
 
-<a href="/en/indicators/global-clusters/9"><span class="icon-nutrition"></span>Nutrition</a>
+<a href="/indicators/global-clusters/9"><span class="icon-nutrition"></span>Nutrition</a>
 
 </p>
 
 <p>
 
-<a href="/en/indicators/global-clusters/10"><span class="icon-protection"></span>Protection</a>
+<a href="/indicators/global-clusters/10"><span class="icon-protection"></span>Protection</a>
 
 </p>
 
 <p>
 
-<a href="/en/indicators/global-clusters/4"><span class="icon-shelter"></span>Shelter</a>
+<a href="/indicators/global-clusters/4"><span class="icon-shelter"></span>Shelter</a>
 
 </p>
 
 <p>
 
-<a href="/en/indicators/global-clusters/11"><span class="icon-wash"></span>Water, Sanitation and Hygiene</a>
+<a href="/indicators/global-clusters/11"><span class="icon-wash"></span>Water, Sanitation and Hygiene</a>
 
 </p>
 
@@ -502,7 +502,7 @@ function hr_layout_default_page_manager_pages() {
 <p><strong>Scope</strong> : This registry is a point of reference for Humanitarian Country Teams and clusters at the country level for indicators which are recommended for monitoring the humanitarian situation, needs and the humanitarian response. &nbsp;The registry does not capture (long-term) impact or input indicators (as many input indicators can feed into one output). There may be other indicators which some global clusters recommend, or other indicators which are only locally appropriate which may not be captured in the registry.</p>
 </div>
 <div class="col-sm-3"><div class="center-block"><a href="/sites/default/files/qaindicatorregistry.pdf" target="_blank"><img alt="IR Q&amp;A" class="img-responsive center-block" src="/sites/default/files/irqa.jpg" /></a></div></div>',
-    'format' => 'full_html',
+    'format' => 'panopoly_html_text',
     'substitute' => TRUE,
   );
   $pane->cache = array(
@@ -537,7 +537,7 @@ function hr_layout_default_page_manager_pages() {
     'body' => '<div class="col-sm-12">
 <p>The registry is a guidance tool for countries to select indicators, and where possible to seek standard definitions and applications of those indicators. It lists the principal needs and response monitoring indicators for each cluster and provides a unique identifier, similiar to a p-code, for every indicator. This registry offers also: search, filter, and export functions.</p></div>
 ',
-    'format' => 'full_html',
+    'format' => 'panopoly_html_text',
     'substitute' => TRUE,
   );
   $pane->cache = array(
