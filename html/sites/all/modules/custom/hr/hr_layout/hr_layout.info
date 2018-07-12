@@ -5,6 +5,7 @@ package = Humanitarianresponse
 dependencies[] = context
 dependencies[] = ctools
 dependencies[] = entityreference_autocomplete
+dependencies[] = fieldable_panels_panes
 dependencies[] = hr_core
 dependencies[] = hr_help
 dependencies[] = locale

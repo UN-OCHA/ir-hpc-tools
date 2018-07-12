@@ -439,6 +439,9 @@ function field_info_bundles($entity_type = NULL) {
   $bundles = array();
   foreach ($info as $type => $entity_info) {
     $bundles[$type] = $entity_info['bundles'];
+    if (!isset($entity_info['bundles'])) {
+		dpm($entity_info, $type);
+	}
   }
   return $bundles;
 }

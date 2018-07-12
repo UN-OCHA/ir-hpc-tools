@@ -1,8 +1,0 @@
-<?php
-
-/**
- * @file
- * Code for the Users feature.
- */
-
-include_once 'hr_users.features.inc';

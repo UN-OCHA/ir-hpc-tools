@@ -254,34 +254,6 @@ function hr_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_hr_indicator_domain_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_hr_indicator_domain_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_hr_indicator_standard_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_hr_indicator_standard_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_hr_indicator_type_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_hr_indicator_type_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_hr_indicator_unit_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_hr_indicator_unit_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_hr_space_category_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_hr_space_category_pattern'] = $strongarm;
