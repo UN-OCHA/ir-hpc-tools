@@ -4061,7 +4061,7 @@ a.fc-event .fc-event-inner .fc-event-title, .fc-event-draggable .fc-event-inner 
 
 .hr-highlighted .pane-content .openlayers-popup ul { color: #EEEEEE; }
 
-.feed-icon { position: absolute; right: 0; top: -55px; }
+.feed-icon { position: absolute; right: 0; top: 0; }
 .feed-icon .btn { border: none; background: #3d5d77; border-radius: 0; color: #fff; }
 .feed-icon .btn i { font-weight: bold; }
 .feed-icon .btn:hover, .feed-icon .btn:focus { background: #0ac7d9; }
