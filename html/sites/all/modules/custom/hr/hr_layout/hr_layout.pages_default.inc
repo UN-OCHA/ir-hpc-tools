@@ -241,7 +241,7 @@ function hr_layout_default_page_manager_pages() {
 
 <p><strong>Scope</strong> : This registry is a point of reference for Humanitarian Country Teams and clusters at the country level for indicators which are recommended for monitoring the humanitarian situation, needs and the humanitarian response. &nbsp;The registry does not capture (long-term) impact or input indicators (as many input indicators can feed into one output). There may be other indicators which some global clusters recommend, or other indicators which are only locally appropriate which may not be captured in the registry.</p>
 </div>
-<div class="col-sm-3"><div class="center-block"><a href="/sites/default/files/qaindicatorregistry.pdf" target="_blank"><img alt="IR Q&amp;A" class="img-responsive center-block" src="/sites/default/files/irqa.jpg" /></a></div></div>',
+<div class="col-sm-3"><div class="center-block"><a href="/sites/all/modules/custom/images/qaindicatorregistry.pdf" target="_blank"><img alt="IR Q&amp;A" class="img-responsive center-block" src="/sites/all/modules/custom/images/irqa.jpg" /></a></div></div>',
     'format' => 'panopoly_html_text',
     'substitute' => TRUE,
   );
