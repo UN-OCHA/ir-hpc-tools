@@ -9,6 +9,20 @@
  */
 
 /**
+ * Alter information provided by shs_js() for the js module.
+ *
+ * @param array $settings
+ *   Settings for js module.
+ *   @see hook_js()
+ */
+function hook_shs_js_info_alter(&$settings) {
+  // Add pathauto as dependency for the default json callback.
+  $settings['json']['dependencies'][] = 'pathauto';
+  // Change the access callback.
+  $settings['json']['access callback'] = 'my_custom_access';
+}
+
+/**
  * Alter permissions to create new terms using shs on a per-term level.
  *
  * @param int $vid
@@ -54,7 +68,7 @@ function hook_shs_json_callbacks_alter(&$callbacks) {
  * @param array $alter_options
  *   - vid: ID of vocabulary or field name
  *   - parent: ID of parent term
- *   - settings: Additional settings (for example "display node count", "language", etc.,)
+ *   - settings: Additional settings (for example "language", etc.,)
  */
 function hook_shs_term_get_children_alter(&$terms, &$alter_options) {
 
