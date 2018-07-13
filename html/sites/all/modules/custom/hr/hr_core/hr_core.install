@@ -11,3 +11,13 @@
 function hr_core_install() {
   variable_set('theme_default', 'registry');
 }
+
+/**
+ * Enable hybridauth.
+ */
+function hr_core_update_7001() {
+  module_enable(array(
+    'hybridauth',
+    'search_api_db',
+  ));
+}

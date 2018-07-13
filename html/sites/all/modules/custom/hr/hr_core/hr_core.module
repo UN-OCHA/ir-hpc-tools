@@ -15,22 +15,6 @@ function hr_core_entity_info_alter(&$entity_info) {
     'label' => t('Search result'),
     'custom settings' => TRUE,
   );
-  $entity_info['field_collection_item']['view modes']['search_result'] = array(
-    'label' => t('Search result'),
-    'custom settings' => TRUE,
-  );
-  $entity_info['fieldable_panels_pane']['view modes']['teaser'] = array(
-    'label' => t('Teaser'),
-    'custom settings' => TRUE,
-  );
-  $entity_info['fieldable_panels_pane']['view modes']['link'] = array(
-    'label' => t('Link'),
-    'custom settings' => TRUE,
-  );
-  $entity_info['user']['view modes']['teaser'] = array(
-    'label' => t('Teaser'),
-    'custom settings' => TRUE,
-  );
 }
 
 /**
@@ -179,4 +163,39 @@ function _hr_core_fix_entity_reference_ajax_calls(&$form, &$form_state) {
       }
     }
   }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function hr_core_menu() {
+  $items = array();
+
+  $items['login'] = array(
+    'title' => 'Log in',
+    'page callback' => 'hr_core_login_redirect',
+    'access callback' => 'user_is_anonymous',
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function hr_core_menu_alter(&$items) {
+  $items['user/register']['access callback'] = FALSE;
+  $items['user/password']['page callback'] = FALSE;
+  $items['user/login']['access callback'] = FALSE;
+}
+
+/**
+ * Redirect to hybrid auth.
+ */
+function hr_core_login_redirect() {
+  drupal_goto('hybridauth/window/HumanitarianId', array(
+    'destination' => drupal_get_destination(),
+    'destination_error' => '<front>',
+  ));
 }
