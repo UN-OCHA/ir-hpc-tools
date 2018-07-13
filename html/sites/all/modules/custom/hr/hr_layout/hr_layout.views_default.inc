@@ -113,7 +113,7 @@ function hr_layout_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content: Space(s) (og_group_ref) */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['table'] = 'og_membership';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
@@ -144,9 +144,7 @@ function hr_layout_views_default_views() {
   /* Display: Content */
   $handler = $view->new_display('page', 'Content', 'content');
   $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'og_context';
-  $handler->display->display_options['access']['perm'] = 'create hr_page content';
-  $handler->display->display_options['access']['group_id_arg'] = '1';
+  $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
@@ -248,7 +246,7 @@ function hr_layout_views_default_views() {
   $handler->display->display_options['fields']['delete_node']['label'] = 'Delete';
   /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
@@ -271,7 +269,7 @@ function hr_layout_views_default_views() {
     ),
   );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Space(s) (og_group_ref) */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['table'] = 'og_membership';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
@@ -283,7 +281,6 @@ function hr_layout_views_default_views() {
   $handler->display->display_options['arguments']['og_group_ref_target_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['og_group_ref_target_id']['validate']['type'] = 'og';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -352,7 +349,6 @@ function hr_layout_views_default_views() {
     t('%1 Content'),
     t('Published'),
   );
-
   $export['hr_space'] = $view;
 
   return $export;

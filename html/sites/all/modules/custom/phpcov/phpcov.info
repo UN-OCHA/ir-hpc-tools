@@ -1,0 +1,4 @@
+name = PHP Code Coverage
+description = PHP Code Coverage
+core = 7.x
+package = Devel

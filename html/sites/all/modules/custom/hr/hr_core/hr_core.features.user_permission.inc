@@ -10,6 +10,17 @@
 function hr_core_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'use hybridauth'.
+  $permissions['use hybridauth'] = array(
+    'name' => 'use hybridauth',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'hybridauth',
+  );
+
   // Exported permission: 'administer panels styles'.
   $permissions['administer panels styles'] = array(
     'name' => 'administer panels styles',
