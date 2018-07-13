@@ -17,6 +17,7 @@ function hr_core_install() {
  */
 function hr_core_update_7001() {
   module_enable(array(
-    'events_event',
+    'hybridauth',
+    'search_api_db',
   ));
 }
