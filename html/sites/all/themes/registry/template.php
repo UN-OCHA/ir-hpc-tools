@@ -71,7 +71,12 @@ function registry_facetapi_accessible_markup($variables) {
   // inline with this and we don't want the words to run together. However, the
   // spaces must be inside the <span> so as not to disrupt the layout for
   // sighted users.
-  return '<span class="element-invisible"> ' . $text . ' </span>' . $variables['text'];
+  if ($variables['active']) {
+    return '<span class="element-invisible"> ' . $text . ' </span>' . $variables['text'];
+  }
+  else {
+    return '<span class="element-invisible"> ' . $text . ' </span>';
+  }
 }
 
 /**
