@@ -4298,4 +4298,19 @@ table.stylish-table tr:nth-child(2n) { background-color: #dedede; }
 
 .front .panel-pane.pane-block.pane-hr-layout-hr-layout-hum-system { margin-bottom: 30px; }
 
-/*# sourceMappingURL=screen.css.map */
+.current-search-item-active-items .item-list ul {
+  list-style: none;
+}
+
+.current-search-item-active-items .item-list li {
+  margin: 0 0 0.25em 0;
+}
+
+.current-search-item-active-items .item-list a {
+  text-decoration: none;
+}
+
+.current-search-item-active-items .item-list a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
