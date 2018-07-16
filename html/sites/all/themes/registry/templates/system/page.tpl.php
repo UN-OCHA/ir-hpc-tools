@@ -24,6 +24,7 @@
             <li><a href="https://humdata.org/">Humanitarian Data Exchange</a></li>
             <li><a href="https://humanitarian.id/">Humanitarian ID</a></li>
             <li><a href="https://reliefweb.int/">ReliefWeb</a></li>
+            <li><a href="https://www.humanitarianresponse.info/">HumanitarianResponse.info</a></li>
           </ul>
         </div>
         <div class="cd-hri-global-header__nav">
