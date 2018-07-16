@@ -34,7 +34,7 @@ function hr_layout_block_info() {
  * Implements hook_block_view().
  */
 function hr_layout_block_view($delta = '') {
-  global $user, $base_url;
+  global $base_url;
   $block = array();
 
   switch ($delta) {

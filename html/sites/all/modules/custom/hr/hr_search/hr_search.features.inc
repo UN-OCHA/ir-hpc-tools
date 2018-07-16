@@ -229,6 +229,7 @@ function hr_search_default_search_api_index() {
         "field_ind_unit_desc" : { "type" : "text", "boost" : "0.5" },
         "field_sectors" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "language" : { "type" : "string" },
+        "nid" : { "type" : "integer" },
         "promote" : { "type" : "boolean" },
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_aggregation_1" : { "type" : "text" },
@@ -458,6 +459,12 @@ function hr_search_default_search_api_server() {
             "table" : "search_api_db_default_node_index_search_api_access_node",
             "column" : "value",
             "type" : "list\\u003Cstring\\u003E",
+            "boost" : "1.0"
+          },
+          "nid" : {
+            "table" : "search_api_db_default_node_index",
+            "column" : "nid",
+            "type" : "integer",
             "boost" : "1.0"
           }
         }
