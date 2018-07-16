@@ -1,5 +1,5 @@
 # Humanitarian Response theme
- 
+
 ## CSS
 
 This project uses [Sass](http://sass-lang.com/) 
