@@ -14,6 +14,20 @@ require_once dirname(__FILE__) . '/includes/user.inc';
 require_once dirname(__FILE__) . '/includes/view.inc';
 
 /**
+ * Returns HTML for a search keys facet item.
+ */
+function registry_current_search_keys($variables) {
+  $link_text = check_plain($variables['keys']);
+
+  $variables['path'] = current_path();
+  $variables['text'] = 'X ' . $link_text;
+  $variables['options']['html'] = TRUE;
+  $variables['options']['attributes']['title'] = t('Remove keyword: @text', array('@text' => $link_text));
+
+  return theme('link', $variables);
+}
+
+/**
  * Returns HTML for an active facet item.
  */
 function registry_facetapi_link_active($variables) {
