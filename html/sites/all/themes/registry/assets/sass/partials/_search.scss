@@ -60,6 +60,7 @@
           line-height: 1;
           position: relative;
           text-decoration: none;
+          padding-left: 20px;
 
           &:after {
             content: "";
@@ -78,21 +79,14 @@
             color: $p-dark-text;
           }
 
-          &.facetapi-active {
-            font-size: 0;
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            margin: 0 5px 0 0;
-            float: left;
-          }
-
-          &.facetapi-inactive {
-            padding-left: 20px;
-          }
-
-          &.facetapi-active, &.facetapi-inactive:hover, &.facetapi-inactive:focus {
+          &.facetapi-active,
+          &.facetapi-inactive:hover,
+          &.facetapi-inactive:focus {
             @extend .icon-check;
+
+            & .facet-api--remove-icon {
+              display: none;
+            }
 
             &:before {
               font-family: 'unocha-icons' !important;

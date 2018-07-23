@@ -58,7 +58,7 @@ function registry_facetapi_link_active($variables) {
  * Returns HTML for the deactivation widget.
  */
 function registry_facetapi_deactivate_widget($variables) {
-  return 'X';
+  return '<span class="facet-api--remove-icon">X</span>';
 }
 
 /**
