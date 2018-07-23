@@ -141,6 +141,8 @@ function hr_indicators_views_default_views() {
 
   /* Display: Table */
   $handler = $view->new_display('page', 'Table', 'table');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Indicators';
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'indicators';
   $handler->display->display_options['menu']['title'] = 'Table';
