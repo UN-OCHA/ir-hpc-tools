@@ -199,3 +199,53 @@ function hr_core_login_redirect() {
     'destination_error' => '<front>',
   ));
 }
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function hr_core_field_extra_fields() {
+  $content_types = array(
+    'hr_indicator',
+  );
+  foreach ($content_types as $content_type) {
+    $extra['node'][$content_type]['display'] = array(
+      'hr_core_share_button' => array(
+        'label' => t('Share button'),
+        'description' => t('Share button'),
+        'weight' => 0,
+      ),
+    );
+  }
+
+  return $extra;
+}
+
+/**
+ * Implements hook_node_view().
+ *
+ * Adds share button.
+ */
+function hr_core_node_view($node, $view_mode, $langcode) {
+  $url = url('node/' . $node->nid, array('absolute' => TRUE));
+  $node->content['hr_core_share_button'] = array(
+    '#type' => 'item',
+    '#title' => '',
+    '#markup' => l(
+      '<i class="fa fa-share"></i> ' . t('share'),
+      'http://www.addtoany.com/share_save',
+      array(
+        'attributes' => array(
+          'class' => array(
+            'a2a_dd',
+            'btn',
+            'btn-secondary',
+            'btn-sm',
+          ),
+        ),
+        'html' => TRUE,
+      )
+    ),
+    '#suffix' => '<script type="text/javascript">var a2a_config=a2a_config||{}; a2a_config.linkname = "' . $node->title . '";a2a_config.linkurl = "' . $url . '";a2a.init("page");</script>',
+    '#attached' => array('js' => array('https://static.addtoany.com/menu/page.js')),
+  );
+}
