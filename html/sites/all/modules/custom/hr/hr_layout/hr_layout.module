@@ -53,7 +53,7 @@ function hr_layout_block_view($delta = '') {
           ));
         }
         else {
-          $block['content'] = l(t('Log in'), 'user/login', array(
+          $block['content'] = l(t('Log in'), 'login', array(
             'attributes' => array(
               'class' => array(
                 'btn',
