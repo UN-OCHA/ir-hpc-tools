@@ -60,6 +60,7 @@
           line-height: 1;
           position: relative;
           text-decoration: none;
+          padding-left: 20px;
 
           &:after {
             content: "";
@@ -78,21 +79,14 @@
             color: $p-dark-text;
           }
 
-          &.facetapi-active {
-            font-size: 0;
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            margin: 0 5px 0 0;
-            float: left;
-          }
-
-          &.facetapi-inactive {
-            padding-left: 20px;
-          }
-
-          &.facetapi-active, &.facetapi-inactive:hover, &.facetapi-inactive:focus {
+          &.facetapi-active,
+          &.facetapi-inactive:hover,
+          &.facetapi-inactive:focus {
             @extend .icon-check;
+
+            & .facet-api--remove-icon {
+              display: none;
+            }
 
             &:before {
               font-family: 'unocha-icons' !important;
@@ -235,4 +229,21 @@
     display: none;
   }
 
+}
+
+.current-search-item-active-items .item-list ul {
+  list-style: none;
+}
+
+.current-search-item-active-items .item-list li {
+  margin: 0 0 0.25em 0;
+}
+
+.current-search-item-active-items .item-list a {
+  text-decoration: none;
+}
+
+.current-search-item-active-items .item-list a:hover {
+  text-decoration: underline;
+  color: #fff;
 }

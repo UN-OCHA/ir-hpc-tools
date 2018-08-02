@@ -17,10 +17,9 @@ function hr_indicators_context_default_contexts() {
   $context->description = 'Indicators list';
   $context->tag = 'Indicators';
   $context->conditions = array(
-    'path' => array(
+    'views' => array(
       'values' => array(
-        'node/*/indicators' => 'node/*/indicators',
-        'node/*/indicators/*' => 'node/*/indicators/*',
+        'hr_indicators' => 'hr_indicators',
       ),
     ),
   );
@@ -33,11 +32,11 @@ function hr_indicators_context_default_contexts() {
           'region' => 'branding',
           'weight' => '-10',
         ),
-        'current_search-hr_current_search' => array(
+        'current_search-standard' => array(
           'module' => 'current_search',
-          'delta' => 'hr_current_search',
+          'delta' => 'standard',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'facetapi-V14egKF141IaMDUK4g0ON2bAIbD6pAjQ' => array(
           'module' => 'facetapi',

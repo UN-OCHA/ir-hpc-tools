@@ -14,6 +14,72 @@ require_once dirname(__FILE__) . '/includes/user.inc';
 require_once dirname(__FILE__) . '/includes/view.inc';
 
 /**
+ * Returns HTML for a search keys facet item.
+ */
+function registry_current_search_keys($variables) {
+  $link_text = check_plain($variables['keys']);
+
+  $variables['path'] = current_path();
+  $variables['text'] = 'X ' . $link_text;
+  $variables['options']['html'] = TRUE;
+  $variables['options']['attributes']['title'] = t('Remove keyword: @text', array('@text' => $link_text));
+
+  return theme('link', $variables);
+}
+
+/**
+ * Returns HTML for an active facet item.
+ */
+function registry_facetapi_link_active($variables) {
+  // Sanitizes the link text if necessary.
+  $sanitize = empty($variables['options']['html']);
+  $link_text = ($sanitize) ? check_plain($variables['text']) : $variables['text'];
+
+  // Theme function variables fro accessible markup.
+  // @see http://drupal.org/node/1316580
+  $accessible_vars = array(
+    'text' => $link_text,
+    'active' => TRUE,
+  );
+
+  // Builds link, passes through t() which gives us the ability to change the
+  // position of the widget on a per-language basis.
+  $replacements = array(
+    '!facetapi_deactivate_widget' => theme('facetapi_deactivate_widget', $variables),
+    '!facetapi_accessible_markup' => theme('facetapi_accessible_markup', $accessible_vars),
+  );
+  $variables['text'] = t('!facetapi_deactivate_widget !facetapi_accessible_markup', $replacements);
+  $variables['options']['html'] = TRUE;
+  $variables['options']['attributes']['title'] = t('Remove filter: @text', array('@text' => $link_text));
+  return theme('link', $variables);
+}
+
+/**
+ * Returns HTML for the deactivation widget.
+ */
+function registry_facetapi_deactivate_widget($variables) {
+  return '<span class="facet-api--remove-icon">X</span>';
+}
+
+/**
+ * Returns HTML that adds accessible markup to facet links.
+ */
+function registry_facetapi_accessible_markup($variables) {
+  $vars = array('@text' => $variables['text']);
+  $text = ($variables['active']) ? t('Remove filter', $vars) : t('Apply filter', $vars);
+  // Add spaces before and after the text, since other content may be displayed
+  // inline with this and we don't want the words to run together. However, the
+  // spaces must be inside the <span> so as not to disrupt the layout for
+  // sighted users.
+  if ($variables['active']) {
+    return '<span class="element-invisible"> ' . $text . ' </span>' . $variables['text'];
+  }
+  else {
+    return '<span class="element-invisible"> ' . $text . ' </span>';
+  }
+}
+
+/**
  * Implements hook_css_alter().
  */
 function registry_css_alter(&$css) {
@@ -37,79 +103,13 @@ function registry_preprocess_page(&$variables) {
   $variables['main_menu_dropdown'] = $main_menu_dropdown;
   $variables['hr_tabs'] = array();
   $header_img_path = $theme_path.'/assets/images/headers/general.png';
-  if (module_exists('og_context')) {
-    $gid = og_context_determine_context('node');
-    if (!empty($gid)) {
-        $og_group = entity_load('node', array($gid));
-        $og_group = $og_group[$gid];
-        if ($og_group->type == 'hr_operation') {
-          // Salahumanitaria logo
-          if ($og_group->nid == 77) { // Nid of the Colombia operation
-            $variables['logo'] = '/sites/all/themes/registry/assets/images/salahumanitaria_logo.png';
-          }
-          if (!empty($og_group->field_operation_type) && !empty($og_group->field_operation_region) && $og_group->field_operation_type[LANGUAGE_NONE][0]['value'] == 'country') {
-            // Determine the region of the operation
-            $region_id = $og_group->field_operation_region[LANGUAGE_NONE][0]['target_id'];
-            $region = entity_load_single('node', $region_id);
-            $region_uri = entity_uri('node', $region);
-            $region_status = $region->field_operation_status[LANGUAGE_NONE][0]['value'];
-            switch ($region_status) {
-              case 'active':
-                // Add the region to the tabs
-                $variables['hr_tabs'][] = l($region->title, $region_uri['path'], $region_uri['options']);
-                break;
-              case 'inactive':
-                break;
-              case 'archived':
-                break;
-            }
-          }
-        }
-        elseif ($og_group->type == 'hr_disaster') {
-          $glide = $og_group->field_glide_number[LANGUAGE_NONE][0]['value'];
-          if ($glide == 'EP-2014-000041-GIN') {
-            $variables['logo'] = '/sites/all/themes/registry/assets/images/unmeer_logo.png';
-          }
-        }
-        elseif ($og_group->type == 'hr_bundle') {
-          // Get operation from bundle
-          $op_gid = _hr_bundles_get_operation($og_group->nid);
-          if (!empty($op_gid)) {
-            $operation = entity_load_single('node', $op_gid);
-            $op_uri = entity_uri('node', $operation);
-            $variables['hr_tabs'][] = l($operation->title, $op_uri['path'], $op_uri['options']);
-          }
-        }
-        $uri = entity_uri('node', $og_group);
-        if ($og_group->status) { // Group is published
-          $variables['hr_tabs'][] = l($og_group->title, $uri['path'], $uri['options']);
-        }
-        else {
-          $variables['hr_tabs'][] = '<a href="#">'.$og_group->title.'</a>';
-        }
-        $group_img_path = '/assets/images/headers/'.$og_group->type.'/'.strtolower(str_replace(array(' ','/'), '-', $og_group->title)).'.png';
-        if (file_exists(dirname(__FILE__).$group_img_path)) {
-          $header_img_path = $theme_path.$group_img_path;
-        }
-      }
-  }
-
-  $variables['og_group_header_image'] = theme('image', array(
-    'path' => $header_img_path,
-    'alt' => 'Header image',
-  ));
 
   if (user_is_anonymous()) {
     $variables['follow_us_link_href'] = 'connect/oauthconnector_hid_oauth';
     $variables['follow_us_link_title'] = t('Login to follow us');
     $variables['follow_us_link_status'] = 'flag';
   }
-
-
-  $variables['hr_favorite_spaces'] = _registry_block_render('hr_bookmarks', 'hr_favorite_spaces');
 }
-
-
 
 /**
  * Custom function to render a block so I can manually position it in the markup

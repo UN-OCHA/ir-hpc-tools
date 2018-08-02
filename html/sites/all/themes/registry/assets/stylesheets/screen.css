@@ -3833,10 +3833,12 @@ body .region-branding input.form-text:focus { border-color: #3d5d77; }
 #sidebar-first .block-facetapi ul li a { color: #3d5d77; display: block; line-height: 1; position: relative; text-decoration: none; }
 #sidebar-first .block-facetapi ul li a:after { content: ""; display: block; width: 15px; height: 15px; border: 1px solid #d8d8d8; margin-right: 5px; position: absolute; left: 0; top: -1px; }
 #sidebar-first .block-facetapi ul li a:hover { text-decoration: none; color: #1c304a; }
-#sidebar-first .block-facetapi ul li a.facetapi-active { font-size: 0; display: inline-block; width: 15px; height: 15px; margin: 0 5px 0 0; float: left; }
-#sidebar-first .block-facetapi ul li a.facetapi-inactive { padding-left: 20px; }
+#sidebar-first .block-facetapi ul li a.xyzzyfacetapi-active { font-size: 0; display: inline-block; width: 15px; height: 15px; margin: 0 5px 0 0; float: left; }
+#sidebar-first .block-facetapi ul li a { padding-left: 20px; }
 #sidebar-first .block-facetapi ul li a.facetapi-active:before, #sidebar-first .block-facetapi ul li a.facetapi-inactive:hover:before, #sidebar-first .block-facetapi ul li a.facetapi-inactive:focus:before { font-family: 'unocha-icons' !important; line-height: 1; font-weight: bold; color: #0ac7d9; position: absolute; left: 1px; font-size: 13px; }
 #sidebar-first .block-facetapi ul li a.facetapi-active:after, #sidebar-first .block-facetapi ul li a.facetapi-inactive:hover:after, #sidebar-first .block-facetapi ul li a.facetapi-inactive:focus:after { border-color: #0ac7d9; }
+#sidebar-first .block-facetapi ul li a.facetapi-active .facet-api--remove-icon { display: none; }
+
 #sidebar-first .block-facetapi ul li .item-list { padding-left: 20px; }
 #sidebar-first .block-facetapi ul li .item-list a.facetapi-inactive:after { top: 1px; }
 #sidebar-first .block-facetapi ul li .facetapi-limit-link { padding: 15px 20px; }
@@ -4298,4 +4300,19 @@ table.stylish-table tr:nth-child(2n) { background-color: #dedede; }
 
 .front .panel-pane.pane-block.pane-hr-layout-hr-layout-hum-system { margin-bottom: 30px; }
 
-/*# sourceMappingURL=screen.css.map */
+.current-search-item-active-items .item-list ul {
+  list-style: none;
+}
+
+.current-search-item-active-items .item-list li {
+  margin: 0 0 0.25em 0;
+}
+
+.current-search-item-active-items .item-list a {
+  text-decoration: none;
+}
+
+.current-search-item-active-items .item-list a:hover {
+  text-decoration: underline;
+  color: #fff;
+}

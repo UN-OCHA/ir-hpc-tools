@@ -17,7 +17,6 @@ class shs_handler_filter_term_node_tid extends views_handler_filter_term_node_ti
 
     $options['type'] = array('default' => 'shs');
     $options['use_chosen'] = array('default' => 'never');
-    $options['node_count'] = array('default' => FALSE);
 
     return $options;
   }
@@ -27,12 +26,6 @@ class shs_handler_filter_term_node_tid extends views_handler_filter_term_node_ti
 
     $form['type']['#options'] += array(
       'shs' => t('Simple hierarchical select'),
-    );
-    $form['node_count'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Display number of nodes'),
-      '#description' => t('Display the number of nodes associated with the term.'),
-      '#default_value' => empty($this->options['node_count']) ? FALSE : $this->options['node_count'],
     );
 
     if (module_exists('chosen')) {
@@ -122,8 +115,9 @@ class shs_handler_filter_term_node_tid extends views_handler_filter_term_node_ti
       if (!empty($this->options['exposed']) && !empty($this->options['expose']['required'])) {
         $element_settings['required'] = TRUE;
       }
-      if (!empty($this->options['node_count'])) {
-        $element_settings['node_count'] = $this->options['node_count'];
+      // Allowing other modules to add settings for shs.
+      if (!empty($this->options['expose']['shs'])) {
+        $element_settings = array_merge($element_settings, $this->options['expose']['shs']);
       }
 
       // Generate a random hash to avoid merging of settings by drupal_add_js.

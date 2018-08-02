@@ -38,6 +38,17 @@ function hr_core_user_default_permissions() {
     'module' => 'file_entity',
   );
 
+  // Exported permission: 'use hybridauth'.
+  $permissions['use hybridauth'] = array(
+    'name' => 'use hybridauth',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'hybridauth',
+  );
+
   // Exported permission: 'use panels in place editing'.
   $permissions['use panels in place editing'] = array(
     'name' => 'use panels in place editing',

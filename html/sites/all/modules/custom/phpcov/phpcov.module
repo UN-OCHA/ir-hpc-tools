@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Code for the Core feature.
+ */
+
+use SebastianBergmann\CodeCoverage\CodeCoverage;
+
+/**
+ * Implements hook_boot().
+ */
+function _phpcov_coverage() {
+  static $coverage;
+  if (!$coverage) {
+    $coverage = new CodeCoverage();
+  }
+  return $coverage;
+}
+/**
+ * Implements hook_boot().
+ */
+function phpcov_boot() {
+  if (isset($_GET['cover']) && $_GET['cover'] = "1") {
+    include_once __DIR__ . '/vendor/autoload.php';
+    $coverage = &_phpcov_coverage();
+
+    $coverage->filter()->addDirectoryToWhitelist(DRUPAL_ROOT . '/sites/all/modules/custom/', '.module');
+    $coverage->filter()->addDirectoryToWhitelist(DRUPAL_ROOT . '/sites/all/modules/custom/', '.inc');
+    $coverage->filter()->addDirectoryToWhitelist(DRUPAL_ROOT . '/sites/all/modules/custom/', '.php');
+
+    $coverage->filter()->removeDirectoryFromWhitelist(__DIR__ . '/vendor', '.module');
+    $coverage->filter()->removeDirectoryFromWhitelist(__DIR__ . '/vendor', '.inc');
+    $coverage->filter()->removeDirectoryFromWhitelist(__DIR__ . '/vendor', '.php');
+
+    $coverage->filter()->removeDirectoryFromWhitelist(__DIR__ . '/sites/all/modules/custom/test/', '.module');
+    $coverage->filter()->removeDirectoryFromWhitelist(__DIR__ . '/sites/all/modules/custom/test/', '.inc');
+    $coverage->filter()->removeDirectoryFromWhitelist(__DIR__ . '/sites/all/modules/custom/test/', '.php');
+
+    $coverage->setAddUncoveredFilesFromWhitelist(TRUE);
+    $coverage->start(drupal_clean_css_identifier(drupal_strtolower($_GET['q'])));
+  }
+}
+
+/**
+ * Implements hook_exit().
+ */
+function phpcov_exit() {
+  if (xdebug_code_coverage_started()) {
+    $coverage = &_phpcov_coverage();
+    $coverage->stop();
+
+    $writer = new \SebastianBergmann\CodeCoverage\Report\PHP;
+    $target = '/tmp/test_' . REQUEST_TIME . '_' . user_password() . '.cov';
+    $writer->process($coverage, $target);
+  }
+}
