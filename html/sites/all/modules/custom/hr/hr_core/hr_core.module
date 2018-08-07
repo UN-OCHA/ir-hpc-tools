@@ -249,3 +249,10 @@ function hr_core_node_view($node, $view_mode, $langcode) {
     '#attached' => array('js' => array('https://static.addtoany.com/menu/page.js')),
   );
 }
+
+/**
+ * Allow modules to alter additional options of the redirect URL.
+ */
+function hr_core_hybridauth_destination_options_alter(&$destination_options) {
+  $destination_options['path'] = '<front>';
+}
