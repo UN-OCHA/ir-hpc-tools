@@ -195,8 +195,10 @@ function hr_core_menu_alter(&$items) {
  */
 function hr_core_login_redirect() {
   drupal_goto('hybridauth/window/HumanitarianId', array(
-    'destination' => '<front>',
-    'destination_error' => '<front>',
+    'query' => array(
+      'destination' => '<front>',
+      'destination_error' => '<front>',
+    ),
   ));
 }
 
