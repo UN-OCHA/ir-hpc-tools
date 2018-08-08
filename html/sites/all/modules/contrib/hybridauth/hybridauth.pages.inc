@@ -120,6 +120,8 @@ function _hybridauth_window_close($redirect = TRUE) {
   $destination = url($destination_options['path'], $destination_options);
   $destination_error = url($destination_error_options['path'], $destination_error_options);
 
+  $destination = url('<front>', array('absolute' => TRUE));
+
   drupal_add_js(array(
     'hybridauth'=> array(
       'redirect' => $redirect ? 1 : 0,
