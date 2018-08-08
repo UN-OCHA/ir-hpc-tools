@@ -251,8 +251,15 @@ function hr_core_node_view($node, $view_mode, $langcode) {
 }
 
 /**
- * Allow modules to alter additional options of the redirect URL.
+ * Implements hook_hybridauth_destination_options_alter().
  */
 function hr_core_hybridauth_destination_options_alter(&$destination_options) {
+  $destination_options['path'] = 'home';
+}
+
+/**
+ * Implements hook_hybridauth_destination_error_options_alter().
+ */
+function hr_core_hybridauth_destination_error_options_alter(&$destination_options) {
   $destination_options['path'] = 'home';
 }
