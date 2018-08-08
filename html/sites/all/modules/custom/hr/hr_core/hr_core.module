@@ -195,8 +195,10 @@ function hr_core_menu_alter(&$items) {
  */
 function hr_core_login_redirect() {
   drupal_goto('hybridauth/window/HumanitarianId', array(
-    'destination' => drupal_get_destination(),
-    'destination_error' => '<front>',
+    'query' => array(
+      'destination' => drupal_get_destination()['destination'],
+      'destination_error' => '<front>',
+    ),
   ));
 }
 
@@ -248,4 +250,18 @@ function hr_core_node_view($node, $view_mode, $langcode) {
     '#suffix' => '<script type="text/javascript">var a2a_config=a2a_config||{}; a2a_config.linkname = "' . $node->title . '";a2a_config.linkurl = "' . $url . '";a2a.init("page");</script>',
     '#attached' => array('js' => array('https://static.addtoany.com/menu/page.js')),
   );
+}
+
+/**
+ * Implements hook_hybridauth_destination_options_alter().
+ */
+function hr_core_hybridauth_destination_options_alter(&$destination_options) {
+  $destination_options['path'] = 'home';
+}
+
+/**
+ * Implements hook_hybridauth_destination_error_options_alter().
+ */
+function hr_core_hybridauth_destination_error_options_alter(&$destination_options) {
+  $destination_options['path'] = 'home';
 }
