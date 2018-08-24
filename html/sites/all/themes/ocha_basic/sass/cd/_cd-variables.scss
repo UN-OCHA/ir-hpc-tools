@@ -1,0 +1,157 @@
+//——————————————————————————————————————————————————————————————————————————————
+// Common Design: Variables
+//
+// Don't use any maps directly. Please refer to `_cd-mixins.scss` partial.
+//——————————————————————————————————————————————————————————————————————————————
+
+//
+// Grid Breakpoints
+//
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+
+//
+// CD Breakpoints correspond to the following grid breakpoints:
+//
+$cd-breakpoints: (
+  tablet: #{map-get($grid-breakpoints, 'md')},
+  desktop: #{map-get($grid-breakpoints, 'lg')},
+  xlarge: #{map-get($grid-breakpoints, 'xl')}
+);
+
+
+//——————————————————————————————————————————————————————————————————————————————
+// Measurements
+//——————————————————————————————————————————————————————————————————————————————
+
+// @TODO: get rid of this thing
+$cd-base-unit: 8px;
+$cd-site-padding: $cd-base-unit;
+
+$cd-max-body-width: 1400px;
+$cd-max-width: 1220px;
+
+$cd-container-padding: 12px;
+$cd-container-padding-tablet: 24px;
+$cd-container-padding-xlarge: 40px;
+
+$cd-global-header-height: 35px;
+$cd-site-header-height: 60px;
+
+
+//——————————————————————————————————————————————————————————————————————————————
+// Colours
+//——————————————————————————————————————————————————————————————————————————————
+
+// Colour palette
+$cd-ocha-blue: #026CB6;
+$cd-dark-blue: #025995;
+$cd-bright-blue: #80CBFF;
+$cd-light-blue: #9EC5E2;
+$cd-light-grey: #F2F2F2;
+$cd-mid-grey: #808080;
+$cd-dark-grey: #333333;
+$cd-dark-bluey-grey: #D3DDE5;
+$cd-mid-bluey-grey: #E6ECF1;
+$cd-light-bluey-grey: #F2F5F8;
+$cd-highlight-red: #EB5C6D;
+$cd-white: #FFFFFF;
+$cd-black: #000000;
+
+// Background colours
+$cd-site-bg-color: $cd-mid-bluey-grey;
+$cd-white-bg-color: $cd-white;
+//$cd-primary-bg-color: $cd-ocha-blue;
+//$cd-dark-primary-bg-color: $cd-dark-blue;
+$cd-dark-bg-color: $cd-dark-bluey-grey;
+$cd-mid-bg-color: $cd-mid-bluey-grey;
+$cd-light-bg-color: $cd-light-bluey-grey;
+
+// Border colours
+$cd-border-color: $cd-mid-bluey-grey;
+$cd-bright-border-color: $cd-bright-blue;
+$cd-light-blue-border-color: $cd-light-blue;
+$cd-white-border: #FFF;
+
+// Text colours
+$cd-white-text-color: #FFF;
+$cd-default-text-color: $cd-dark-grey;
+$cd-dark-text-color: #000;
+$cd-blue-text-color: $cd-ocha-blue;
+$cd-bright-blue-text-color: $cd-bright-blue;
+
+//——————————————————————————————————————————————————————————————————————————————
+// Indicator Registry colours
+//——————————————————————————————————————————————————————————————————————————————
+$cd-primary-bg-color: #3D5C76;
+$cd-dark-primary-bg-color: darken(#3D5C76, 4%);
+$cd-highlight: #0ac7d9;
+
+$cd-primary-color: $cd-primary-bg-color;
+$cd-dark-primary-color: $cd-dark-primary-bg-color;
+$cd-grey-background-color: #F9F9F9;
+$p-dark-text: #1c304a;
+
+$border-grey: #d8d8d8;
+$text-color: $cd-default-text-color !default;
+
+
+$p-main: #3d5d77;
+$p-main-variant: #1C304A;
+$p-comp: #0ac7d9;
+$p-comp-variant: #dfedf1;
+$p-tertiary: #333333;
+$p-tertiary-variant: #808080;
+$p-dark-text: #1c304a;
+
+$pane-title: #767676;
+
+$screen-sm:                  768px !default;
+$screen-md:                  992px !default;
+$screen-lg:                  1200px !default;
+// Grays
+// -------------------------
+
+$gray-darker:            lighten(#000, 13.5%) !default; // #222
+$gray-dark:              lighten(#000, 20%) !default;   // #333
+$gray:                   lighten(#000, 33.5%) !default; // #555
+$gray-light:             lighten(#000, 60%) !default;   // #999
+$gray-lighter:           lighten(#000, 93.5%) !default; // #eee
+
+
+//——————————————————————————————————————————————————————————————————————————————
+// Fonts
+//——————————————————————————————————————————————————————————————————————————————
+
+$cd-font: helvetica, arial, sans-serif;
+
+
+//——————————————————————————————————————————————————————————————————————————————
+// Font sizes
+//——————————————————————————————————————————————————————————————————————————————
+
+$cd-font-size-tiny: 12;
+$cd-font-size-small: 14;
+$cd-font-size-base: 13;
+$cd-font-size-medium: 20;
+$cd-font-size-large: 28;
+$cd-font-size-xlarge: 30;
+
+
+//——————————————————————————————————————————————————————————————————————————————
+// z-indices
+//——————————————————————————————————————————————————————————————————————————————
+
+$zindex: (
+  default: 1,
+  hidden: -1,
+  sidebar: 110,
+  sidebar-underlay: 100,
+  dropdown: 200
+);

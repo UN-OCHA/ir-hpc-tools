@@ -1,0 +1,59 @@
+// Tabs
+
+.tabs {
+  border-bottom: 1px solid $cd-primary-color;
+  margin: 0 0 18px;
+  padding: 0;
+  position: relative;
+  display: block;
+  @include clearfix;
+
+
+  > li {
+    float: left;
+    position: relative;
+    display: block;
+    margin-bottom: -1px;
+  }
+
+  > li > a {
+    position: relative;
+    display: block;
+    padding: 4px 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    color: $cd-primary-color;
+    background: none;
+    font-size: 14px;
+    border-radius: 0;
+    margin: 0;
+    border: none;
+    text-decoration: none;
+    border-bottom: 1px solid $cd-primary-color;
+
+    @media (min-width:768px) {
+      min-width: 110px;
+    }
+
+    &.active,
+    &:hover {
+      border: none!important;
+      border-bottom: 1px solid $cd-primary-color !important;
+      color: white;
+      background-color: $cd-highlight;
+    }
+
+    &:focus {
+      background: $cd-site-bg-color;
+      color: $cd-primary-color;
+    }
+  }
+
+  > li.active > a,
+  > li.active > a:hover,
+  > li.active > a:focus {
+    color: white;
+    background-color: $cd-primary-color;
+  }
+}

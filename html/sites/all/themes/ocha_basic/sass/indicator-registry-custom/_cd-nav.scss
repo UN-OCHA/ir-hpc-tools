@@ -1,0 +1,21 @@
+//——————————————————————————————————————————————————————————————————————————————
+// Common Design: Main Navigation overrides for Indicator registry
+//——————————————————————————————————————————————————————————————————————————————
+
+// In this case, we don't need to restrict the width since there are not too
+// many menu items
+
+.cd-nav > ul {
+  .cssgrid.flexbox & {
+    > li,
+    > .cd-nav__item {
+
+      @include desktop {
+        max-width: unset;
+      }
+      @include xlarge {
+        max-width: unset;
+      }
+    }
+  }
+}

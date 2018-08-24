@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ *   Displays footer navigation for Common Footer.
+ */
+?>
+
+<?php if($page['footer_navigation']): ?>
+  <div class="cd-footer-menu cd-footer__section">
+    <?php print render($page['footer_navigation']); ?>
+  </div>
+<?php endif; ?>
