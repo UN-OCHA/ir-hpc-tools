@@ -26,6 +26,10 @@ th {
   font-weight: 700;
 }
 
+table th a {
+  font-weight: 700;
+}
+
 td {
   background: white;
   border: 0 !important;
@@ -47,7 +51,7 @@ table {
   }
 
   a {
-    font-weight: normal !important;
+    font-weight: normal;
     color: $cd-primary-color !important;
     font-style: italic;
     border-bottom: 1px solid $cd-highlight;
