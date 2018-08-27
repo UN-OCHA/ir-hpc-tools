@@ -284,3 +284,13 @@ function ocha_basic_facetapi_accessible_markup($variables) {
     return '<span class="element-invisible"> ' . $text . ' </span>';
   }
 }
+
+function ocha_basic_views_data_export_feed_icon($variables) {
+  extract($variables, EXTR_SKIP);
+  $url_options = array('html' => TRUE);
+  if ($query) {
+    $url_options['query'] = $query;
+  }
+  $image = theme('image', array('path' => $image_path, 'alt' => $text, 'title' => $text));
+  return '<li>'.l($text, $url, $url_options).'</li>';
+}
