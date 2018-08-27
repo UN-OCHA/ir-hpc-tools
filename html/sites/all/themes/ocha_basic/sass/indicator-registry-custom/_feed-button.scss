@@ -20,42 +20,12 @@
     right: -2px;
   }
 
-  .btn-group {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  .btn {
-    color: $cd-white-text-color;
-    background: $cd-dark-primary-bg-color;
-    border-radius: 0;
-    border: 0 none;
-    display: inline-block;
-    margin-bottom: 0;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    background-image: none;
-    white-space: nowrap;
-    padding: 6px 12px;
-    font-size: 13px;
-
-    &:hover,
-    &:focus {
-      background: $cd-highlight;
-      color: $cd-white-text-color;
-      outline: 0;
-    }
-  }
-
   .dropdown-menu {
-    position: relative;
+    position: absolute;
     top: 100%;
-    left: 0;
+    right: 0;
     z-index: 1000;
     display: none;
-    float: left;
     min-width: 160px;
     padding: 5px 0;
     margin: 2px 0 0;
@@ -91,13 +61,4 @@
     display: block;
   }
 
-}
-
-
-.region-content a.btn {
-  border: 0 none;
-  &:hover,
-  &:focus {
-    color: $cd-white-text-color;
-  }
 }

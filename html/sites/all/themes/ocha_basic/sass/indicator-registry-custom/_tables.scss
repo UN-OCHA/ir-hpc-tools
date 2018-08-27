@@ -30,6 +30,9 @@ td {
   background: white;
   border: 0 !important;
   vertical-align: top;
+  &.active {
+    background: $cd-site-bg-color;
+  }
 }
 
 table {

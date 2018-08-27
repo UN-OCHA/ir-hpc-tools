@@ -45,6 +45,20 @@
     background-image: url(../img/icons/check.svg);
   }
 }
+// Item with check icon
+.item__icon-share {
+  border-radius: 3px;
+  padding-left: 22px;
+  @extend .item__icon;
+  &:before {
+    left: 8px;
+    padding-right: 4px;
+    height: 10px;
+    width: 10px;
+    background-image: url(../img/icons/share.svg);
+    background-size: 10px 10px;
+  }
+}
 // Item with cancel icon
 .item__icon-cancel {
   position: relative;
@@ -147,16 +161,12 @@
             text-decoration: none;
             color: $p-dark-text;
           }
-
-          &.facetapi-active {
-            font-size: 0;
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            margin: 0 5px 0 0;
-            float: left;
+          
+          .facet-api--remove-icon {
+            display: none;
           }
 
+          &.facetapi-active,
           &.facetapi-inactive {
             padding-left: 20px;
           }
@@ -184,12 +194,12 @@
 
         .item-list {
           padding-left: 20px;
-
-          a.facetapi-inactive {
-            &:after {
-              top: 1px
-            }
-          }
+          //
+          //a.facetapi-inactive {
+          //  &:after {
+          //    top: 1px
+          //  }
+          //}
         }
 
         .facetapi-limit-link {

@@ -11,10 +11,14 @@
   margin-right: auto;
 }
 
+// Remove underline from linked image in content.
+.region-content .center-block a {
+  border: 0 none;
+}
+
 // Content types
 
 .page-node.node-type-hr-indicator,
-.page-assessments,
 .page-user {
   .page-heading {
     position: absolute;
@@ -131,7 +135,7 @@
     .row .radix-layouts-content .pane-node-title h2 {
       background-image: url('../img/icons/hr-indicator.png');
       background-repeat: no-repeat;
-      background-position: 0 -385px;
+      background-position: left top;
       color: $cd-primary-color;
     }
   }
@@ -241,3 +245,6 @@
   overflow: visible;
 }
 
+.field-item > p:first-child {
+  margin-top: 0;
+}

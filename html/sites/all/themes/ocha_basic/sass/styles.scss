@@ -20,7 +20,7 @@
 @import 'base/_grid';
 @import 'base/_helpers';
 @import 'base/_typography';
-//@import 'components/_buttons';
+@import 'components/_buttons';
 //@import 'components/_dropdown';
 //@import 'components/_forms';
 //@import 'components/_tables';
@@ -31,7 +31,7 @@
 //
 // From previous theme versions
 //——————————————————————————————————————————————————————————————————————————————
-@import 'indicator-registry-custom/_button';
+@import 'indicator-registry-custom/_feed-button';
 @import 'indicator-registry-custom/_cd-nav';
 @import 'indicator-registry-custom/_layout';
 @import 'indicator-registry-custom/_node';
