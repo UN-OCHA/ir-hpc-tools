@@ -50,6 +50,12 @@ function hr_layout_context_default_contexts() {
           'region' => 'header_navigation',
           'weight' => '-10',
         ),
+        'system-help' => array(
+          'module' => 'system',
+          'delta' => 'help',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
