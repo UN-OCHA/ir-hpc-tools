@@ -21,3 +21,11 @@ function hr_core_update_7001() {
     'search_api_db',
   ));
 }
+
+/**
+ * Enable modernizr and PWA modules.
+ */
+function hr_core_update_7002() {
+  $modules = array('modernizr', 'pwa');
+  module_enable($modules);
+}
