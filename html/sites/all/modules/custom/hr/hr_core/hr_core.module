@@ -233,12 +233,13 @@ function hr_core_node_view($node, $view_mode, $langcode) {
     '#type' => 'item',
     '#title' => '',
     '#markup' => l(
-      '<i class="fa fa-share"></i> ' . t('share'),
+      t('share'),
       'http://www.addtoany.com/share_save',
       array(
         'attributes' => array(
           'class' => array(
             'a2a_dd',
+            'item__icon-share',
             'btn',
             'btn-secondary',
             'btn-sm',

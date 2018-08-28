@@ -26,28 +26,34 @@ function hr_layout_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'hr_layout-hr_layout_login' => array(
-          'module' => 'hr_layout',
-          'delta' => 'hr_layout_login',
-          'region' => 'top',
-          'weight' => '-8',
-        ),
         'system-user-menu' => array(
           'module' => 'system',
           'delta' => 'user-menu',
-          'region' => 'top',
-          'weight' => '-7',
+          'region' => 'header_top',
+          'weight' => '-10',
         ),
-        'locale-language' => array(
-          'module' => 'locale',
-          'delta' => 'language',
-          'region' => 'top',
-          'weight' => '10',
+        'hr_layout-hr_layout_login' => array(
+          'module' => 'hr_layout',
+          'delta' => 'hr_layout_login',
+          'region' => 'header_top',
+          'weight' => '-9',
         ),
         'views--exp-hr_indicators-table' => array(
           'module' => 'views',
           'delta' => '-exp-hr_indicators-table',
-          'region' => 'branding',
+          'region' => 'header_search',
+          'weight' => '-10',
+        ),
+        'system-main-menu' => array(
+          'module' => 'system',
+          'delta' => 'main-menu',
+          'region' => 'header_navigation',
+          'weight' => '-10',
+        ),
+        'system-help' => array(
+          'module' => 'system',
+          'delta' => 'help',
+          'region' => 'content',
           'weight' => '-10',
         ),
       ),
