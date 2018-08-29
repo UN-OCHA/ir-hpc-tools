@@ -120,7 +120,8 @@
     }
 
     .block__content {
-      padding: 0 10px 5px 10px;
+      padding: 10px 10px 5px 10px;
+      background-color: rgba($cd-site-bg-color, 0.5);
 
       .js & {
         display: none;
@@ -138,6 +139,15 @@
         list-style: none;
         margin: 10px 0;
         line-height: 1;
+        padding-bottom: 10px;
+
+        &.expanded {
+          padding-bottom: 0;
+
+          > a:first-child {
+            padding-bottom: 10px;
+          }
+        }
 
         a {
           color: $cd-primary-color;
@@ -154,7 +164,7 @@
             margin-right: 5px;
             position: absolute;
             left: 0;
-            top: -1px;
+            top: 0;
           }
 
           &:hover {
@@ -194,12 +204,6 @@
 
         .item-list {
           padding-left: 20px;
-          //
-          //a.facetapi-inactive {
-          //  &:after {
-          //    top: 1px
-          //  }
-          //}
         }
 
         .facetapi-limit-link {

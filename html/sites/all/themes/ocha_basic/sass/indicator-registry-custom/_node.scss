@@ -59,7 +59,7 @@
             font-size: 18px;
             font-weight: bold;
             color: $cd-highlight;
-            padding: 0 20px 0 79px;
+            padding: 0 20px 0 0;
             min-height: 55px;
             display: flex;
             align-items: center;
@@ -133,9 +133,6 @@
     box-shadow: none;
 
     .row .radix-layouts-content .pane-node-title h2 {
-      background-image: url('../img/icons/hr-indicator.png');
-      background-repeat: no-repeat;
-      background-position: left top;
       color: $cd-primary-color;
     }
   }
@@ -213,12 +210,9 @@
   }
 
   &.node-hr-indicator {
-    h2 {
-      background: url('../img/icons/hr-indicator.png') left top no-repeat;
-      a {
-        color: $cd-primary-color;
-        border-bottom: none;
-      }
+    h2 a {
+      color: $cd-primary-color;
+      border-bottom: none;
     }
     &:after {
       background-color: $cd-primary-color;
