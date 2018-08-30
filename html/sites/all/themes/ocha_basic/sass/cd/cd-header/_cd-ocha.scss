@@ -118,7 +118,6 @@
 }
 
 .cd-ocha-dropdown__heading {
-  color: $cd-lighter-blue;
   margin: 0 0 10px 0;
   padding-bottom: 2px;
 
@@ -147,10 +146,12 @@
   a {
     border-bottom: 1px solid transparent;
     text-decoration: none;
+    color: $cd-white-text-color;
 
     &:hover,
     &:focus {
-      border-color: $cd-bright-blue;
+      border-color: $cd-highlight;
+      color: $cd-white-text-color;
     }
   }
 
@@ -166,8 +167,8 @@ a.cd-ocha-dropdown__see-all {
   @include font-size($cd-font-size-small);
   font-weight: 700;
   padding: 12px;
-  background: $cd-bright-blue;
-  color: $cd-dark-blue;
+  background: $cd-highlight;
+  color: $cd-dark-primary-bg-color;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
