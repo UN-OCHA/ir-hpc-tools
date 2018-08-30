@@ -59,7 +59,6 @@
 .cd-ocha-dropdown {
   padding: 22px 0;
   width: 100%;
-  z-index: map-get($zindex, dropdown);
 }
 
 .cd-ocha-dropdown__inner {
@@ -74,18 +73,25 @@
     padding: 0 $cd-container-padding-tablet;
   }
   @include xlarge {
-    grid-gap: 120px;
+    grid-gap: 100px;
     padding: 0 $cd-container-padding-xlarge;
   }
 }
 
 .cd-ocha-dropdown__section {
   @include clearfix;
-  margin-bottom: $cd-base-unit;
-  position: relative; // For the see-all link
 
-  // on column layout, ensure a min-height for IE11
+  // On mobile the link sections need space.
+  margin-bottom: $cd-base-unit*3;
+
+  // For the see-all link
+  position: relative;
+
   @include tablet {
+    // remove space between sections
+    margin-bottom: 0;
+
+    // ensure a min-height for IE11
     min-height: 120px;
   }
 
@@ -97,15 +103,17 @@
   }
 
   //
-  // IE 11 stuff
+  // Grid not supported, fall back to floats on desktop
   //
-  .no-cssgrid & {
-    float: left;
-    width: 21.25%;
-    margin-right: 5%;
-  }
-  .no-cssgrid &:last-child {
-    margin-right: 0;
+  @include desktop {
+    .no-cssgrid & {
+      float: left;
+      width: 21.25%;
+      margin-right: 5%;
+    }
+    .no-cssgrid &:last-child {
+      margin-right: 0;
+    }
   }
 }
 
@@ -138,6 +146,7 @@
   a {
     border-bottom: 1px solid transparent;
     text-decoration: none;
+    color: $cd-white-text-color;
 
     &:hover,
     &:focus {
@@ -145,25 +154,24 @@
       color: $cd-white-text-color;
     }
   }
+
+  @include xlarge {
+    white-space: nowrap;
+  }
 }
 
 // @TODO: remove generic `a` selector that requires the tag-based override.
 a.cd-ocha-dropdown__see-all {
   display: block;
+  width: 100%;
   @include font-size($cd-font-size-small);
   font-weight: 700;
   padding: 12px;
   background: $cd-highlight;
-  color: $cd-primary-color;
+  color: $cd-dark-primary-bg-color;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  max-width: 200px; // don't get too big on mobile.
-
-  &:hover,
-  &:focus {
-    background: rgba($cd-highlight, 0.8);
-  }
 
   @include tablet {
     position: absolute;

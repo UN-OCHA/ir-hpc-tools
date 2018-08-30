@@ -3,16 +3,18 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 .cd-footer-copyright {
+  display: flex;
+  align-items: center;
+  max-width: 350px;
   margin: 0 auto;
 
   @include desktop {
-    flex: 0 1 350px;
-    align-items: flex-start;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
-    text-align: right;
     margin: 0;
     margin-top: 34px; // Align with provide-by main text.
+    text-align: right;
   }
 }
 
@@ -41,19 +43,8 @@ a.cd-footer-copyright__link {
   border-bottom: 0;
 
   &:hover {
+    opacity: .8;
     border-bottom: 0;
-  }
-}
-
-.cd-footer-copyright__message {
-  align-items: center;
-  display: flex;
-  max-width: 350px;
-  margin: 0 auto;
-
-  @include desktop {
-    align-items: center;
-    display: flex;
-    margin: unset;
+    transition: opacity .1666s ease-in-out;
   }
 }
