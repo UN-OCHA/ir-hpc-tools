@@ -56,6 +56,12 @@ function hr_layout_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
+        'menu-menu-footer-menu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-footer-menu',
+          'region' => 'footer_navigation',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
