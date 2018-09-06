@@ -226,7 +226,7 @@ function ocha_basic_current_search_keys($variables) {
   $link_text = check_plain($variables['keys']);
 
   $variables['path'] = current_path();
-  $variables['text'] = 'X ' . $link_text;
+  $variables['text'] = '<svg viewBox="0 0 48 48"><path d="M29.66,24,45.83,7.83a4,4,0,0,0-5.66-5.66L24,18.34,7.83,2.17A4,4,0,0,0,2.17,7.83L18.34,24,2.17,40.17a4,4,0,0,0,5.66,5.66L24,29.66,40.17,45.83a4,4,0,0,0,5.66-5.66Z"/></svg> ' . $link_text;
   $variables['options']['html'] = TRUE;
   $variables['options']['attributes']['title'] = t('Remove keyword: @text', array('@text' => $link_text));
 
@@ -264,7 +264,7 @@ function ocha_basic_facetapi_link_active($variables) {
  * Returns HTML for the deactivation widget.
  */
 function ocha_basic_facetapi_deactivate_widget($variables) {
-  return '<span class="facet-api--remove-icon">X</span>';
+  return '<span class="facet-api--remove-icon"><svg viewBox="0 0 48 48"><path d="M29.66,24,45.83,7.83a4,4,0,0,0-5.66-5.66L24,18.34,7.83,2.17A4,4,0,0,0,2.17,7.83L18.34,24,2.17,40.17a4,4,0,0,0,5.66,5.66L24,29.66,40.17,45.83a4,4,0,0,0,5.66-5.66Z"/></svg></span>';
 }
 
 /**
