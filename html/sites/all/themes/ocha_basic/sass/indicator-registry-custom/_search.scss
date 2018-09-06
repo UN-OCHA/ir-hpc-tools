@@ -65,15 +65,15 @@
   &:before {
     position: relative;
     content: "";
-    height: 14px;
-    width: 14px;
+    height: 8px;
+    width: 8px;
     background-repeat: no-repeat;
     background-position: 0 50%;
-    background-size: 14px 14px;
+    background-size: 8px 8px;
     left: 0;
-    top: 2px;
     display: inline-block;
     background-image: url(../img/icons/cancel.svg);
+    margin-right: 3px;
   }
 }
 // Item with cancel icon
@@ -259,15 +259,20 @@
       font-size: 12px;
 
       a {
-        font-size: 0;
         text-decoration: none;
-        @extend .item__icon-cancel;
+        svg {
+          fill: $cd-primary-color;
+          height: 8px;
+          width: 8px;
+        }
 
         &:hover,
         &:focus {
           text-decoration: none;
           color: white;
-          @extend .item__icon-cancel-white;
+          svg {
+            fill: $cd-white;
+          }
         }
       }
     }
