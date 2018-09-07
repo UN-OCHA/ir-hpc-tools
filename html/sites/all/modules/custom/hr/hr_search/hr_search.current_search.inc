@@ -14,7 +14,7 @@ function hr_search_current_search_default_items() {
   $item->disabled = FALSE; /* Edit this to true to make a default item disabled initially */
   $item->api_version = 1;
   $item->name = 'standard';
-  $item->label = 'Standard';
+  $item->label = 'Standard (OCHA)';
   $item->settings = array(
     'items' => array(
       'results' => array(
@@ -59,7 +59,7 @@ function hr_search_current_search_default_items() {
     ),
   );
 
-  $export['hr_current_search'] = $item;
+  $export['standard'] = $item;
 
   return $export;
 }
