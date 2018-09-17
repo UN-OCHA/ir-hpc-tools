@@ -33,9 +33,9 @@ function hr_search_current_search_default_items() {
       'reset' => array(
         'id' => 'text',
         'label' => 'Reset',
-        'text' => '<a href="/[facetapi_results:search-path]"><span>Reset filter</span></a>',
+        'text' => '<a href="/indicators"><span>Reset filter</span></a>',
         'plural' => 1,
-        'text_plural' => '<a href="/[facetapi_results:search-path]"><span>Reset all filters</span></a>',
+        'text_plural' => '<a href="/indicators"><span>Reset all filters</span></a>',
         'plural_condition' => 'facetapi_results:result-count',
         'wrapper' => 1,
         'element' => 'div',
