@@ -9,14 +9,6 @@
   margin: 0;
   padding-left: 0;
   text-transform: uppercase;
-
-  @include tablet {
-    flex: 1 0 100%;
-  }
-  @include desktop {
-    text-align: left;
-    flex: 1 0 70%;
-  }
 }
 
 .cd-footer-menu__item {
@@ -31,7 +23,6 @@
     margin: 0 32px 0 0;
   }
 }
-
 
 //——————————————————————————————————————————————————————————————————————————————
 // Drupal selectors
@@ -49,6 +40,7 @@
 }
 
 // Apply menu item styles to Drupal Menu items
-.region-footer-navigation .menu > li {
+.region-footer-navigation .menu > li,
+.cd-footer-menu > li {
   @extend .cd-footer-menu__item;
 }

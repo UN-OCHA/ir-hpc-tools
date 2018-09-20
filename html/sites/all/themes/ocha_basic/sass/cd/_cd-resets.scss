@@ -9,6 +9,10 @@
   @include font-size($cd-font-size-tiny);
   font-weight: 300;
 
+  p {
+    @include font-size($cd-font-size-tiny);
+  }
+
   // Set box-sizing
   box-sizing: border-box;
 
