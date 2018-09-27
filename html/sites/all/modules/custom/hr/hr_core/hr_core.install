@@ -40,3 +40,28 @@ function hr_core_update_7003() {
     ),
   ));
 }
+
+/**
+ * Enable registry_autoload.
+ */
+function hr_core_update_7004() {
+  $modules = array(
+    'registry_autoload',
+  );
+  module_enable($modules);
+}
+
+/**
+ * Remove records from system table.
+ */
+function hr_core_update_7005() {
+  $modules = array(
+    'devel',
+    'search_api_sorts_widget',
+  );
+
+  db_delete('system')
+    ->condition('name', $modules, 'IN')
+    ->condition('type', 'module')
+    ->execute();
+}
