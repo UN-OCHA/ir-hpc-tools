@@ -1,0 +1,14 @@
+name = Link icons formatter
+description = Field formatter for Link field to first display an icon for the service being linked to - ex. Facebook, Twitter or LinkedIn, with various display options
+core = 7.x
+dependencies[] = link:link
+dependencies[] = fontawesome:fontawesome (>= 7.x-2.6)
+dependencies[] = drupal:system (>= 7.40)
+package = Fields
+
+; Information added by Drupal.org packaging script on 2017-06-03
+version = "7.x-1.7"
+core = "7.x"
+project = "link_icons"
+datestamp = "1496459646"
+
