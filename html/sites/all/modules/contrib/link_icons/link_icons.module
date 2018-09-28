@@ -1,0 +1,411 @@
+<?php
+/**
+ * @file
+ * Field formatter for Link field.
+ */
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function link_icons_field_formatter_info() {
+  return array(
+    'link_icons_icon' => array(
+      'label' => t('Service icon (with options)'),
+      'description' => t('Displays an icon for the service being linked to - ex. Facebook, Twitter or LinkedIn'),
+      'field types' => array('link_field'),
+      'settings' => array(
+        'text' => 'title',
+        'order' => 'first',
+        'size' => '1x',
+        'width' => 'fixed',
+        'coloured' => 'coloured',
+        'shaped' => 'natural',
+        'background' => 'none',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function link_icons_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $element = array();
+  $element['text'] = array(
+    '#type' => 'select',
+    '#title' => t('Text alongside the icon'),
+    '#description' => t('Select what text should appear with each icon (if any)'),
+    '#default_value' => $settings['text'],
+    '#required' => FALSE,
+    '#empty_value' => 'none',
+    '#options' => array(
+      'title' => t('Link title'),
+      'URL' => t('Link URL'),
+      'title - URL' => t('Link title - link URL'),
+      'title: URL' => t('Link title: link URL'),
+      'URL (title)' => t('link url (Link title)'),
+    ),
+  );
+  $element['order'] = array(
+    '#type' => 'select',
+    '#title' => t('Order of icon and text'),
+    '#description' => t('Select the order of each icon and its text (if any)'),
+    '#default_value' => $settings['order'],
+    '#required' => TRUE,
+    '#options' => array(
+      'first' => t('Icon first'),
+      'last' => t('Icon last'),
+    ),
+  );
+  $element['size'] = array(
+    '#type' => 'select',
+    '#title' => t('Size of the icon'),
+    '#description' => t('Select what size each icon should be (not used/supported if icons have a background [see setting below])'),
+    '#default_value' => $settings['size'],
+    '#required' => TRUE,
+    '#options' => array(
+      '1x' => t('100%'),
+      'lg' => t('133%'),
+      '2x' => t('200%'),
+      '3x' => t('300%'),
+      '4x' => t('400%'),
+      '5x' => t('500%'),
+    ),
+  );
+  $element['width'] = array(
+    '#type' => 'select',
+    '#title' => t('Width of icons'),
+    '#description' => t('Select whether each icon should have a fixed or variable width (helps with horizontal alignment)'),
+    '#default_value' => $settings['width'],
+    '#required' => TRUE,
+    '#options' => array(
+      'fixed' => t('Fixed width'),
+      'variable' => t('Variable width'),
+    ),
+  );
+  $element['coloured'] = array(
+    '#type' => 'select',
+    '#title' => t('Coloured icons'),
+    '#description' => t("Select whether each service icon should be coloured correctly (if that's possible with a single colour)"),
+    '#default_value' => $settings['coloured'],
+    '#required' => TRUE,
+    '#options' => array(
+      'coloured' => t('Coloured'),
+      'uncoloured' => t('Uncoloured'),
+    ),
+  );
+  $element['shaped'] = array(
+    '#type' => 'select',
+    '#title' => t('Pre-shaped icons'),
+    '#description' => t('Select whether each service icon should be the pre-squared or pre-circled version (if available)'),
+    '#default_value' => $settings['shaped'],
+    '#required' => TRUE,
+    '#options' => array(
+      'squared' => t('Squared'),
+      'circled' => t('Circled'),
+      'squared or else circled' => t('Squared, or else circled'),
+      'circled or else squared' => t('Circled, or else squared'),
+      'natural' => t('Natural'),
+    ),
+  );
+  $element['background'] = array(
+    '#type' => 'select',
+    '#title' => t('Background of the icons'),
+    '#description' => t('Select what background each icon should have (if any)'),
+    '#default_value' => $settings['background'],
+    '#required' => FALSE,
+    '#empty_value' => 'none',
+    '#options' => array(
+      'square' => t('Square with rounded corners solid'),
+      'square-o' => t('Square with rounded corners outline'),
+      'stop' => t('Square solid'),
+      'play' => t('Triangle pointing right (play symbol) solid'),
+      'circle'  => t('Circle solid'),
+      'circle-o' => t('Circle outline'),
+      'circle-o-notch' => t('Circle outline with notch at the top'),
+      'circle-thin' => t('Circle outline hairline'),
+      'dot-circle-o' => t('Circle outline with centre dot'),
+      'cloud' => t('Cloud solid'),
+      'sun-o' => t('Sun outline'),
+      'folder' => t('Folder solid'),
+      'folder-o' => t('Folder outline'),
+      'file' => t('File solid'),
+      'file-o' => t('File outline'),
+      'heart' => t('Heart solid'),
+      'heart-o' => t('Heart outline'),
+      'laptop' => t('Laptop'),
+      'tablet' => t('Tablet'),
+    ),
+  );
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function link_icons_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $text = ($settings['text'] == 'none' ? 'no' : '"@text"');
+  $background = ($settings['background'] == 'none' ? 'no' : 'fa-@background');
+  $summary = t('Output ' . $text . ' text with @size size @width width @coloured @shaped icons, ' . $background . ' backgrounds and the icons placed @order.',
+    array(
+      '@text' => $settings['text'],
+      '@order' => $settings['order'],
+      '@size' => $settings['size'],
+      '@width' => $settings['width'],
+      '@coloured' => $settings['coloured'],
+      '@shaped' => $settings['shaped'],
+      '@background' => $settings['background'],
+    )
+  );
+  return $summary;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function link_icons_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $elements = array();
+  $settings = $display['settings'];
+
+  // Make $services updatable globally
+  $services = module_invoke_all('link_icons_services');
+  drupal_alter('link_icons_services', $services);
+
+  // Step through the items
+  foreach ($items as $delta => $item) {
+    $parsed = parse_url($item['url']);
+    $chunks = explode('.', $parsed['host']);
+    $host3 = '';
+    if (count($chunks) == 1) {
+      $host = $chunks[0];
+    } else {
+      $host = $chunks[count($chunks) - 2] . '.' . $chunks[count($chunks) - 1];
+      if (count($chunks) > 2) {
+        $host3 = $chunks[count($chunks) - 3] . $host;
+      }
+    }
+
+    // Find the service from $services, or else make it a generic navy globe 
+    if (isset($host3) && isset($services[$host3])) {
+      $service = $services[$host3];
+    } else if (isset($services[$host])) {
+      $service = $services[$host];
+    } else { 
+      $service = array('globe', 'navy');
+    }
+
+    $hollow_endings = array(
+      '-o',
+      '-o-notch',
+      '-thin',
+      'sun',
+      'laptop',
+      'tablet',
+    );
+
+    // Determine if the icon needs to be inverted
+    if ($settings['background'] != 'none') {
+      $inverse = TRUE;
+      foreach ($hollow_endings as $ending) {
+        if ($inverse) {
+          $ending_length = strlen($ending);
+          if ($ending_length <= strlen($settings['background'])) {
+            if (substr_compare($settings['background'], $ending, -$ending_length) === 0) {
+              $inverse = FALSE;
+            }
+          }
+        }
+      }
+    }
+
+    switch($settings['shaped']) {
+      case 'squared':
+        $icon = (isset($service[2]) ? $service[2] : $service[0]);
+        break;
+
+      case 'squared or else circled':
+        $icon = (isset($service[2]) ? $service[2] : (isset($service[3]) ? $service[3] : $service[0]));
+        break;
+
+      case 'circled':
+        $icon = (isset($service[3]) ? $service[3] : $service[0]);
+        break;
+
+      case 'circled or else squared':
+        $icon = (isset($service[3]) ? $service[3] : ((isset($service[2]) && !is_null($service[2])) ? $service[2] : $service[0]));
+        break;
+
+      case 'natural':
+      default:
+        $icon = $service[0];
+        break;
+    }
+
+    // Generate the icon link HTML
+    $icon_link = l(
+      ($settings['background'] != 'none' ? '<span class="fa-stack'
+          . ($settings['size'] != '1x' ? ' fa-' . $settings['size'] : '')
+          . '"><i class="fa fa-'
+          . $settings['background']
+          . ' fa-stack-2x"></i>'
+        : ''
+      )
+      . '<i class="fa fa-' . $icon
+      . ($settings['background'] == 'none' && $settings['size'] != '1x' ? ' fa-' . $settings['size'] : '')
+      . ($settings['width'] == 'fixed' ? ' fa-fw' : '')
+      . ($settings['background'] != 'none' ? ' fa-stack-1x' . (isset($inverse) && $inverse ? ' fa-inverse' : '') : '')
+      . '"'
+      . ($settings['coloured'] == 'coloured' ? ' style="color: ' . (isset($service[1]) ? $service[1] : 'black') . ';"' : '')
+      . '></i>'
+      . ($settings['background'] != 'none' ? '</span>' : ''),
+      $item['url'],
+      array(
+        'html' => TRUE,
+        'attributes' => array(
+          'title' => $item['title'],
+          'target' => '_blank',
+        ),
+      )
+    );
+
+    // Generate the text HTML, if required, and combine it with the link icon HTML in $markup
+    $text_link = '';
+    $text = '';
+    if ($settings['text'] != 'none') {
+      switch ($settings['text']) {
+        case 'title':
+          $text = $item['title'];
+          break;
+
+        case 'URL':
+          $text = $item['url'];
+          break;
+
+        case 'title - URL':
+          $text = $item['title'] . ' - ' . $item['url'];
+          break;
+
+        case 'title: URL':
+          $text = $item['title'] . ': ' . $item['url'];
+          break;
+
+        case 'URL (title)':
+          $text = $item['url'] . ' (' . $item['title'] . ')';
+          break;
+      }
+
+      $text_link = l(
+        $text,
+        $item['url'],
+        array(
+          'attributes' => array(
+            'title' => $item['title'],
+            'target' => '_blank',
+          ),
+        )
+      );
+
+      if ($settings['order'] == 'first') {
+        $markup = $icon_link . ' ' . $text_link;
+      }
+      else {
+        $markup = $text_link . ' ' . $icon_link;
+      }
+    }
+    else {
+      $markup = $icon_link;
+    }
+
+    // Return the $markup
+    $elements[$delta] = array(
+      '#markup' => $markup,
+    );
+  }
+
+  return $elements;
+}
+
+function link_icons_link_icons_services() {
+  return array(
+    // Format is:
+    // Hostname => array(main fa icon name, colour, square fa icon name, circle fa icon name).
+    '500px.com' => array('500px', 'black'),
+    'amazon.com' => array('amazon', 'black'),
+    'amazon.co.uk' => array('amazon', 'black'),
+    'angel.co' => array('angellist', 'black'),
+    'apple.com' => array('apple', '#6E6E6E'),
+    'bandcamp.com' => array('bandcamp', '#639AA9'),
+    'behance.net' => array('behance', 'black', 'behance-square'),
+    'bitbucket.org' => array('bitbucket', 'black', 'bitbucket-square'),
+    'chrome.google.com' => array('chrome', '#E04B40'),
+    'codepen.io' => array('codepen', 'black'),
+    'del.icio.us' => array('delicious', 'black'),
+    'deviantart.com' => array('deviantart', '#CFDD20'),
+    'digg.com' => array('digg', 'black'),
+    'dribbble.com' => array('dribbble', '#CA2A68'),
+    'dropbox.com' => array('dropbox', '#1182DE'),
+    'drupal.org' => array('drupal', '#0073BA'),
+    'eercast.com' => array('eercast', '#F1592A'),
+    'etsy.com' => array('etsy', '#F56400'),
+    'facebook.com' => array('facebook', '#4965A0', 'facebook-square'),
+    'flickr.com' => array('flickr'),
+    'fontawesome.com' => array('font-awesome', '#228AE6'),
+    'fontawesome.io' => array('font-awesome', '#1D9E74'),
+    'foursquare.com' => array('foursquare', '#38AAE1'),
+    'freecodecamp.com' => array('freecodecamp', '#006400'),
+    'getgrav.com' => array('grav', 'black'),
+    'github.com' => array('github', 'black', 'github-square'),
+    'google.com' => array('google'),
+    'imdb.com' => array('imdb', '#E4BB36'),
+    'instagram.com' => array('instagram', '#48769B'),
+    'joomla.org' => array('joomla', '#1B63A2'),
+    'jsfiddle.net' => array('jsfiddle', '#4679BD'),
+    'last.fm' => array('lastfm', '#B90000', 'lastfm-square'),
+    'linkedin.com' => array('linkedin', '#1C87BD', 'linkedin-square'),
+    'linode.com' => array('linode', '#00B259'),
+    'medium.com' => array('medium', '#00AB6B'),
+    'meetup.com' => array('meetup', '#ED1C40'),
+    'paypal.com' => array('paypal', '#18130D'),
+    'paypal.me' => array('paypal', '#18130D'),
+    'pinterest.com' => array('pinterest', '#DC1E26', 'pinterest-square'),
+    'play.google.com' => array('android', '#689F38'),
+    'plus.google.com' => array('google-plus', '#DD4B39', 'google-plus-square', 'google-plus-circle'),
+    'producthunt.com' => array('product-hunt', '#DA552F'),
+    'quora.com' => array('quora', '#B92B27'),
+    'ravelry.com' => array('ravelry', '#C5154F'),
+    'reddit.com' => array('reddit', 'black', 'reddit-square'),
+    'slideshare.net' => array('slideshare', 'black'),
+    'snapchat.com' => array('snapchat', '#FFFC01', 'snapchat-square'),
+    'soundcloud.com' => array('soundcloud', '#FE4E00'),
+    'spotify.com' => array('spotify', '#8EBD05'),
+    'spotlight.com' => array('th-list'),
+    'stackexchange.com' => array('stack-exchange', '#195398'),
+    'stackoverflow.com' => array('stack-overflow', '#FE7A15'),
+    'steamcommunity.com' => array('steam', 'black', 'steam-square'),
+    'steampowered.com' => array('steam', 'black', 'steam-square'),
+    'stumbleupon.com' => array('stumbleupon', '#EA4B24', '', 'stumbleupon-circle'),
+    'telegram.org' => array('telegram', '#179CDE'),
+    'tripadvisor.com' => array('tripadvisor', 'black'),
+    'tripadvisor.co.uk' => array('tripadvisor', 'black'),
+    'tumblr.com' => array('tumblr', '#2C4762', 'tumblr-square'),
+    'twitch.tv' => array('twitch', '#4B367C'),
+    'twitter.com' => array('twitter', '#00ACEE', 'twitter-square'),
+    'viadeo.com' => array('viadeo', '#EA6725', 'viadeo-square'),
+    'vimeo.com' => array('vimeo-square', '#1AB7EA'),
+    'vine.co' => array('vine', '#00BF8F'),
+    'wikipedia.org' => array('wikipedia-w', ''),
+    'wordpress.com' => array('wordpress', '#0074A2'),
+    'wordpress.org' => array('wordpress', '#0074A2'),
+    'wpexplorer.com' => array('wpexplorer', '#1796C6'),
+    'xing.com' => array('xing', '#006464', 'xing-square'),
+    'yahoo.com' => array('yahoo', '#2D1152'),
+    'yelp.com' => array('yelp', '#D32323'),
+    'yelp.co.uk' => array('yelp', '#D32323'),
+    'youtube.com' => array('youtube', '#CC181E', 'youtube-square'),
+    // TODO: Add more icons/services from Font Awesome.
+  );
+}
