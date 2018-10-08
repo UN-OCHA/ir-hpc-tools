@@ -13,8 +13,8 @@ function hr_search_current_search_default_items() {
   $item = new stdClass();
   $item->disabled = FALSE; /* Edit this to true to make a default item disabled initially */
   $item->api_version = 1;
-  $item->name = 'hr_current_search';
-  $item->label = 'Humanitarianresponse';
+  $item->name = 'standard';
+  $item->label = 'Standard (OCHA)';
   $item->settings = array(
     'items' => array(
       'results' => array(
@@ -33,9 +33,9 @@ function hr_search_current_search_default_items() {
       'reset' => array(
         'id' => 'text',
         'label' => 'Reset',
-        'text' => '<a href="/[facetapi_results:search-path]"><i class="reset"></i></a> <span>Reset filter</span>',
+        'text' => '<a href="/indicators"><span>Reset filter</span></a>',
         'plural' => 1,
-        'text_plural' => '<a href="/[facetapi_results:search-path]"><i class="reset"></i></a> <span>Reset all filters</span>',
+        'text_plural' => '<a href="/indicators"><span>Reset all filters</span></a>',
         'plural_condition' => 'facetapi_results:result-count',
         'wrapper' => 1,
         'element' => 'div',
@@ -43,13 +43,11 @@ function hr_search_current_search_default_items() {
         'classes' => 'current-reset-filter',
         'weight' => '-49',
       ),
-      'selected_items' => array(
+      'active_items' => array(
         'id' => 'active',
-        'label' => 'Selected items',
+        'label' => 'Active items',
         'pattern' => '[facetapi_active:active-value]',
         'keys' => 1,
-        'keys_link' => 1,
-        'keys_param' => '',
         'css' => 1,
         'classes' => '.current-selected-item',
         'nofollow' => 1,
@@ -60,7 +58,8 @@ function hr_search_current_search_default_items() {
       'empty_searches' => '1',
     ),
   );
-  $export['hr_current_search'] = $item;
+
+  $export['standard'] = $item;
 
   return $export;
 }
