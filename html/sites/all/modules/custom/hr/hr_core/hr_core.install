@@ -65,3 +65,15 @@ function hr_core_update_7005() {
     ->condition('type', 'module')
     ->execute();
 }
+
+/**
+ * Disable and remove unused themes.
+ */
+function hr_core_update_7006() {
+  $theme_list = array(
+    'radix',
+    'registry',
+    'humanitarianresponse'
+  );
+  theme_disable($theme_list);
+}
