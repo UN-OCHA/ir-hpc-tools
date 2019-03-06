@@ -35,6 +35,7 @@
         "drupal/field_validation": "^2.6",
         "drupal/fieldable_panels_panes": "^1.11",
         "drupal/file_entity": "^2.22",
+        "drupal/google_analytics": "^2.6",
         "drupal/hierarchical_select": "^3.0@beta",
         "drupal/http_client": "^2.4",
         "drupal/hybridauth": "^2.16",
