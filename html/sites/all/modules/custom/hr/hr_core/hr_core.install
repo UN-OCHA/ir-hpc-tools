@@ -77,3 +77,12 @@ function hr_core_update_7006() {
   );
   theme_disable($theme_list);
 }
+
+/**
+ * Enable Google Analytics.
+ */
+function hr_core_update_7007() {
+  module_enable(array(
+    'googleanalytics',
+  ));
+}
