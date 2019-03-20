@@ -570,17 +570,17 @@
         },
         {
             "name": "drupal/drupal",
-            "version": "7.64.0",
+            "version": "7.65.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/drupal",
-                "reference": "7.64"
+                "reference": "7.65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/drupal-7.64.zip",
-                "reference": "7.64",
-                "shasum": "552b8d07b316f68ba9f84bf9b46c4990c2411b49"
+                "url": "https://ftp.drupal.org/files/projects/drupal-7.65.zip",
+                "reference": "7.65",
+                "shasum": "3afb0a75df9716b3a97351048354d364d6901378"
             },
             "type": "drupal-core",
             "extra": {
@@ -588,8 +588,8 @@
                     "dev-7.x": "7.x-dev"
                 },
                 "drupal": {
-                    "version": "7.64",
-                    "datestamp": "1549882081",
+                    "version": "7.65",
+                    "datestamp": "1553101330",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3690,17 +3690,17 @@
         },
         {
             "name": "drupal/restful",
-            "version": "2.16.0",
+            "version": "2.17.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/restful",
-                "reference": "7.x-2.16"
+                "reference": "7.x-2.17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/restful-7.x-2.16.zip",
-                "reference": "7.x-2.16",
-                "shasum": "fadffe9480e44c09ccb8648bfab5b4333c9023e1"
+                "url": "https://ftp.drupal.org/files/projects/restful-7.x-2.17.zip",
+                "reference": "7.x-2.17",
+                "shasum": "1811898f48cdbc23594bce5be9e9d9eb2fe73955"
             },
             "require": {
                 "drupal/drupal": "~7.0",
@@ -3717,8 +3717,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-2.16",
-                    "datestamp": "1487181177",
+                    "version": "7.x-2.17",
+                    "datestamp": "1553101123",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3737,6 +3737,10 @@
                 {
                     "name": "e0ipso",
                     "homepage": "https://www.drupal.org/user/550110"
+                },
+                {
+                    "name": "ordavidil",
+                    "homepage": "https://www.drupal.org/user/3105583"
                 }
             ],
             "description": "Turn Drupal to a RESTful server, following best practices.",
@@ -4874,16 +4878,16 @@
         },
         {
             "name": "composer/semver",
-            "version": "1.4.2",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "c7cb9a2095a074d131b65a8a0cd294479d785573"
+                "reference": "46d9139568ccb8d9e7cdd4539cab7347568a5e2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/c7cb9a2095a074d131b65a8a0cd294479d785573",
-                "reference": "c7cb9a2095a074d131b65a8a0cd294479d785573",
+                "url": "https://api.github.com/repos/composer/semver/zipball/46d9139568ccb8d9e7cdd4539cab7347568a5e2e",
+                "reference": "46d9139568ccb8d9e7cdd4539cab7347568a5e2e",
                 "shasum": ""
             },
             "require": {
@@ -4932,7 +4936,7 @@
                 "validation",
                 "versioning"
             ],
-            "time": "2016-08-30T16:08:34+00:00"
+            "time": "2019-03-19T17:25:45+00:00"
         },
         {
             "name": "consolidation/annotated-command",
@@ -5313,16 +5317,16 @@
         },
         {
             "name": "drupal-composer/preserve-paths",
-            "version": "0.1.4",
+            "version": "0.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal-composer/preserve-paths.git",
-                "reference": "d557250928235fe23e11c86329bd7cef05397648"
+                "reference": "7f99622800504c058e5230b63d3cd25809fa23ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal-composer/preserve-paths/zipball/d557250928235fe23e11c86329bd7cef05397648",
-                "reference": "d557250928235fe23e11c86329bd7cef05397648",
+                "url": "https://api.github.com/repos/drupal-composer/preserve-paths/zipball/7f99622800504c058e5230b63d3cd25809fa23ba",
+                "reference": "7f99622800504c058e5230b63d3cd25809fa23ba",
                 "shasum": ""
             },
             "require": {
@@ -5337,11 +5341,11 @@
             },
             "type": "composer-plugin",
             "extra": {
-                "class": "derhasi\\Composer\\Plugin"
+                "class": "DrupalComposer\\PreservePaths\\Plugin"
             },
             "autoload": {
                 "psr-4": {
-                    "derhasi\\Composer\\": "src/"
+                    "DrupalComposer\\PreservePaths\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -5356,14 +5360,14 @@
                 }
             ],
             "description": "Composer plugin for preserving custom paths and supporting nested packages",
-            "homepage": "https://github.com/derhasi/composer-preserve-paths",
+            "homepage": "https://github.com/drupal-composer/preserve-paths",
             "keywords": [
                 "composer-plugin",
                 "custom path",
                 "installer",
                 "nested package"
             ],
-            "time": "2017-02-03T11:32:31+00:00"
+            "time": "2017-07-20T14:32:18+00:00"
         },
         {
             "name": "drupal/coder",
@@ -6228,16 +6232,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "379deb987e26c7cd103a7b387aea178baec96e48"
+                "reference": "5b4333b4010625d29580eb4a41f1e53251be6baa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/379deb987e26c7cd103a7b387aea178baec96e48",
-                "reference": "379deb987e26c7cd103a7b387aea178baec96e48",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5b4333b4010625d29580eb4a41f1e53251be6baa",
+                "reference": "5b4333b4010625d29580eb4a41f1e53251be6baa",
                 "shasum": ""
             },
             "require": {
@@ -6270,12 +6274,12 @@
                 }
             ],
             "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
-            "homepage": "http://www.squizlabs.com/php-codesniffer",
+            "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
             "keywords": [
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-12-19T23:57:18+00:00"
+            "time": "2019-03-19T03:22:27+00:00"
         },
         {
             "name": "symfony/config",
