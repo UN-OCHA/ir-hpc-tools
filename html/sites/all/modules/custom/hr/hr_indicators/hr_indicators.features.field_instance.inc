@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * hr_indicators.features.field_instance.inc
@@ -648,6 +649,63 @@ function hr_indicators_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-hr_indicator-field_ind_level'.
+  $field_instances['node-hr_indicator-field_ind_level'] = array(
+    'bundle' => 'hr_indicator',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'bypass_access' => FALSE,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 25,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ind_level',
+    'label' => 'Level',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 28,
+    ),
+  );
+
   // Exported field_instance: 'node-hr_indicator-field_ind_numerator'.
   $field_instances['node-hr_indicator-field_ind_numerator'] = array(
     'bundle' => 'hr_indicator',
@@ -787,6 +845,63 @@ function hr_indicators_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-hr_indicator-field_ind_sectoral_objective'.
+  $field_instances['node-hr_indicator-field_ind_sectoral_objective'] = array(
+    'bundle' => 'hr_indicator',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'bypass_access' => FALSE,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 24,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ind_sectoral_objective',
+    'label' => 'Sectoral objective',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 27,
+    ),
+  );
+
   // Exported field_instance: 'node-hr_indicator-field_ind_standards'.
   $field_instances['node-hr_indicator-field_ind_standards'] = array(
     'bundle' => 'hr_indicator',
@@ -842,6 +957,63 @@ function hr_indicators_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance: 'node-hr_indicator-field_ind_strategic_objective'.
+  $field_instances['node-hr_indicator-field_ind_strategic_objective'] = array(
+    'bundle' => 'hr_indicator',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'bypass_access' => FALSE,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 23,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ind_strategic_objective',
+    'label' => 'Strategic objective',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 26,
     ),
   );
 
@@ -1329,11 +1501,14 @@ function hr_indicators_field_default_field_instances() {
   t('Guidance on phases');
   t('Indicator used for response monitoring ?');
   t('Key indicator');
+  t('Level');
   t('Name');
   t('Numerator');
   t('Phase applicability');
   t('Sector cross-tagging');
+  t('Sectoral objective');
   t('Standards');
+  t('Strategic objective');
   t('Sub-domain');
   t('Threshold / Standard');
   t('Title');

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * hr_indicators.views_default.inc
@@ -462,6 +463,7 @@ function hr_indicators_views_default_views() {
     t('Description'),
     t('Search Indicators'),
     t('Table'),
+    t('Indicators'),
     t('XLS'),
     t('Unit of Measurement'),
     t('Unit Description'),

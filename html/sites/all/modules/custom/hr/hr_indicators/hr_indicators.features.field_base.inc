@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * hr_indicators.features.field_base.inc
@@ -288,6 +289,43 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_ind_level'.
+  $field_bases['field_ind_level'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ind_level',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'direction' => 'ASC',
+          'property' => 'name',
+          'type' => 'property',
+        ),
+        'target_bundles' => array(
+          'level' => 'level',
+        ),
+      ),
+      'target_type' => 'taxonomy_term',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_ind_numerator'.
   $field_bases['field_ind_numerator'] = array(
     'active' => 1,
@@ -371,6 +409,43 @@ function hr_indicators_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_ind_sectoral_objective'.
+  $field_bases['field_ind_sectoral_objective'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ind_sectoral_objective',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'direction' => 'ASC',
+          'property' => 'name',
+          'type' => 'property',
+        ),
+        'target_bundles' => array(
+          'sectoral_objective' => 'sectoral_objective',
+        ),
+      ),
+      'target_type' => 'taxonomy_term',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_ind_standards'.
   $field_bases['field_ind_standards'] = array(
     'active' => 1,
@@ -402,6 +477,43 @@ function hr_indicators_field_default_field_bases() {
         ),
       ),
       'profile2_private' => FALSE,
+      'target_type' => 'taxonomy_term',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_ind_strategic_objective'.
+  $field_bases['field_ind_strategic_objective'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ind_strategic_objective',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'direction' => 'ASC',
+          'property' => 'name',
+          'type' => 'property',
+        ),
+        'target_bundles' => array(
+          'strategic_objective' => 'strategic_objective',
+        ),
+      ),
       'target_type' => 'taxonomy_term',
     ),
     'translatable' => 0,
