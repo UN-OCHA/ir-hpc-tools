@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * hr_search.facetapi_defaults.inc
