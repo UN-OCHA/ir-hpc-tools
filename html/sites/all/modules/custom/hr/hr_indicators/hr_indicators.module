@@ -185,3 +185,32 @@ function _hr_indicators_migrate_data_from_postgres() {
   db_query("UPDATE node SET uid = 1 WHERE uid <> 1");
   db_query("UPDATE node_revision SET uid = 1 WHERE uid <> 1");
 }
+
+/**
+ * Implements hook_permission().
+ */
+function hr_indicators_permission() {
+  return array(
+    'hr_indicators_import_xlsx' => array(
+      'title' => t('Import indicators from XLSX'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function hr_indicators_menu() {
+  $items = array();
+
+  $items['admin/structure/import-xlsx'] = array(
+    'title' => 'Import indicators from XLSX',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('hr_indicators_import_from_xlsx'),
+    'access arguments' => array('hr_indicators_import_xlsx'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'hr_indicators.admin.inc',
+  );
+
+  return $items;
+}

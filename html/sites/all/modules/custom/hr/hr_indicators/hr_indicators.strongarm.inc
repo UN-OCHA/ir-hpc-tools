@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * hr_indicators.strongarm.inc
@@ -82,6 +83,9 @@ function hr_indicators_strongarm() {
         ),
         'language' => array(
           'weight' => '0',
+        ),
+        'title' => array(
+          'weight' => '-5',
         ),
       ),
       'display' => array(),

@@ -90,6 +90,7 @@ features[facetapi][] = search_api@default_node_index:block:field_ind_guidance_ph
 features[facetapi][] = search_api@default_node_index:block:field_ind_key
 features[facetapi][] = search_api@default_node_index:block:field_ind_numerator
 features[facetapi][] = search_api@default_node_index:block:field_ind_response
+features[facetapi][] = search_api@default_node_index:block:field_ind_sectoral_objective
 features[facetapi][] = search_api@default_node_index:block:field_ind_standards
 features[facetapi][] = search_api@default_node_index:block:field_ind_threshold
 features[facetapi][] = search_api@default_node_index:block:field_ind_types
