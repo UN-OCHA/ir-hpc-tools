@@ -42,5 +42,38 @@ function hr_indicators_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'level' => array(
+      'name' => 'Level',
+      'machine_name' => 'level',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'path' => array(
+        'pathauto' => 0,
+      ),
+    ),
+    'sectoral_objective' => array(
+      'name' => 'Sectoral objective',
+      'machine_name' => 'sectoral_objective',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'path' => array(
+        'pathauto' => 0,
+      ),
+    ),
+    'strategic_objective' => array(
+      'name' => 'Strategic objective',
+      'machine_name' => 'strategic_objective',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'path' => array(
+        'pathauto' => 0,
+      ),
+    ),
   );
 }
