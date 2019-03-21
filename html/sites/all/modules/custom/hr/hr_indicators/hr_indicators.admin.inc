@@ -170,6 +170,11 @@ function hr_indicators_import_from_xlsx_import_row($data, &$context) {
   }
 
   // Sub-Domain.
+  if (isset($data['status'])) {
+    $node->status = (bool) $data['status'];
+  }
+
+  // Sub-Domain.
   if (isset($data['sub-domain']) && !empty($data['sub-domain'])) {
     $separator = '|';
     $terms = array_filter(explode($separator, trim($data['sub-domain'])));
