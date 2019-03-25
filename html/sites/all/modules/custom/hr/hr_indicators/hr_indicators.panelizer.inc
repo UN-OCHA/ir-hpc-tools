@@ -742,6 +742,7 @@ function hr_indicators_panelizer_defaults() {
   $pane->cache = array();
   $pane->style = array(
     'settings' => NULL,
+    'style' => 'default',
   );
   $pane->css = array();
   $pane->extras = array();
@@ -774,7 +775,7 @@ function hr_indicators_panelizer_defaults() {
   );
   $pane->cache = array();
   $pane->style = array(
-    'style' => 'hr_highlighted',
+    'style' => 'default',
     'settings' => NULL,
   );
   $pane->css = array();
@@ -808,7 +809,7 @@ function hr_indicators_panelizer_defaults() {
   );
   $pane->cache = array();
   $pane->style = array(
-    'style' => 'hr_highlighted',
+    'style' => 'default',
     'settings' => NULL,
   );
   $pane->css = array();
@@ -842,7 +843,7 @@ function hr_indicators_panelizer_defaults() {
   );
   $pane->cache = array();
   $pane->style = array(
-    'style' => 'hr_highlighted',
+    'style' => 'default',
     'settings' => NULL,
   );
   $pane->css = array();
