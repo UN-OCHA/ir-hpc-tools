@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * hr_search.features.inc
@@ -222,6 +223,7 @@ function hr_search_default_search_api_index() {
         "field_ind_key" : { "type" : "boolean" },
         "field_ind_numerator" : { "type" : "text", "boost" : "0.5" },
         "field_ind_response" : { "type" : "boolean" },
+        "field_ind_sectoral_objective" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_ind_standards" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_ind_threshold" : { "type" : "text", "boost" : "0.5" },
         "field_ind_types" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
@@ -465,6 +467,12 @@ function hr_search_default_search_api_server() {
             "table" : "search_api_db_default_node_index",
             "column" : "nid",
             "type" : "integer",
+            "boost" : "1.0"
+          },
+          "field_ind_sectoral_objective" : {
+            "table" : "search_api_db_default_node_index_field_ind_sectoral_objective",
+            "column" : "value",
+            "type" : "list\\u003Cinteger\\u003E",
             "boost" : "1.0"
           }
         }

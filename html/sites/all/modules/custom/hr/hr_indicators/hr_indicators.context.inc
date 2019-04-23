@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * hr_indicators.context.inc
@@ -73,6 +74,12 @@ function hr_indicators_context_default_contexts() {
           'delta' => 'PtnzOYGAQ4r54BwtIYyy1V9aQHo49u6D',
           'region' => 'sidebar_first',
           'weight' => '-3',
+        ),
+        'facetapi-tq7ilDwK1hTT0Qk2LBPOLG4ggsf4DiSo' => array(
+          'module' => 'facetapi',
+          'delta' => 'tq7ilDwK1hTT0Qk2LBPOLG4ggsf4DiSo',
+          'region' => 'sidebar_first',
+          'weight' => '-2',
         ),
       ),
     ),
