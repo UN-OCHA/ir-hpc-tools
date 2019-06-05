@@ -1,6 +1,6 @@
 FROM unocha/unified-builder:7.2.18-r0-201905-11 as builder
 COPY ./html /srv/www/html
-WORKDIR /srv/www/html/sites/all/themes/custom/ocha_basic
+WORKDIR /srv/www/html/sites/all/themes/ocha_basic
 RUN npm install && \
       npm run gulp build && \
       rm -rf ./node_modules
