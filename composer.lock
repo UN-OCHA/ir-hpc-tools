@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff183ab9ad0e1ec57d220528a9305c58",
+    "content-hash": "382162b5695ec1a12bd0a424bd547421",
     "packages": [
         {
             "name": "drupal/addressfield",

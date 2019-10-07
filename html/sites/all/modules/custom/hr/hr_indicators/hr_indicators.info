@@ -106,3 +106,4 @@ features[variable][] = pathauto_taxonomy_term_hr_indicator_standard_pattern
 features[variable][] = pathauto_taxonomy_term_hr_indicator_type_pattern
 features[variable][] = pathauto_taxonomy_term_hr_indicator_unit_pattern
 features[views_view][] = hr_indicators
+registry_autoload[] = PSR-4
