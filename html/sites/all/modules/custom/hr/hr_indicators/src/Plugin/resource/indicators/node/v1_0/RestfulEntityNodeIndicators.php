@@ -5,17 +5,17 @@
  * Contains \RestfulEntityNodeIndicators.
  */
 
-namespace Drupal\hr_indicators\Plugin\resource\hr_indicator\node\v1_0;
+namespace Drupal\hr_indicators\Plugin\resource\indicators\node\v1_0;
 use Drupal\restful\Plugin\resource\ResourceEntity;
 use Drupal\restful\Plugin\resource\ResourceInterface;
 
 /**
  * Class RestfulEntityNodeIndicators
- * @package Drupal\hr_indicators\Plugin\resource\hr_indicator\node\v1_0
+ * @package Drupal\hr_indicators\Plugin\resource\indicators\node\v1_0
  *
  * @Resource(
- *   name = "hr_indicator:1.0",
- *   resource = "hr_indicator",
+ *   name = "indicators:1.0",
+ *   resource = "indicators",
  *   label = "Indicators",
  *   description = "Export the indicators.",
  *   authenticationTypes = TRUE,
