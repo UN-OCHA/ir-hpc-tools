@@ -5,22 +5,41 @@
  * Contains \RestfulEntityNodeIndicators.
  */
 
+namespace Drupal\hr_indicators\Plugin\resource\indicators\node\v1_0;
+use Drupal\restful\Plugin\resource\ResourceEntity;
+use Drupal\restful\Plugin\resource\ResourceInterface;
+
 /**
+ * Class RestfulEntityNodeIndicators
+ * @package Drupal\hr_indicators\Plugin\resource\indicators\node\v1_0
  *
+ * @Resource(
+ *   name = "indicators:1.0",
+ *   resource = "indicators",
+ *   label = "Indicators",
+ *   description = "Export the indicators.",
+ *   authenticationTypes = TRUE,
+ *   authenticationOptional = TRUE,
+ *   dataProvider = {
+ *     "entityType": "node",
+ *     "bundles": {
+ *       "hr_indicator"
+ *     },
+ *   },
+ *   majorVersion = 1,
+ *   minorVersion = 0
+ * )
  */
-class RestfulEntityNodeIndicators extends \RestfulEntityBaseNode {
+class RestfulEntityNodeIndicators extends ResourceEntity implements ResourceInterface {
 
   /**
-   * Overrides \RestfulEntityBase::publicFieldsInfo().
+   * Overrides EntityNode::publicFields().
    */
-  public function publicFieldsInfo() {
-    $public_fields = parent::publicFieldsInfo();
+  public function publicFields() {
+    $public_fields = parent::publicFields();
 
     $public_fields['global_clusters'] = array(
       'property' => 'field_sectors',
-      'resource' => array(
-        'hr_sector' => 'global_clusters',
-      ),
     );
 
     $public_fields['code'] = array(
@@ -29,9 +48,6 @@ class RestfulEntityNodeIndicators extends \RestfulEntityBaseNode {
 
     $public_fields['domain'] = array(
       'property' => 'field_ind_domain',
-      'resource' => array(
-        'hr_indicator_domain' => 'indicator_domains',
-      ),
     );
 
     $public_fields['description'] = array(
@@ -40,9 +56,6 @@ class RestfulEntityNodeIndicators extends \RestfulEntityBaseNode {
 
     $public_fields['unit'] = array(
       'property' => 'field_ind_unit',
-      'resource' => array(
-        'hr_indicator_unit' => 'indicator_units',
-      ),
     );
 
     $public_fields['unit_description'] = array(
@@ -67,9 +80,6 @@ class RestfulEntityNodeIndicators extends \RestfulEntityBaseNode {
 
     $public_fields['types'] = array(
       'property' => 'field_ind_types',
-      'resource' => array(
-        'hr_indicator_type' => 'indicator_types',
-      ),
     );
 
     $public_fields['response_monitoring'] = array(
@@ -78,9 +88,6 @@ class RestfulEntityNodeIndicators extends \RestfulEntityBaseNode {
 
     $public_fields['standards'] = array(
       'property' => 'field_ind_standards',
-      'resource' => array(
-        'hr_indicator_standard' => 'indicator_standards',
-      ),
     );
 
     $public_fields['threshold'] = array(
@@ -109,9 +116,6 @@ class RestfulEntityNodeIndicators extends \RestfulEntityBaseNode {
 
     $public_fields['sector_cross_tagging'] = array(
       'property' => 'field_ind_cross_tagging',
-      'resource' => array(
-        'hr_indicator_domain' => 'indicator_domains',
-      ),
     );
 
     $public_fields['created'] = array(
