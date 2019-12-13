@@ -131,5 +131,15 @@
         "bin-dir": "bin/",
         "sort-packages": true,
         "optimize-autoloader": true
+    },
+    "scripts": {
+        "gulp-prepare": "cd html/sites/all/themes/ocha_basic && npm install",
+        "gulp-build": "cd html/sites/all/themes/ocha_basic && npm run gulp build",
+        "gulp-cleanup": "cd html/sites/all/themes/ocha_basic && rm -rf ./node_modules",
+        "gulp": [
+            "@gulp-prepare",
+            "@gulp-build",
+            "@gulp-cleanup"
+        ]
     }
 }

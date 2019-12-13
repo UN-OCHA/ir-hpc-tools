@@ -1,11 +1,9 @@
 FROM unocha/unified-builder:7.2.18-r0-201905-11 as builder
 ARG  BRANCH_ENVIRONMENT
 ENV  NODE_ENV=$BRANCH_ENVIRONMENT
-COPY ./html /srv/www/html
-WORKDIR /srv/www/html/sites/all/themes/ocha_basic
-RUN npm install && \
-      npm run gulp build && \
-      rm -rf ./node_modules
+COPY . /srv/www
+WORKDIR /srv/www
+RUN composer run gulp
 
 FROM unocha/php7-k8s:7.2.18-r0-201911-01-NR
 
