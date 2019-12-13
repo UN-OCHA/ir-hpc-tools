@@ -1,4 +1,6 @@
 FROM unocha/unified-builder:7.2.18-r0-201905-11 as builder
+ARG  BRANCH_ENVIRONMENT
+ENV  NODE_ENV=$BRANCH_ENVIRONMENT
 COPY ./html /srv/www/html
 WORKDIR /srv/www/html/sites/all/themes/ocha_basic
 RUN npm install && \
@@ -30,3 +32,4 @@ LABEL info.humanitarianresponse.build.date=$BUILD_DATE \
 COPY ./html /srv/www/html
 COPY ./composer.json /srv/www/composer.json
 COPY ./composer.lock /srv/www/composer.lock
+COPY ./composer.patches.json /srv/www/composer.patches.json
