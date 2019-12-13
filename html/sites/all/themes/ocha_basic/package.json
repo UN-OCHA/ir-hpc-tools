@@ -22,7 +22,9 @@
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
+    "gulp-sass-lint": "^1.4.0",
     "gulp-sourcemaps": "^2.6.5",
+    "gulp-svg-sprite": "^1.5.0",
     "gulp-task-listing": "^1.1.0",
     "gulp-uglify": "^3.0.2",
     "jshint": "^2.10.2",
@@ -38,8 +40,6 @@
     "icon-rename": "rename -c -s _ - -s icon- '' img/icons/*"
   },
   "devDependencies": {
-    "gulp-sass-lint": "^1.4.0",
-    "gulp-svg-sprite": "^1.5.0",
     "eslint": ">=4.18.2"
   }
 }
