@@ -10,3 +10,4 @@ before_script:
 
 script:
   - ./scripts/review.sh
+  - composer run gulp
