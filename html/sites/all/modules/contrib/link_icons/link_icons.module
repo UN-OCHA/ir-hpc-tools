@@ -1,8 +1,92 @@
 <?php
+
 /**
  * @file
  * Field formatter for Link field.
  */
+
+/**
+ * Implements hook_help().
+ */
+function link_icons_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#link_icons":
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The <em>Link Icons</em> module provides the ability to format link fields with an additional configurable icon that represents the site that the link is to.') . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Displaying links') . '</dt>';
+      $output .= '<dd>' . t('Link fields can be displayed using the <em>Link Icons</em> field formatter on the field display settings page for any content type. If this formatter is used, you can configure how the icon is formatted around the link.') . '</dd>';
+      $output .= '</dl>';
+      $output .= '<h3>' . t('Configuration settings') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Text alongside the icon') . '</dt>';
+      $output .= '<dd>' . t('Select what text should appear with each icon (if any). The options are:') . '<ul>';
+      $output .= '<li>' . t('link title') . '</li>';
+      $output .= '<li>' . t('link URL') . '</li>';
+      $output .= '<li>' . t('link title - link URL') . '</li>';
+      $output .= '<li>' . t('link title: link URL') . '</li>';
+      $output .= '<li>' . t('link URL (link title)') . '</li>';
+      $output .= '</ul></dd>';
+      $output .= '<dt>' . t('Order of icon and text') . '</dt>';
+      $output .= '<dd>' . t('Select the order of each icon and its text (if any). The options are:') . '<ul>';
+      $output .= '<li>' . t('icon first') . '</li>';
+      $output .= '<li>' . t('icon last') . '</li>';
+      $output .= '</ul></dd>';
+      $output .= '<dt>' . t('Size of the icon') . '</dt>';
+      $output .= '<dd>' . t('Select what size each icon should be. This is not used/supported if icons have a background (see the setting below). The options are:') . '</ul>';
+      $output .= '<li>' . t('100%') . '</li>';
+      $output .= '<li>' . t('133%') . '</li>';
+      $output .= '<li>' . t('200%') . '</li>';
+      $output .= '<li>' . t('300%') . '</li>';
+      $output .= '<li>' . t('400%') . '</li>';
+      $output .= '<li>' . t('500%') . '</li>';
+      $output .= '</ul></dd>';
+      $output .= '<dt>' . t('Width of icons') . '</dt>';
+      $output .= '<dd>' . t('Select whether each icon should have a fixed or variable width. This can help with horizontal alignment. The options are:') . '<ul>';
+      $output .= '<li>' . t('fixed width') . '</li>';
+      $output .= '<li>' . t('variable width') . '</li>';
+      $output .= '</ul></dd>';
+      $output .= '<dt>' . t('Coloured icons') . '</dt>';
+      $output .= '<dd>' . t("Select whether each service icon should be coloured correctly (if that's possible with a single colour). The options are:") . '<ul>';
+      $output .= '<li>' . t('coloured') . '</li>';
+      $output .= '<li>' . t('uncoloured') . '</li>';
+      $output .= '</ul></dd>';
+      $output .= '<dt>' . t('Pre-shaped icons') . '</dt>';
+      $output .= '<dd>' . t('Select whether each service icon should be the pre-squared or pre-circled version (if available). The options are:') . '<ul>';
+      $output .= '<li>' . t('squared') . '</li>';
+      $output .= '<li>' . t('circled') . '</li>';
+      $output .= '<li>' . t('squared, or else circled') . '</li>';
+      $output .= '<li>' . t('circled, or else squared') . '</li>';
+      $output .= '<li>' . t('natural') . '</li>';
+      $output .= '</ul></dd>';
+      $output .= '<dt>' . t('Background of the icons') . '</dt>';
+      $output .= '<dd>' . t('Select what background each icon should have (if any). The options are:') . '<ul>';
+      $output .= '<li>' . t('Square with rounded corners solid') . '</li>';
+      $output .= '<li>' . t('Square with rounded corners outline') . '</li>';
+      $output .= '<li>' . t('Square solid') . '</li>';
+      $output .= '<li>' . t('Triangle pointing right (play symbol) solid') . '</li>';
+      $output .= '<li>' . t('Circle solid') . '</li>';
+      $output .= '<li>' . t('Circle outline') . '</li>';
+      $output .= '<li>' . t('Circle outline with notch at the top') . '</li>';
+      $output .= '<li>' . t('Circle outline hairline') . '</li>';
+      $output .= '<li>' . t('Circle outline with centre dot') . '</li>';
+      $output .= '<li>' . t('Cloud solid') . '</li>';
+      $output .= '<li>' . t('Sun outline') . '</li>';
+      $output .= '<li>' . t('Folder solid') . '</li>';
+      $output .= '<li>' . t('Folder outline') . '</li>';
+      $output .= '<li>' . t('File solid') . '</li>';
+      $output .= '<li>' . t('File outline') . '</li>';
+      $output .= '<li>' . t('Heart solid') . '</li>';
+      $output .= '<li>' . t('Heart outline') . '</li>';
+      $output .= '<li>' . t('Laptop') . '</li>';
+      $output .= '<li>' . t('Tablet') . '</li>';
+      $output .= '</ul></dl>';
+
+      return $output;
+  }
+}
 
 /**
  * Implements hook_field_formatter_info().
@@ -148,17 +232,15 @@ function link_icons_field_formatter_settings_form($field, $instance, $view_mode,
 function link_icons_field_formatter_settings_summary($field, $instance, $view_mode) {
   $display = $instance['display'][$view_mode];
   $settings = $display['settings'];
-  $text = ($settings['text'] == 'none' ? 'no' : '"@text"');
-  $background = ($settings['background'] == 'none' ? 'no' : 'fa-@background');
-  $summary = t('Output ' . $text . ' text with @size size @width width @coloured @shaped icons, ' . $background . ' backgrounds and the icons placed @order.',
+  $summary = t('Output @text text with @size size @width width @coloured @shaped icons, @background backgrounds and the icons placed @order.',
     array(
-      '@text' => $settings['text'],
+      '@text' => ($settings['text'] == 'none' ? 'no' : $settings['text']),
       '@order' => $settings['order'],
       '@size' => $settings['size'],
       '@width' => $settings['width'],
       '@coloured' => $settings['coloured'],
       '@shaped' => $settings['shaped'],
-      '@background' => $settings['background'],
+      '@background' => ($settings['background'] == 'none' ? 'no' : 'fa-' . $settings['background']),
     )
   );
   return $summary;
@@ -171,30 +253,34 @@ function link_icons_field_formatter_view($entity_type, $entity, $field, $instanc
   $elements = array();
   $settings = $display['settings'];
 
-  // Make $services updatable globally
+  // Make $services updatable globally.
   $services = module_invoke_all('link_icons_services');
   drupal_alter('link_icons_services', $services);
 
-  // Step through the items
+  // Step through the items.
   foreach ($items as $delta => $item) {
     $parsed = parse_url($item['url']);
     $chunks = explode('.', $parsed['host']);
     $host3 = '';
     if (count($chunks) == 1) {
       $host = $chunks[0];
-    } else {
+    }
+    else {
       $host = $chunks[count($chunks) - 2] . '.' . $chunks[count($chunks) - 1];
       if (count($chunks) > 2) {
         $host3 = $chunks[count($chunks) - 3] . $host;
       }
     }
 
-    // Find the service from $services, or else make it a generic navy globe 
+    // Find the service from $services, or else make it a generic
+    // navy globe.
     if (isset($host3) && isset($services[$host3])) {
       $service = $services[$host3];
-    } else if (isset($services[$host])) {
+    }
+    elseif (isset($services[$host])) {
       $service = $services[$host];
-    } else { 
+    }
+    else {
       $service = array('globe', 'navy');
     }
 
@@ -207,7 +293,7 @@ function link_icons_field_formatter_view($entity_type, $entity, $field, $instanc
       'tablet',
     );
 
-    // Determine if the icon needs to be inverted
+    // Determine if the icon needs to be inverted.
     if ($settings['background'] != 'none') {
       $inverse = TRUE;
       foreach ($hollow_endings as $ending) {
@@ -222,7 +308,7 @@ function link_icons_field_formatter_view($entity_type, $entity, $field, $instanc
       }
     }
 
-    switch($settings['shaped']) {
+    switch ($settings['shaped']) {
       case 'squared':
         $icon = (isset($service[2]) ? $service[2] : $service[0]);
         break;
@@ -245,7 +331,7 @@ function link_icons_field_formatter_view($entity_type, $entity, $field, $instanc
         break;
     }
 
-    // Generate the icon link HTML
+    // Generate the icon link HTML.
     $icon_link = l(
       ($settings['background'] != 'none' ? '<span class="fa-stack'
           . ($settings['size'] != '1x' ? ' fa-' . $settings['size'] : '')
@@ -272,7 +358,8 @@ function link_icons_field_formatter_view($entity_type, $entity, $field, $instanc
       )
     );
 
-    // Generate the text HTML, if required, and combine it with the link icon HTML in $markup
+    // Generate the text HTML, if required, and combine it with the link icon
+    // HTML in $markup.
     $text_link = '';
     $text = '';
     if ($settings['text'] != 'none') {
@@ -320,7 +407,7 @@ function link_icons_field_formatter_view($entity_type, $entity, $field, $instanc
       $markup = $icon_link;
     }
 
-    // Return the $markup
+    // Return the $markup.
     $elements[$delta] = array(
       '#markup' => $markup,
     );
@@ -329,10 +416,14 @@ function link_icons_field_formatter_view($entity_type, $entity, $field, $instanc
   return $elements;
 }
 
+/**
+ * The array of services.
+ */
 function link_icons_link_icons_services() {
   return array(
     // Format is:
-    // Hostname => array(main fa icon name, colour, square fa icon name, circle fa icon name).
+    // Hostname => array(main fa icon name, colour, square fa icon name,
+    // circle fa icon name).
     '500px.com' => array('500px', 'black'),
     'amazon.com' => array('amazon', 'black'),
     'amazon.co.uk' => array('amazon', 'black'),
@@ -389,6 +480,7 @@ function link_icons_link_icons_services() {
     'steampowered.com' => array('steam', 'black', 'steam-square'),
     'stumbleupon.com' => array('stumbleupon', '#EA4B24', '', 'stumbleupon-circle'),
     'telegram.org' => array('telegram', '#179CDE'),
+    'thetalentmanager.com' => array('play-circle', '#40CCD8'),
     'tripadvisor.com' => array('tripadvisor', 'black'),
     'tripadvisor.co.uk' => array('tripadvisor', 'black'),
     'tumblr.com' => array('tumblr', '#2C4762', 'tumblr-square'),
