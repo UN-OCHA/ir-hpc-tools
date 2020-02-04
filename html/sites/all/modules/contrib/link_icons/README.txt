@@ -74,6 +74,7 @@ Services/icons currently supported are:
 - steampowered.com
 - stumbleupon.com
 - telegram.org
+- thetalentmanager.com
 - tripadvisor.com
 - tripadvisor.co.uk
 - tumblr.com
@@ -95,7 +96,7 @@ Services/icons currently supported are:
 The generic globe icon is used if a link URL does not have one of the hostnames
 above.
 
- * For a full description of the module, visit the (forthcoming) project page:
+ * For a full description of the module, visit the project page:
   https://drupal.org/project/link_icons
 
  * To submit bug reports and feature suggestions, or to track changes:

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "382162b5695ec1a12bd0a424bd547421",
+    "content-hash": "6edcd66c38fa8c08d1998980b745eb8f",
     "packages": [
         {
             "name": "drupal/addressfield",
@@ -114,17 +114,17 @@
         },
         {
             "name": "drupal/admin_views",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/admin_views.git",
-                "reference": "7.x-1.6"
+                "reference": "7.x-1.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/admin_views-7.x-1.6.zip",
-                "reference": "7.x-1.6",
-                "shasum": "a56a61d203f9cc79ab17c497c59a56ded1ef1d3c"
+                "url": "https://ftp.drupal.org/files/projects/admin_views-7.x-1.7.zip",
+                "reference": "7.x-1.7",
+                "shasum": "26db1aa6e7a6888b33d17800df1b6d45c19e0b16"
             },
             "require": {
                 "drupal/drupal": "~7.0",
@@ -137,8 +137,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-1.6",
-                    "datestamp": "1470247980",
+                    "version": "7.x-1.7",
+                    "datestamp": "1574192284",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -151,26 +151,18 @@
             ],
             "authors": [
                 {
-                    "name": "damiankloip",
-                    "homepage": "https://www.drupal.org/user/1037976"
+                    "name": "DamienMcKenna",
+                    "homepage": "https://www.drupal.org/user/108450"
                 },
                 {
-                    "name": "dawehner",
-                    "homepage": "https://www.drupal.org/user/99340"
-                },
-                {
-                    "name": "fizk",
-                    "homepage": "https://www.drupal.org/user/473174"
-                },
-                {
-                    "name": "sun",
-                    "homepage": "https://www.drupal.org/user/54136"
+                    "name": "vijaycs85",
+                    "homepage": "https://www.drupal.org/user/93488"
                 }
             ],
             "description": "Replaces all system object management pages in Drupal core with real views.",
             "homepage": "https://www.drupal.org/project/admin_views",
             "support": {
-                "source": "http://cgit.drupalcode.org/admin_views"
+                "source": "https://git.drupalcode.org/project/admin_views"
             }
         },
         {
@@ -251,6 +243,43 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/chosen"
             }
+        },
+        {
+            "name": "drupal/coder",
+            "version": "8.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/coder.git",
+                "reference": "c11c2957653bdbfd68adc851692d094b43d39221"
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.5.9",
+                "squizlabs/php_codesniffer": "^3.4.1",
+                "symfony/yaml": ">=2.0.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+            },
+            "type": "phpcodesniffer-standard",
+            "autoload": {
+                "psr-0": {
+                    "Drupal\\": "coder_sniffer/Drupal/",
+                    "DrupalPractice\\": "coder_sniffer/DrupalPractice/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Coder is a library to review Drupal code.",
+            "homepage": "https://www.drupal.org/project/coder",
+            "keywords": [
+                "code review",
+                "phpcs",
+                "standards"
+            ],
+            "time": "2019-12-07T16:00:28+00:00"
         },
         {
             "name": "drupal/composer_autoloader",
@@ -570,17 +599,17 @@
         },
         {
             "name": "drupal/drupal",
-            "version": "7.67.0",
+            "version": "7.69.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/drupal.git",
-                "reference": "7.67"
+                "reference": "7.69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/drupal-7.67.zip",
-                "reference": "7.67",
-                "shasum": "b7143116f747df1f5a07674f9b7132cc98589b55"
+                "url": "https://ftp.drupal.org/files/projects/drupal-7.69.zip",
+                "reference": "7.69",
+                "shasum": "424bbf205fc6f8b28b348d42206b395fca26724f"
             },
             "type": "drupal-core",
             "extra": {
@@ -588,8 +617,8 @@
                     "dev-7.x": "7.x-dev"
                 },
                 "drupal": {
-                    "version": "7.67",
-                    "datestamp": "1557336394",
+                    "version": "7.69",
+                    "datestamp": "1576698943",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -601,10 +630,6 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
-                {
-                    "name": "David_Rothstein",
-                    "homepage": "https://www.drupal.org/user/124982"
-                },
                 {
                     "name": "Dries",
                     "homepage": "https://www.drupal.org/user/1"
@@ -650,12 +675,12 @@
                     "homepage": "https://www.drupal.org/user/1078742"
                 },
                 {
-                    "name": "plach",
-                    "homepage": "https://www.drupal.org/user/183211"
+                    "name": "mcdruid",
+                    "homepage": "https://www.drupal.org/user/255969"
                 },
                 {
-                    "name": "stefan.r",
-                    "homepage": "https://www.drupal.org/user/551886"
+                    "name": "plach",
+                    "homepage": "https://www.drupal.org/user/183211"
                 },
                 {
                     "name": "webchick",
@@ -1132,17 +1157,17 @@
         },
         {
             "name": "drupal/facetapi",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/facetapi.git",
-                "reference": "7.x-1.5"
+                "reference": "7.x-1.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/facetapi-7.x-1.5.zip",
-                "reference": "7.x-1.5",
-                "shasum": "0783e705d01d7275c7480dd5008a157124afe51d"
+                "url": "https://ftp.drupal.org/files/projects/facetapi-7.x-1.6.zip",
+                "reference": "7.x-1.6",
+                "shasum": "23314e7a8e5ebb5c54c1b7d856a95c1a0d304b0b"
             },
             "require": {
                 "drupal/ctools": "*",
@@ -1154,8 +1179,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-1.5",
-                    "datestamp": "1405685327",
+                    "version": "7.x-1.6",
+                    "datestamp": "1568909888",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1192,6 +1217,14 @@
                     "homepage": "https://www.drupal.org/user/1767626"
                 },
                 {
+                    "name": "gisle",
+                    "homepage": "https://www.drupal.org/user/409554"
+                },
+                {
+                    "name": "joseph.olstad",
+                    "homepage": "https://www.drupal.org/user/1321830"
+                },
+                {
                     "name": "jurcello",
                     "homepage": "https://www.drupal.org/user/774070"
                 },
@@ -1207,7 +1240,7 @@
             "description": "An abstracted facet API that can be used by various search backends.",
             "homepage": "https://www.drupal.org/project/facetapi",
             "support": {
-                "source": "http://cgit.drupalcode.org/facetapi"
+                "source": "https://git.drupalcode.org/project/facetapi"
             }
         },
         {
@@ -1597,17 +1630,17 @@
         },
         {
             "name": "drupal/file_entity",
-            "version": "2.25.0",
+            "version": "2.27.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/file_entity.git",
-                "reference": "7.x-2.25"
+                "reference": "7.x-2.27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/file_entity-7.x-2.25.zip",
-                "reference": "7.x-2.25",
-                "shasum": "bb939fc4bc8f6037616fd78a5fd03fb7ac491619"
+                "url": "https://ftp.drupal.org/files/projects/file_entity-7.x-2.27.zip",
+                "reference": "7.x-2.27",
+                "shasum": "dde60381eb4ea39753852c60a892df6df16e0a69"
             },
             "require": {
                 "drupal/ctools": "*",
@@ -1623,8 +1656,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-2.25",
-                    "datestamp": "1541794684",
+                    "version": "7.x-2.27",
+                    "datestamp": "1574278085",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1701,6 +1734,10 @@
                     "homepage": "https://www.drupal.org/user/616192"
                 },
                 {
+                    "name": "mxr576",
+                    "homepage": "https://www.drupal.org/user/315522"
+                },
+                {
                     "name": "robeano",
                     "homepage": "https://www.drupal.org/user/67660"
                 },
@@ -1712,7 +1749,7 @@
             "description": "Extends Drupal file entities to be fieldable and viewable.",
             "homepage": "https://www.drupal.org/project/file_entity",
             "support": {
-                "source": "http://cgit.drupalcode.org/file_entity"
+                "source": "https://git.drupalcode.org/project/file_entity"
             }
         },
         {
@@ -2071,17 +2108,17 @@
         },
         {
             "name": "drupal/inline_entity_form",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/inline_entity_form.git",
-                "reference": "7.x-1.8"
+                "reference": "7.x-1.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/inline_entity_form-7.x-1.8.zip",
-                "reference": "7.x-1.8",
-                "shasum": "907da29888c1fbac09bebbbb5f228888cba26e23"
+                "url": "https://ftp.drupal.org/files/projects/inline_entity_form-7.x-1.9.zip",
+                "reference": "7.x-1.9",
+                "shasum": "2452197d1bb68aaf11872885ab21377cd002c942"
             },
             "require": {
                 "drupal/drupal": "^7.15",
@@ -2097,8 +2134,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-1.8",
-                    "datestamp": "1460849406",
+                    "version": "7.x-1.9",
+                    "datestamp": "1568130784",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2119,6 +2156,26 @@
                     "homepage": "https://www.drupal.org/user/99340"
                 },
                 {
+                    "name": "geek-merlin",
+                    "homepage": "https://www.drupal.org/user/229048"
+                },
+                {
+                    "name": "joachim",
+                    "homepage": "https://www.drupal.org/user/107701"
+                },
+                {
+                    "name": "jsacksick",
+                    "homepage": "https://www.drupal.org/user/972218"
+                },
+                {
+                    "name": "kaythay",
+                    "homepage": "https://www.drupal.org/user/2182186"
+                },
+                {
+                    "name": "oknate",
+                    "homepage": "https://www.drupal.org/user/471638"
+                },
+                {
                     "name": "rszrama",
                     "homepage": "https://www.drupal.org/user/49344"
                 },
@@ -2134,7 +2191,7 @@
             "description": "Provides a widget for inline management (creation, modification, removal) of referenced entities. ",
             "homepage": "https://www.drupal.org/project/inline_entity_form",
             "support": {
-                "source": "http://cgit.drupalcode.org/inline_entity_form"
+                "source": "https://git.drupalcode.org/project/inline_entity_form"
             }
         },
         {
@@ -2297,17 +2354,17 @@
         },
         {
             "name": "drupal/js",
-            "version": "2.4.0",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/js.git",
-                "reference": "7.x-2.4"
+                "reference": "7.x-2.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/js-7.x-2.4.zip",
-                "reference": "7.x-2.4",
-                "shasum": "fa214a3a9e6eb8fd5288c2790caefdf3a32243c5"
+                "url": "https://ftp.drupal.org/files/projects/js-7.x-2.5.zip",
+                "reference": "7.x-2.5",
+                "shasum": "8432bf81d059c99b2c24d72e1308d9763b50f726"
             },
             "require": {
                 "drupal/drupal": "~7.0"
@@ -2318,8 +2375,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-2.4",
-                    "datestamp": "1492622642",
+                    "version": "7.x-2.5",
+                    "datestamp": "1571207285",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2347,7 +2404,7 @@
             "description": "A high-performance JavaScript callback handler for 3rd party modules.",
             "homepage": "https://www.drupal.org/project/js",
             "support": {
-                "source": "http://cgit.drupalcode.org/js"
+                "source": "https://git.drupalcode.org/project/js"
             }
         },
         {
@@ -2415,17 +2472,17 @@
         },
         {
             "name": "drupal/link",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/link.git",
-                "reference": "7.x-1.6"
+                "reference": "7.x-1.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/link-7.x-1.6.zip",
-                "reference": "7.x-1.6",
-                "shasum": "21b822ab66cc9bd512c17cad4662a33ccd8d0135"
+                "url": "https://ftp.drupal.org/files/projects/link-7.x-1.7.zip",
+                "reference": "7.x-1.7",
+                "shasum": "b18da8e72f499ad738f971026cbd90bcfef95ff4"
             },
             "require": {
                 "drupal/drupal": "~7.0"
@@ -2436,8 +2493,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-1.6",
-                    "datestamp": "1550692505",
+                    "version": "7.x-1.7",
+                    "datestamp": "1573731186",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2449,6 +2506,10 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
+                {
+                    "name": "DamienMcKenna",
+                    "homepage": "https://www.drupal.org/user/108450"
+                },
                 {
                     "name": "RenatoG",
                     "homepage": "https://www.drupal.org/user/3326031"
@@ -2497,22 +2558,22 @@
             "description": "Defines simple link field types.",
             "homepage": "https://www.drupal.org/project/link",
             "support": {
-                "source": "http://cgit.drupalcode.org/link"
+                "source": "https://git.drupalcode.org/project/link"
             }
         },
         {
             "name": "drupal/link_icons",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/link_icons.git",
-                "reference": "7.x-1.7"
+                "reference": "7.x-1.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/link_icons-7.x-1.7.zip",
-                "reference": "7.x-1.7",
-                "shasum": "db204c413bac706af63bdbdda61ba72a14c63fa1"
+                "url": "https://ftp.drupal.org/files/projects/link_icons-7.x-1.8.zip",
+                "reference": "7.x-1.8",
+                "shasum": "06539e3cc381ff173f193445860af79cf56b8132"
             },
             "require": {
                 "drupal/drupal": "^7.40",
@@ -2525,8 +2586,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-1.7",
-                    "datestamp": "1496459643",
+                    "version": "7.x-1.8",
+                    "datestamp": "1580457098",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2546,7 +2607,7 @@
             "description": "Field formatter for Link field to first display an icon for the service being linked to - ex. Facebook, Twitter or LinkedIn, with various display options",
             "homepage": "https://www.drupal.org/project/link_icons",
             "support": {
-                "source": "http://cgit.drupalcode.org/link_icons"
+                "source": "https://git.drupalcode.org/project/link_icons"
             }
         },
         {
@@ -3182,17 +3243,17 @@
         },
         {
             "name": "drupal/path_alias_xt",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/path_alias_xt.git",
-                "reference": "7.x-1.2"
+                "reference": "7.x-1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/path_alias_xt-7.x-1.2.zip",
-                "reference": "7.x-1.2",
-                "shasum": "cc9a671e3c3340f13bef0cffe9ef0a77fffdd8bc"
+                "url": "https://ftp.drupal.org/files/projects/path_alias_xt-7.x-1.3.zip",
+                "reference": "7.x-1.3",
+                "shasum": "30b4cddfcf74bab8c73e8d52c12c1ef9aed8cdbc"
             },
             "require": {
                 "drupal/drupal": "~7.0"
@@ -3203,8 +3264,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-1.2",
-                    "datestamp": "1394573306",
+                    "version": "7.x-1.3",
+                    "datestamp": "1572381184",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3229,9 +3290,10 @@
                     "homepage": "https://www.drupal.org/user/1420228"
                 }
             ],
+            "description": "Automatically extend path aliases to include tabs, like <em>about-us/edit</em> for <em>node/123/edit</em>. Allow these aliases to be entered in page specification wild-cards, <em>about-us*</em>, e.g for block visibility.",
             "homepage": "https://www.drupal.org/project/path_alias_xt",
             "support": {
-                "source": "http://cgit.drupalcode.org/path_alias_xt"
+                "source": "https://git.drupalcode.org/project/path_alias_xt"
             }
         },
         {
@@ -3910,17 +3972,17 @@
         },
         {
             "name": "drupal/search_api_solr",
-            "version": "1.14.0",
+            "version": "1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api_solr.git",
-                "reference": "7.x-1.14"
+                "reference": "7.x-1.15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api_solr-7.x-1.14.zip",
-                "reference": "7.x-1.14",
-                "shasum": "bd08b1fb4383effcdbe495ba8a9af4568ce071ce"
+                "url": "https://ftp.drupal.org/files/projects/search_api_solr-7.x-1.15.zip",
+                "reference": "7.x-1.15",
+                "shasum": "067e7bd7b40496ab682a9099e33279c1829b74a7"
             },
             "require": {
                 "drupal/drupal": "~7.0",
@@ -3932,8 +3994,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-1.14",
-                    "datestamp": "1539192489",
+                    "version": "7.x-1.15",
+                    "datestamp": "1573123085",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3973,7 +4035,7 @@
             "description": "Offers an implementation of the Search API that uses an Apache Solr server for indexing content.",
             "homepage": "https://www.drupal.org/project/search_api_solr",
             "support": {
-                "source": "http://cgit.drupalcode.org/search_api_solr"
+                "source": "https://git.drupalcode.org/project/search_api_solr"
             }
         },
         {
@@ -4753,6 +4815,174 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/wysiwyg_filter"
             }
+        },
+        {
+            "name": "squizlabs/php_codesniffer",
+            "version": "3.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+            },
+            "bin": [
+                "bin/phpcs",
+                "bin/phpcbf"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "time": "2019-04-10T23:49:02+00:00"
+        },
+        {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "82ebae02209c21113908c229e9883c419720738a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/82ebae02209c21113908c229e9883c419720738a",
+                "reference": "82ebae02209c21113908c229e9883c419720738a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-ctype": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.11-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2019-02-06T07:57:58+00:00"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v3.4.30",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "051d045c684148060ebfc9affb7e3f5e0899d40b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/051d045c684148060ebfc9affb7e3f5e0899d40b",
+                "reference": "051d045c684148060ebfc9affb7e3f5e0899d40b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/polyfill-ctype": "~1.8"
+            },
+            "conflict": {
+                "symfony/console": "<3.4"
+            },
+            "require-dev": {
+                "symfony/console": "~3.4|~4.0"
+            },
+            "suggest": {
+                "symfony/console": "For validating YAML files using the lint command"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "https://symfony.com",
+            "time": "2019-07-24T13:01:31+00:00"
         }
     ],
     "packages-dev": [
@@ -5368,43 +5598,6 @@
                 "nested package"
             ],
             "time": "2017-07-20T14:32:18+00:00"
-        },
-        {
-            "name": "drupal/coder",
-            "version": "8.3.5",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/coder.git",
-                "reference": "35277fc8675b6a2cbb194f8880145a9c85c845c4"
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "php": ">=5.5.9",
-                "squizlabs/php_codesniffer": "^3.4.1",
-                "symfony/yaml": ">=2.0.5"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">=3.7 <6"
-            },
-            "type": "phpcodesniffer-standard",
-            "autoload": {
-                "psr-0": {
-                    "Drupal\\": "coder_sniffer/Drupal/",
-                    "DrupalPractice\\": "coder_sniffer/DrupalPractice/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "description": "Coder is a library to review Drupal code.",
-            "homepage": "https://www.drupal.org/project/coder",
-            "keywords": [
-                "code review",
-                "phpcs",
-                "standards"
-            ],
-            "time": "2019-06-14T15:06:06+00:00"
         },
         {
             "name": "drush/drush",
@@ -6236,57 +6429,6 @@
             "time": "2016-10-03T07:35:21+00:00"
         },
         {
-            "name": "squizlabs/php_codesniffer",
-            "version": "3.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
-                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
-                "shasum": ""
-            },
-            "require": {
-                "ext-simplexml": "*",
-                "ext-tokenizer": "*",
-                "ext-xmlwriter": "*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
-            },
-            "bin": [
-                "bin/phpcs",
-                "bin/phpcbf"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Greg Sherwood",
-                    "role": "lead"
-                }
-            ],
-            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
-            "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
-            "keywords": [
-                "phpcs",
-                "standards"
-            ],
-            "time": "2019-04-10T23:49:02+00:00"
-        },
-        {
             "name": "symfony/config",
             "version": "v4.3.3",
             "source": {
@@ -6714,64 +6856,6 @@
             "time": "2019-06-28T08:02:59+00:00"
         },
         {
-            "name": "symfony/polyfill-ctype",
-            "version": "v1.11.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "82ebae02209c21113908c229e9883c419720738a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/82ebae02209c21113908c229e9883c419720738a",
-                "reference": "82ebae02209c21113908c229e9883c419720738a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "suggest": {
-                "ext-ctype": "For best performance"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.11-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Ctype\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                },
-                {
-                    "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
-                }
-            ],
-            "description": "Symfony polyfill for ctype functions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "ctype",
-                "polyfill",
-                "portable"
-            ],
-            "time": "2019-02-06T07:57:58+00:00"
-        },
-        {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.11.0",
             "source": {
@@ -6956,65 +7040,6 @@
                 "dump"
             ],
             "time": "2019-07-26T11:29:23+00:00"
-        },
-        {
-            "name": "symfony/yaml",
-            "version": "v3.4.30",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/yaml.git",
-                "reference": "051d045c684148060ebfc9affb7e3f5e0899d40b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/051d045c684148060ebfc9affb7e3f5e0899d40b",
-                "reference": "051d045c684148060ebfc9affb7e3f5e0899d40b",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.5.9|>=7.0.8",
-                "symfony/polyfill-ctype": "~1.8"
-            },
-            "conflict": {
-                "symfony/console": "<3.4"
-            },
-            "require-dev": {
-                "symfony/console": "~3.4|~4.0"
-            },
-            "suggest": {
-                "symfony/console": "For validating YAML files using the lint command"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Yaml\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Yaml Component",
-            "homepage": "https://symfony.com",
-            "time": "2019-07-24T13:01:31+00:00"
         },
         {
             "name": "theseer/fdomdocument",
