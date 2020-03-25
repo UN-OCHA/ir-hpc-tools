@@ -6,9 +6,8 @@ dependencies[] = fontawesome:fontawesome (>= 7.x-2.6)
 dependencies[] = drupal:system (>= 7.40)
 package = Fields
 
-; Information added by Drupal.org packaging script on 2017-06-03
-version = "7.x-1.7"
+; Information added by Drupal.org packaging script on 2020-01-31
+version = "7.x-1.8"
 core = "7.x"
 project = "link_icons"
-datestamp = "1496459646"
-
+datestamp = "1580457100"

@@ -1,0 +1,7 @@
+Link Icons 7.x-1.8
+------------------
+- Added thetalentmanager.com service
+- Added Drupal help page
+- Added CHANGELOG.txt
+- Drupal coding standard fixes
+- README.txt updates
