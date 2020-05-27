@@ -1,11 +1,11 @@
-FROM unocha/unified-builder:7.2.27-r0-202003-02 as builder
+FROM unocha/unified-builder:7.2.27-r0-202004-02 as builder
 ARG  BRANCH_ENVIRONMENT
 ENV  NODE_ENV=$BRANCH_ENVIRONMENT
 COPY . /srv/www
 WORKDIR /srv/www
 RUN composer run gulp
 
-FROM unocha/php7-k8s:7.2.27-r0-202003-03-NR
+FROM unocha/php7-k8s:7.2.27-r0-202004-02-NR
 
 ARG VCS_REF
 ARG VCS_URL
