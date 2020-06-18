@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f02a4c81f09fd2ff3083b80cb5067f55",
+    "content-hash": "892708e42f672176ef41972403559d18",
     "packages": [
         {
             "name": "drupal/addressfield",
@@ -603,23 +603,23 @@
         },
         {
             "name": "drupal/drupal",
-            "version": "7.70.0",
+            "version": "7.72.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/drupal.git",
-                "reference": "7.70"
+                "reference": "7.72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/drupal-7.70.zip",
-                "reference": "7.70",
-                "shasum": "ea7f0fa92532941dc2eb31c2696f399068553f5c"
+                "url": "https://ftp.drupal.org/files/projects/drupal-7.72.zip",
+                "reference": "7.72",
+                "shasum": "0cb4cf16f4f7e9957e16978ff5504c70cf0314e6"
             },
             "type": "drupal-core",
             "extra": {
                 "drupal": {
-                    "version": "7.70",
-                    "datestamp": "1589990799",
+                    "version": "7.72",
+                    "datestamp": "1592419880",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
